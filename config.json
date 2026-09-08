@@ -1,0 +1,14 @@
+{
+  "source_directory": "C:/Users/pokem/Desktop/stock_TradingBot/tpex_emerging_data",
+  "intraday_url": "https://mis.tpex.org.tw/ib140srt2.aspx?RankingType=3",
+  "trigger_pct": 15.0,
+  "scan_interval_seconds": 60,
+  "publish_interval_minutes": 10,
+  "tracking_sessions": 20,
+  "extension_sessions": 5,
+  "core_top_n": 20,
+  "core_lookback_sessions": 20,
+  "minimum_support_brokers": 3,
+  "inventory_support_floor": 0.70,
+  "site_directory": "docs"
+}

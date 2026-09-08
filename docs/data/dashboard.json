@@ -1,0 +1,8 @@
+{
+  "schema_version": 2,
+  "market_time": "2026-09-09T01:38:05+08:00",
+  "broker_data_date": "20260908",
+  "trigger_pct": 15.0,
+  "stocks": [],
+  "data_status": "live"
+}
