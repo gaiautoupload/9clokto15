@@ -242,13 +242,16 @@ def chrome_version_major(chrome: Path) -> str:
 
 def classify(core: list[dict]) -> tuple[str, dict]:
     top5 = core[:5]
+    floor = float(CONFIG["inventory_support_floor"])
     positive = sum(item["net_lots"] > 0 for item in top5)
+    retained = sum(item.get("inventory_lots", 0) > 0 and item.get("inventory_retention", 0) >= floor for item in top5)
     total_net = sum(item["net_lots"] for item in top5)
     share = sum(item["capital_share_pct"] for item in top5)
+    evidence = {"positive_top5": positive, "retained_top5": retained, "retention_floor_pct": round(floor * 100), "top5_net_lots": round(total_net, 2), "top5_capital_share_pct": round(share, 2)}
     if len(top5) < 5:
-        return "INSUFFICIENT", {"positive_top5": positive, "top5_net_lots": round(total_net, 2), "top5_capital_share_pct": round(share, 2)}
-    status = "CHIP_SUPPORT" if positive >= int(CONFIG["minimum_support_brokers"]) and total_net > 0 else "MIXED"
-    return status, {"positive_top5": positive, "top5_net_lots": round(total_net, 2), "top5_capital_share_pct": round(share, 2)}
+        return "INSUFFICIENT", evidence
+    status = "CHIP_SUPPORT" if retained >= int(CONFIG["minimum_support_brokers"]) and total_net > 0 else "MIXED"
+    return status, evidence
 
 
 def scan_once() -> dict:
