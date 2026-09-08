@@ -139,13 +139,22 @@ def build_core_cache() -> dict:
 def run_research() -> dict:
     history = load_market_history()
     events = []
+    raw_stock_days = 0
+    suppressed_repeats = 0
     for stock_id, rows in history.items():
         rows.sort(key=lambda item: item["date"])
+        next_eligible_index = 1
         for index in range(1, len(rows)):
             prior, today = rows[index - 1], rows[index]
             trigger_pct = (today["high"] / prior["vwap"] - 1) * 100 if prior["vwap"] else 0
             if trigger_pct <= float(CONFIG["trigger_pct"]):
                 continue
+            raw_stock_days += 1
+            # 同一段行情只建立一個事件：首次突破後進入完整追蹤期，期間再突破只屬於同一事件。
+            if index < next_eligible_index:
+                suppressed_repeats += 1
+                continue
+            next_eligible_index = index + int(CONFIG["tracking_sessions"]) + 1
             event = {"stock_id": stock_id, "name": today["name"], "event_date": today["date"], "trigger_pct_proxy": round(trigger_pct, 2), "event_vwap": today["vwap"], "event_volume_lots": today["volume_lots"], "mature_5d": index + 5 < len(rows)}
             future = rows[index + 1:index + 21]
             for horizon in (1, 3, 5, 10, 20):
@@ -162,10 +171,13 @@ def run_research() -> dict:
         "generated_at": datetime.now().astimezone().isoformat(timespec="seconds"),
         "market_start": min((rows[0]["date"] for rows in history.values() if rows), default=None),
         "market_end": max((rows[-1]["date"] for rows in history.values() if rows), default=None),
-        "event_count": len(events), "mature_5d_count": len(mature),
+        "event_count": len(events), "raw_stock_day_count": raw_stock_days,
+        "suppressed_repeat_count": suppressed_repeats,
+        "event_unit": f"每檔每日最多一次；首次突破後 {CONFIG['tracking_sessions']} 個交易日內不重複開新事件",
+        "mature_5d_count": len(mature),
         "five_day_positive_rate": round(len(wins) / len(mature) * 100, 1) if mature else None,
         "five_day_extension_rate": round(len(extension) / len(mature) * 100, 1) if mature else None,
-        "definition": "歷史事件以日內最高價曾高於前日加權均價15%辨識；未知首次突破時間，不當成可成交績效。",
+        "definition": "歷史事件以日內最高價曾高於前日加權均價15%辨識；同一檔進入20日追蹤期後不重複計次。未知首次突破時間，不當成可成交績效。",
     }
     save_json(LOCAL / "research_events.json", events)
     save_json(PUBLIC / "research.json", {"summary": summary, "recent_events": sorted(events, key=lambda x: x["event_date"], reverse=True)[:100]})
