@@ -9,5 +9,7 @@ if errorlevel 1 exit /b %errorlevel%
 if errorlevel 1 exit /b %errorlevel%
 "C:\Users\pokem\anaconda3\python.exe" tail_analysis.py
 if errorlevel 1 exit /b %errorlevel%
+"C:\Users\pokem\anaconda3\python.exe" robust_validation.py
+if errorlevel 1 exit /b %errorlevel%
 "C:\Users\pokem\anaconda3\python.exe" radar.py publish
 exit /b %errorlevel%
