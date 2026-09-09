@@ -308,6 +308,11 @@ def scan_once() -> dict:
     db = connect_db()
     found = []
     live_by_id = {item["stock_id"]: item for item in intraday}
+    dates = load_json(LOCAL / "trading_dates.json", [])
+    today_key = now[:10].replace("-", "")
+    if today_key not in dates:
+        dates.append(today_key)
+    date_pos = {date: i for i, date in enumerate(sorted(set(dates)))}
     for item in intraday:
         prior = latest.get(item["stock_id"], {})
         prior_vwap = prior.get("vwap")
@@ -320,7 +325,13 @@ def scan_once() -> dict:
         setup = setups.get(item["stock_id"])
         if not is_first_breakout(item["price"], item["volume_lots"], setup):
             continue
-        event_id = f"{now[:10].replace('-', '')}-{item['stock_id']}"
+        event_id = f"{today_key}-{item['stock_id']}"
+        recent = db.execute("SELECT event_id,trigger_ts FROM events WHERE stock_id=? ORDER BY trigger_ts DESC LIMIT 1", (item["stock_id"],)).fetchone()
+        if recent:
+            recent_date = recent[1][:10].replace("-", "")
+            age = date_pos.get(today_key, len(date_pos)) - date_pos.get(recent_date, -999)
+            if 0 <= age <= int(CONFIG["tracking_sessions"]):
+                event_id = recent[0]
         core = core_cache.get(item["stock_id"], {}).get("brokers", [])
         status, evidence = classify(core)
         existing = db.execute("SELECT trigger_ts,trigger_price,trigger_pct,frozen_core_json,max_pct FROM events WHERE event_id=?", (event_id,)).fetchone()
@@ -332,11 +343,6 @@ def scan_once() -> dict:
         db.execute("INSERT OR REPLACE INTO events VALUES(?,?,?,?,?,?,?,?,?)", (event_id, item["stock_id"], item["name"], trigger_ts, trigger_price, trigger_pct, status, json.dumps(frozen, ensure_ascii=False), now, max_pct))
         found.append({**item, "change_pct": round(pct, 2), "event_id": event_id, "trigger_ts": trigger_ts, "trigger_price": trigger_price, "max_pct": round(max_pct, 2), "breakout_setup": setup, "chip_status": status, "evidence": evidence, "frozen_core": frozen, "latest_core": core})
     # 首次突破後保留二十個交易日；即使跌回門檻也不會從戰情室消失。
-    dates = load_json(LOCAL / "trading_dates.json", [])
-    today_key = now[:10].replace("-", "")
-    if today_key not in dates:
-        dates.append(today_key)
-    date_pos = {date: i for i, date in enumerate(sorted(set(dates)))}
     for row in db.execute("SELECT event_id,stock_id,name,trigger_ts,trigger_price,trigger_pct,status,frozen_core_json,last_seen_ts,max_pct FROM events").fetchall():
         event_id, stock_id, name, trigger_ts, trigger_price, trigger_pct, saved_status, frozen_json, last_seen, max_pct = row
         if any(item["event_id"] == event_id for item in found):
