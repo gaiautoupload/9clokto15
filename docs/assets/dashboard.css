@@ -1,0 +1,8 @@
+nav{grid-template-columns:repeat(4,1fr);gap:4px}
+nav button{padding:10px 2px;font-size:12px}
+.stock.priority{border-color:#ff5068;box-shadow:inset 3px 0 #ff5068}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.badges mark{padding:4px 7px;border:0;border-radius:999px;font-size:11px;font-weight:800}
+.must{color:#fff;background:#d72e48}
+.new{color:#071018;background:#f6c85f}
+.route{padding:3px 7px;border:1px solid #31566c;border-radius:999px;color:#8edff0;font-size:11px}

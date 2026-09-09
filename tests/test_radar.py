@@ -19,6 +19,17 @@ class RadarTests(unittest.TestCase):
         self.assertEqual(evidence["positive_top5"], 3)
         self.assertEqual(evidence["retained_top5"], 3)
 
+    def test_first_breakout(self):
+        setup = {"range_pct": 12, "range_high": 110, "median_volume_lots": 100, "prior_max_jump_pct": 4}
+        self.assertTrue(radar.is_first_breakout(111, 200, setup))
+        self.assertFalse(radar.is_first_breakout(109, 300, setup))
+
+    def test_extreme_routes(self):
+        stock = {"tail_features": {"qualified_brokers": 45, "largest_capital_share_pct": 20, "recent_builder_count": 1}}
+        setup = {"median_volume_lots": 100, "range_pct": 8}
+        self.assertIn("BROAD_IGNITION", radar.extreme_routes(stock, setup, 600))
+        self.assertIn("EARLY_SEED", radar.extreme_routes(stock, setup, 600))
+
 
 if __name__ == "__main__":
     unittest.main()

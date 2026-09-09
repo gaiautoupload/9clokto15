@@ -163,8 +163,12 @@ def build_core_cache() -> dict:
                 "capital_share_pct": round(max(net_amount, 0) / positive_total * 100, 2) if positive_total else 0,
                 "active_sessions": len(value["days"]),
             })
-        core = sorted(rows, key=lambda item: item["net_amount"], reverse=True)[:int(CONFIG["core_top_n"])]
-        result[stock_id] = {"name": names.get(stock_id, stock_id), "start_date": source_date(files[0]), "end_date": source_date(files[-1]), "brokers": core}
+        ranked = sorted(rows, key=lambda item: item["net_amount"], reverse=True)
+        core = ranked[:int(CONFIG["core_top_n"])]
+        qualified = [x for x in ranked if x["net_lots"] > 0 and x["inventory_retention"] >= float(CONFIG["inventory_support_floor"]) and x["active_sessions"] >= 2]
+        largest_share = max((x["capital_share_pct"] for x in qualified), default=0)
+        recent_builder_count = sum(2 <= x["active_sessions"] <= 5 for x in qualified)
+        result[stock_id] = {"name": names.get(stock_id, stock_id), "start_date": source_date(files[0]), "end_date": source_date(files[-1]), "brokers": core, "tail_features": {"qualified_brokers": len(qualified), "largest_capital_share_pct": round(largest_share, 2), "recent_builder_count": recent_builder_count}}
     payload = {"generated_at": datetime.now().astimezone().isoformat(timespec="seconds"), "lookback_sessions": len(files), "stocks": result}
     save_json(LOCAL / "core_cache.json", payload)
     return payload
@@ -227,6 +231,36 @@ def run_research() -> dict:
         if metric:
             setups[stock_id] = metric
     save_json(LOCAL / "setup_cache.json", setups)
+    listing_cache = {}
+    listing_events = []
+    limit = int(CONFIG["new_listing_sessions"])
+    global_market_end = max((rows[-1]["date"] for rows in history.values() if rows), default="")
+    for stock_id, rows in history.items():
+        rows.sort(key=lambda x: x["date"])
+        recent_volumes = [x["volume_lots"] for x in rows[-limit:] if x["volume_lots"] > 0]
+        listing_cache[stock_id] = {"listing_date": rows[0]["date"], "completed_sessions": len(rows), "prior_high": max((x["high"] for x in rows[-limit:]), default=None), "median_volume_lots": statistics.median(recent_volumes) if recent_volumes else None}
+        for index in range(2, min(len(rows), limit)):
+            prior, today = rows[index - 1], rows[index]
+            pct = (today["high"] / prior["vwap"] - 1) * 100 if prior["vwap"] else 0
+            prior_volumes = [x["volume_lots"] for x in rows[:index] if x["volume_lots"] > 0]
+            baseline = statistics.median(prior_volumes) if prior_volumes else 0
+            if pct <= float(CONFIG["new_listing_trigger_pct"]) or not baseline or today["volume_lots"] < baseline * float(CONFIG["new_listing_volume_multiple"]):
+                continue
+            event = {"stock_id": stock_id, "name": today["name"], "listing_date": rows[0]["date"], "event_date": today["date"], "listing_session": index + 1, "trigger_pct_proxy": round(pct, 2), "volume_multiple": round(today["volume_lots"] / baseline, 2)}
+            for horizon in (5, 10, 20):
+                event[f"return_{horizon}d_pct"] = round((rows[index + horizon]["vwap"] / today["vwap"] - 1) * 100, 2) if index + horizon < len(rows) else None
+            completed = rows[-1]["date"] < global_market_end
+            event["completed_emerging"] = completed
+            event["last_emerging_date"] = rows[-1]["date"] if completed else None
+            event["return_to_last_emerging_pct"] = round((rows[-1]["vwap"] / today["vwap"] - 1) * 100, 2) if completed else None
+            event["max_to_last_emerging_pct"] = round((max(x["high"] for x in rows[index:]) / today["vwap"] - 1) * 100, 2) if completed else None
+            listing_events.append(event)
+            break
+    save_json(LOCAL / "new_listing_cache.json", listing_cache)
+    mature_listing = [x for x in listing_events if x["return_20d_pct"] is not None]
+    completed_listing = [x for x in listing_events if x["completed_emerging"]]
+    listing_summary = {"event_count": len(listing_events), "mature_20d_count": len(mature_listing), "twenty_day_mean_pct": round(statistics.mean(x["return_20d_pct"] for x in mature_listing), 2) if mature_listing else None, "twenty_day_median_pct": round(statistics.median(x["return_20d_pct"] for x in mature_listing), 2) if mature_listing else None, "twenty_day_win_rate_pct": round(sum(x["return_20d_pct"] > 0 for x in mature_listing) / len(mature_listing) * 100, 1) if mature_listing else None, "twenty_day_80_plus_count": sum(x["return_20d_pct"] >= 80 for x in mature_listing), "completed_emerging_count": len(completed_listing), "to_last_emerging_200_plus_count": sum(x["return_to_last_emerging_pct"] >= 200 for x in completed_listing), "max_before_transfer_200_plus_count": sum(x["max_to_last_emerging_pct"] >= 200 for x in completed_listing)}
+    save_json(PUBLIC / "new_listings.json", {"summary": listing_summary, "recent_events": sorted(listing_events, key=lambda x: x["event_date"], reverse=True)[:100]})
     save_json(LOCAL / "trading_dates.json", sorted({row["date"] for rows in history.values() for row in rows}))
     print(f"研究完成：{len(events)} 個15%事件，成熟五日 {len(mature)} 個")
     return summary
@@ -298,9 +332,25 @@ def classify(core: list[dict]) -> tuple[str, dict]:
     return status, evidence
 
 
+def extreme_routes(stock_meta: dict, setup: dict | None, volume_lots: float) -> list[str]:
+    feature = stock_meta.get("tail_features", {})
+    qualified = feature.get("qualified_brokers", 0)
+    share = feature.get("largest_capital_share_pct", 0)
+    volume_multiple = volume_lots / setup["median_volume_lots"] if setup and setup.get("median_volume_lots") else 0
+    routes = []
+    if qualified >= 40 and share <= 30:
+        routes.append("BROAD_IGNITION")
+    if qualified <= 5 and share >= 60:
+        routes.append("CONCENTRATED_CONTROL")
+    if feature.get("recent_builder_count", 0) >= 1 and setup and setup.get("range_pct", 999) <= 10 and volume_multiple >= 5:
+        routes.append("EARLY_SEED")
+    return routes
+
+
 def scan_once() -> dict:
     latest = load_json(LOCAL / "daily_latest.json", {})
     setups = load_json(LOCAL / "setup_cache.json", {})
+    listings = load_json(LOCAL / "new_listing_cache.json", {})
     core_payload = load_json(LOCAL / "core_cache.json", {"stocks": {}})
     core_cache = core_payload["stocks"]
     intraday = fetch_intraday()
@@ -316,23 +366,35 @@ def scan_once() -> dict:
     for item in intraday:
         prior = latest.get(item["stock_id"], {})
         prior_vwap = prior.get("vwap")
+        listing = listings.get(item["stock_id"])
+        is_day_one = not prior_vwap
+        listing_session = (listing.get("completed_sessions", 0) + 1) if listing else (1 if is_day_one else None)
+        is_new_listing = bool(listing_session and listing_session <= int(CONFIG["new_listing_sessions"]))
         if not prior_vwap:
+            if is_new_listing:
+                stock_meta = core_cache.get(item["stock_id"], {})
+                core = stock_meta.get("brokers", [])
+                status, evidence = classify(core)
+                found.append({**item, "change_pct": None, "event_id": f"NEW-{today_key}-{item['stock_id']}", "trigger_ts": now, "trigger_price": item["price"], "max_pct": None, "tracking_age": 0, "above_threshold": False, "strategy_type": "NEW_LISTING", "new_listing": True, "listing_session": listing_session, "signal_level": "WATCH", "mandatory_strategy": False, "tail_routes": [], "chip_status": status, "evidence": evidence, "frozen_core": core, "latest_core": core})
             continue
         pct = (item["price"] / prior_vwap - 1) * 100
         db.execute("INSERT OR REPLACE INTO observations VALUES(?,?,?,?,?,?)", (now, item["stock_id"], item["name"], item["price"], item["volume_lots"], pct))
-        if pct <= float(CONFIG["trigger_pct"]):
-            continue
         setup = setups.get(item["stock_id"])
-        if not is_first_breakout(item["price"], item["volume_lots"], setup):
+        regular_signal = pct > float(CONFIG["trigger_pct"]) and is_first_breakout(item["price"], item["volume_lots"], setup)
+        listing_baseline = listing.get("median_volume_lots") if listing else None
+        listing_signal = bool(is_new_listing and pct > float(CONFIG["new_listing_trigger_pct"]) and (not listing_baseline or item["volume_lots"] >= listing_baseline * float(CONFIG["new_listing_volume_multiple"])))
+        if not regular_signal and not is_new_listing:
             continue
-        event_id = f"{today_key}-{item['stock_id']}"
+        stock_meta = core_cache.get(item["stock_id"], {})
+        routes = extreme_routes(stock_meta, setup, item["volume_lots"]) if regular_signal else []
+        event_id = f"{today_key}-{item['stock_id']}" if regular_signal else f"NEW-{today_key}-{item['stock_id']}"
         recent = db.execute("SELECT event_id,trigger_ts FROM events WHERE stock_id=? ORDER BY trigger_ts DESC LIMIT 1", (item["stock_id"],)).fetchone()
         if recent:
             recent_date = recent[1][:10].replace("-", "")
             age = date_pos.get(today_key, len(date_pos)) - date_pos.get(recent_date, -999)
             if 0 <= age <= int(CONFIG["tracking_sessions"]):
                 event_id = recent[0]
-        core = core_cache.get(item["stock_id"], {}).get("brokers", [])
+        core = stock_meta.get("brokers", [])
         status, evidence = classify(core)
         existing = db.execute("SELECT trigger_ts,trigger_price,trigger_pct,frozen_core_json,max_pct FROM events WHERE event_id=?", (event_id,)).fetchone()
         if existing:
@@ -340,8 +402,8 @@ def scan_once() -> dict:
             frozen = json.loads(frozen_json); max_pct = max(max_pct or pct, pct)
         else:
             trigger_ts, trigger_price, trigger_pct, frozen, max_pct = now, item["price"], pct, core, pct
-        db.execute("INSERT OR REPLACE INTO events VALUES(?,?,?,?,?,?,?,?,?)", (event_id, item["stock_id"], item["name"], trigger_ts, trigger_price, trigger_pct, status, json.dumps(frozen, ensure_ascii=False), now, max_pct))
-        found.append({**item, "change_pct": round(pct, 2), "event_id": event_id, "trigger_ts": trigger_ts, "trigger_price": trigger_price, "max_pct": round(max_pct, 2), "breakout_setup": setup, "chip_status": status, "evidence": evidence, "frozen_core": frozen, "latest_core": core})
+        db.execute("INSERT OR REPLACE INTO events(event_id,stock_id,name,trigger_ts,trigger_price,trigger_pct,status,frozen_core_json,last_seen_ts,max_pct) VALUES(?,?,?,?,?,?,?,?,?,?)", (event_id, item["stock_id"], item["name"], trigger_ts, trigger_price, trigger_pct, status, json.dumps(frozen, ensure_ascii=False), now, max_pct))
+        found.append({**item, "change_pct": round(pct, 2), "event_id": event_id, "trigger_ts": trigger_ts, "trigger_price": trigger_price, "max_pct": round(max_pct, 2), "breakout_setup": setup, "strategy_type": "EXTREME_RADAR" if regular_signal else "NEW_LISTING", "mandatory_strategy": bool(regular_signal), "new_listing": is_new_listing, "listing_session": listing_session, "listing_signal": listing_signal, "signal_level": "MANDATORY" if regular_signal else ("HOT" if listing_signal else "WATCH"), "tail_routes": routes, "tail_features": stock_meta.get("tail_features", {}), "chip_status": status, "evidence": evidence, "frozen_core": frozen, "latest_core": core})
     # 首次突破後保留二十個交易日；即使跌回門檻也不會從戰情室消失。
     for row in db.execute("SELECT event_id,stock_id,name,trigger_ts,trigger_price,trigger_pct,status,frozen_core_json,last_seen_ts,max_pct FROM events").fetchall():
         event_id, stock_id, name, trigger_ts, trigger_price, trigger_pct, saved_status, frozen_json, last_seen, max_pct = row
@@ -356,13 +418,17 @@ def scan_once() -> dict:
         prior_vwap = latest.get(stock_id, {}).get("vwap")
         pct = (price / prior_vwap - 1) * 100 if price and prior_vwap else None
         frozen = json.loads(frozen_json)
-        core = core_cache.get(stock_id, {}).get("brokers", [])
+        stock_meta = core_cache.get(stock_id, {})
+        core = stock_meta.get("brokers", [])
         chip_status, evidence = classify(core)
-        found.append({"stock_id": stock_id, "name": name, "price": price, "volume_lots": live.get("volume_lots"), "change_pct": round(pct, 2) if pct is not None else None, "event_id": event_id, "trigger_ts": trigger_ts, "trigger_price": trigger_price, "trigger_pct": trigger_pct, "max_pct": round(max_pct or trigger_pct, 2), "tracking_age": age, "above_threshold": pct is not None and pct > float(CONFIG["trigger_pct"]), "chip_status": chip_status, "evidence": evidence, "frozen_core": frozen, "latest_core": core})
+        mandatory = not event_id.startswith("NEW-") and trigger_pct > float(CONFIG["trigger_pct"])
+        listing = listings.get(stock_id, {})
+        listing_session = listing.get("completed_sessions", 0) + 1 if listing else None
+        found.append({"stock_id": stock_id, "name": name, "price": price, "volume_lots": live.get("volume_lots"), "change_pct": round(pct, 2) if pct is not None else None, "event_id": event_id, "trigger_ts": trigger_ts, "trigger_price": trigger_price, "trigger_pct": trigger_pct, "max_pct": round(max_pct or trigger_pct, 2), "tracking_age": age, "above_threshold": pct is not None and pct > float(CONFIG["trigger_pct"]), "strategy_type": "EXTREME_RADAR" if mandatory else "NEW_LISTING", "mandatory_strategy": mandatory, "new_listing": event_id.startswith("NEW-"), "listing_session": listing_session, "tail_routes": extreme_routes(stock_meta, setups.get(stock_id), live.get("volume_lots", 0)) if mandatory else [], "chip_status": chip_status, "evidence": evidence, "frozen_core": frozen, "latest_core": core})
     db.commit(); db.close()
     for item in found:
-        item.setdefault("tracking_age", 0); item.setdefault("above_threshold", True)
-    payload = {"schema_version": 2, "market_time": now, "broker_data_date": core_payload.get("stocks", {}).get(next(iter(core_payload.get("stocks", {})), ""), {}).get("end_date"), "trigger_pct": CONFIG["trigger_pct"], "stocks": sorted(found, key=lambda x: (x["above_threshold"], x["change_pct"] or -999), reverse=True), "data_status": "live"}
+        item.setdefault("tracking_age", 0); item.setdefault("above_threshold", (item.get("change_pct") or -999) > float(CONFIG["trigger_pct"])); item.setdefault("mandatory_strategy", False); item.setdefault("new_listing", False); item.setdefault("tail_routes", [])
+    payload = {"schema_version": 3, "market_time": now, "broker_data_date": core_payload.get("stocks", {}).get(next(iter(core_payload.get("stocks", {})), ""), {}).get("end_date"), "trigger_pct": CONFIG["trigger_pct"], "new_listing_trigger_pct": CONFIG["new_listing_trigger_pct"], "mandatory_strategy": "EXTREME_RADAR", "stocks": sorted(found, key=lambda x: (x["mandatory_strategy"], x.get("listing_signal", False), x["change_pct"] or -999), reverse=True), "data_status": "live"}
     save_json(PUBLIC / "dashboard.json", payload)
     print(f"{now}：符合 >15% 共 {len(found)} 檔")
     return payload
