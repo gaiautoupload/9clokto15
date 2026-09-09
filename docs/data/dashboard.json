@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "market_time": "2026-09-09T14:30:39+08:00",
+  "market_time": "2026-09-09T14:33:06+08:00",
   "broker_data_date": "20260908",
   "trigger_pct": 15.0,
   "new_listing_trigger_pct": 5.0,
@@ -9,9 +9,9 @@
     {
       "stock_id": "7729",
       "name": "仲恩生醫",
-      "price": 113.5,
-      "volume_lots": 6677.286,
-      "change_pct": 47.52,
+      "price": 113.0,
+      "volume_lots": 6696.296,
+      "change_pct": 46.87,
       "event_id": "20260909-7729",
       "trigger_ts": "2026-09-09T10:37:49+08:00",
       "trigger_price": 111.0,
@@ -591,13 +591,27 @@
         }
       ],
       "tracking_age": 0,
-      "above_threshold": true
+      "above_threshold": true,
+      "action_plan": {
+        "state": "TRIAL",
+        "label": "試單訊號",
+        "reason": "價格位於該事件的突破承接區，且核心籌碼支持",
+        "trial_zone_low": 107.67,
+        "trial_zone_high": 114.33,
+        "add_above": 114.33,
+        "chase_limit": 122.1,
+        "reduce_below": 104.34,
+        "exit_below": 99.9,
+        "core_cost": 77.74,
+        "core_inventory_change_lots": 0.0,
+        "core_inventory_change_pct": 0.0
+      }
     },
     {
       "stock_id": "6682",
       "name": "華旭先進",
       "price": 40.95,
-      "volume_lots": 1965.528,
+      "volume_lots": 1972.777,
       "change_pct": 19.35,
       "event_id": "20260909-6682",
       "trigger_ts": "2026-09-09T10:37:49+08:00",
@@ -1178,13 +1192,27 @@
         }
       ],
       "tracking_age": 0,
-      "above_threshold": true
+      "above_threshold": true,
+      "action_plan": {
+        "state": "TRIAL",
+        "label": "試單訊號",
+        "reason": "價格位於該事件的突破承接區，且核心籌碼支持",
+        "trial_zone_low": 39.24,
+        "trial_zone_high": 41.66,
+        "add_above": 41.66,
+        "chase_limit": 44.5,
+        "reduce_below": 38.02,
+        "exit_below": 36.41,
+        "core_cost": 34.62,
+        "core_inventory_change_lots": 0.0,
+        "core_inventory_change_pct": 0.0
+      }
     },
     {
       "stock_id": "7932",
       "name": "昱鐳應材",
       "price": 570.0,
-      "volume_lots": 1233.243,
+      "volume_lots": 1233.344,
       "change_pct": 25.8,
       "event_id": "NEW-20260909-7932",
       "trigger_ts": "2026-09-09T10:37:49+08:00",
@@ -1756,14 +1784,28 @@
         }
       ],
       "tracking_age": 0,
-      "above_threshold": true
+      "above_threshold": true,
+      "action_plan": {
+        "state": "WATCH",
+        "label": "尚未進場",
+        "reason": "量價或核心條件尚未同時成立",
+        "trial_zone_low": 560.0,
+        "trial_zone_high": 576.8,
+        "add_above": 576.8,
+        "chase_limit": 616.0,
+        "reduce_below": 548.8,
+        "exit_below": 504.0,
+        "core_cost": 387.58,
+        "core_inventory_change_lots": 0.0,
+        "core_inventory_change_pct": 0.0
+      }
     },
     {
       "stock_id": "7945",
       "name": "廣盛科技",
-      "price": 213.0,
-      "volume_lots": 63.263,
-      "change_pct": 9.28,
+      "price": 212.0,
+      "volume_lots": 63.363,
+      "change_pct": 8.76,
       "event_id": "NEW-20260909-7945",
       "trigger_ts": "2026-09-09T10:37:49+08:00",
       "trigger_price": 210.5,
@@ -2334,7 +2376,21 @@
         }
       ],
       "tracking_age": 0,
-      "above_threshold": false
+      "above_threshold": false,
+      "action_plan": {
+        "state": "WATCH",
+        "label": "尚未進場",
+        "reason": "量價或核心條件尚未同時成立",
+        "trial_zone_low": 210.5,
+        "trial_zone_high": 216.81,
+        "add_above": 216.81,
+        "chase_limit": 231.55,
+        "reduce_below": 206.29,
+        "exit_below": 189.45,
+        "core_cost": 249.49,
+        "core_inventory_change_lots": 0.0,
+        "core_inventory_change_pct": 0.0
+      }
     },
     {
       "stock_id": "7944",
@@ -2912,7 +2968,21 @@
         }
       ],
       "tracking_age": 0,
-      "above_threshold": false
+      "above_threshold": false,
+      "action_plan": {
+        "state": "WATCH",
+        "label": "尚未進場",
+        "reason": "量價或核心條件尚未同時成立",
+        "trial_zone_low": 35.5,
+        "trial_zone_high": 36.56,
+        "add_above": 36.56,
+        "chase_limit": 39.05,
+        "reduce_below": 34.79,
+        "exit_below": 31.95,
+        "core_cost": 38.29,
+        "core_inventory_change_lots": 0.0,
+        "core_inventory_change_pct": 0.0
+      }
     },
     {
       "stock_id": "7914",
@@ -3490,7 +3560,21 @@
         }
       ],
       "tracking_age": 0,
-      "above_threshold": false
+      "above_threshold": false,
+      "action_plan": {
+        "state": "WATCH",
+        "label": "尚未進場",
+        "reason": "量價或核心條件尚未同時成立",
+        "trial_zone_low": 38.0,
+        "trial_zone_high": 39.14,
+        "add_above": 39.14,
+        "chase_limit": 41.8,
+        "reduce_below": 37.24,
+        "exit_below": 34.2,
+        "core_cost": 36.24,
+        "core_inventory_change_lots": 0.0,
+        "core_inventory_change_pct": 0.0
+      }
     },
     {
       "stock_id": "7686",
@@ -4068,7 +4152,21 @@
         }
       ],
       "tracking_age": 0,
-      "above_threshold": false
+      "above_threshold": false,
+      "action_plan": {
+        "state": "WATCH",
+        "label": "尚未進場",
+        "reason": "量價或核心條件尚未同時成立",
+        "trial_zone_low": 858.0,
+        "trial_zone_high": 883.74,
+        "add_above": 883.74,
+        "chase_limit": 943.8,
+        "reduce_below": 840.84,
+        "exit_below": 772.2,
+        "core_cost": 611.6,
+        "core_inventory_change_lots": 0.0,
+        "core_inventory_change_pct": 0.0
+      }
     },
     {
       "stock_id": "6950",
@@ -4646,7 +4744,21 @@
         }
       ],
       "tracking_age": 0,
-      "above_threshold": false
+      "above_threshold": false,
+      "action_plan": {
+        "state": "WATCH",
+        "label": "尚未進場",
+        "reason": "量價或核心條件尚未同時成立",
+        "trial_zone_low": 25.9,
+        "trial_zone_high": 26.68,
+        "add_above": 26.68,
+        "chase_limit": 28.49,
+        "reduce_below": 25.38,
+        "exit_below": 23.31,
+        "core_cost": 28.05,
+        "core_inventory_change_lots": 0.0,
+        "core_inventory_change_pct": 0.0
+      }
     }
   ],
   "data_status": "live"

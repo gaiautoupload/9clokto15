@@ -376,6 +376,50 @@ def extreme_routes(stock_meta: dict, setup: dict | None, volume_lots: float) -> 
     return routes
 
 
+def build_action_plan(item: dict, setup: dict | None) -> dict:
+    """Turn each event's own price/chip context into an auditable action state."""
+    trigger = number(item.get("trigger_price"))
+    price = number(item.get("price"))
+    breakout = number((setup or {}).get("range_high")) or trigger
+    latest = item.get("latest_core") or []
+    frozen_rows = item.get("frozen_core") or []
+    inventory = sum(max(number(x.get("inventory_lots")), 0) for x in latest[:5])
+    frozen_inventory = sum(max(number(x.get("inventory_lots")), 0) for x in frozen_rows[:5])
+    inventory_change = inventory - frozen_inventory
+    inventory_change_pct = inventory_change / frozen_inventory * 100 if frozen_inventory else 0
+    weighted = [(number(x.get("estimated_cost")), max(number(x.get("inventory_lots")), 0)) for x in latest[:5]]
+    core_cost = sum(cost * lots for cost, lots in weighted if cost > 0) / sum(lots for cost, lots in weighted if cost > 0) if sum(lots for cost, lots in weighted if cost > 0) else None
+
+    trial_low, trial_high = max(breakout, trigger * 0.97), trigger * 1.03
+    add_above, chase_limit = trigger * 1.03, trigger * 1.10
+    reduce_below = max(breakout * 0.98, trigger * 0.94)
+    exit_below = min(reduce_below * 0.97, trigger * 0.90)
+    eligible = bool(item.get("mandatory_strategy") or item.get("listing_signal"))
+    chip_support = item.get("chip_status") == "CHIP_SUPPORT"
+
+    if price and (price <= exit_below or (inventory_change_pct <= -20 and price < reduce_below)):
+        state, label, reason = "EXIT", "出清訊號", "跌破事件失效價，或核心庫存大幅下降且價格轉弱"
+    elif price and (price < reduce_below or inventory_change_pct <= -10):
+        state, label, reason = "REDUCE", "減碼訊號", "跌破防守價，或核心庫存較首次捕捉減少至少一成"
+    elif eligible and chip_support and inventory_change > 0 and add_above <= price <= chase_limit:
+        state, label, reason = "ADD", "加碼訊號", "突破後續強，且核心庫存高於首次捕捉"
+    elif eligible and chip_support and trial_low <= price <= trial_high:
+        state, label, reason = "TRIAL", "試單訊號", "價格位於該事件的突破承接區，且核心籌碼支持"
+    elif eligible and price > chase_limit:
+        state, label, reason = "WAIT", "等待拉回", "已高於首次捕捉價一成，暫不追價"
+    else:
+        state, label, reason = "WATCH", "尚未進場", "量價或核心條件尚未同時成立"
+    return {
+        "state": state, "label": label, "reason": reason,
+        "trial_zone_low": round(trial_low, 2), "trial_zone_high": round(trial_high, 2),
+        "add_above": round(add_above, 2), "chase_limit": round(chase_limit, 2),
+        "reduce_below": round(reduce_below, 2), "exit_below": round(exit_below, 2),
+        "core_cost": round(core_cost, 2) if core_cost else None,
+        "core_inventory_change_lots": round(inventory_change, 1),
+        "core_inventory_change_pct": round(inventory_change_pct, 1),
+    }
+
+
 def scan_once() -> dict:
     latest = load_json(LOCAL / "daily_latest.json", {})
     setups = load_json(LOCAL / "setup_cache.json", {})
@@ -457,6 +501,7 @@ def scan_once() -> dict:
     db.commit(); db.close()
     for item in found:
         item.setdefault("tracking_age", 0); item.setdefault("above_threshold", (item.get("change_pct") or -999) > float(CONFIG["trigger_pct"])); item.setdefault("mandatory_strategy", False); item.setdefault("new_listing", False); item.setdefault("tail_routes", [])
+        item["action_plan"] = build_action_plan(item, item.get("breakout_setup") or setups.get(item["stock_id"]))
     payload = {"schema_version": 3, "market_time": now, "broker_data_date": core_payload.get("stocks", {}).get(next(iter(core_payload.get("stocks", {})), ""), {}).get("end_date"), "trigger_pct": CONFIG["trigger_pct"], "new_listing_trigger_pct": CONFIG["new_listing_trigger_pct"], "mandatory_strategy": "EXTREME_RADAR", "stocks": sorted(found, key=lambda x: (x["mandatory_strategy"], x.get("listing_signal", False), x["change_pct"] or -999), reverse=True), "data_status": "live"}
     save_json(PUBLIC / "dashboard.json", payload)
     print(f"{now}：符合 >15% 共 {len(found)} 檔")
