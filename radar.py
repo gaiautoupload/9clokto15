@@ -125,12 +125,53 @@ def setup_metrics(rows: list[dict], index: int) -> dict | None:
     for j in range(index - quiet, index):
         base = rows[j - 1]["vwap"]
         prior_jumps.append((rows[j]["high"] / base - 1) * 100 if base else 999)
+    recent = rows[max(0, index - 60):index]
+    true_ranges = []
+    for pos, bar in enumerate(recent):
+        previous_close = recent[pos - 1]["last"] if pos else bar["vwap"]
+        true_ranges.append(max(bar["high"] - bar["low"], abs(bar["high"] - previous_close), abs(bar["low"] - previous_close)))
+    atr = statistics.mean(true_ranges[-14:]) if true_ranges else max(range_high - range_low, range_high * 0.03)
+    tolerance = max(atr * 0.35, range_high * 0.005)
+    raw_levels = [(range_high, "箱型上緣", 4), (range_low, "箱型下緣", 4)]
+    for pos in range(2, len(recent) - 2):
+        window = recent[pos - 2:pos + 3]
+        bar = recent[pos]
+        if bar["high"] >= max(x["high"] for x in window):
+            raw_levels.append((bar["high"], "波段高點", 2))
+        if bar["low"] <= min(x["low"] for x in window):
+            raw_levels.append((bar["low"], "波段低點", 2))
+    if recent:
+        for window, label in ((5, "5日VWAP"), (20, "20日VWAP")):
+            subset = recent[-window:]
+            volume = sum(x["volume_lots"] for x in subset)
+            if volume:
+                raw_levels.append((sum(x["vwap"] * x["volume_lots"] for x in subset) / volume, label, 2))
+    clusters: list[dict] = []
+    for price, label, base_score in sorted(raw_levels):
+        if price <= 0:
+            continue
+        target = next((x for x in clusters if abs(x["price"] - price) <= tolerance), None)
+        if target:
+            weight = target["weight"] + base_score
+            target["price"] = (target["price"] * target["weight"] + price * base_score) / weight
+            target["weight"] = weight
+            if label not in target["sources"]:
+                target["sources"].append(label)
+        else:
+            clusters.append({"price": price, "weight": base_score, "sources": [label]})
+    for level in clusters:
+        touches = sum(1 for bar in recent if bar["low"] - tolerance <= level["price"] <= bar["high"] + tolerance)
+        level["touches"] = touches
+        level["score"] = min(100, 20 + level["weight"] * 8 + min(touches, 8) * 5)
+        level["price"] = round(level["price"], 2)
     return {
         "range_high": range_high,
         "range_low": range_low,
         "range_pct": (range_high / range_low - 1) * 100,
         "median_volume_lots": statistics.median(prior_volumes),
         "prior_max_jump_pct": max(prior_jumps),
+        "atr14": round(atr, 3),
+        "structure_levels": sorted(clusters, key=lambda x: (x["score"], x["price"]), reverse=True)[:12],
     }
 
 
@@ -380,7 +421,10 @@ def build_action_plan(item: dict, setup: dict | None) -> dict:
     """Turn each event's own price/chip context into an auditable action state."""
     trigger = number(item.get("trigger_price"))
     price = number(item.get("price"))
-    breakout = number((setup or {}).get("range_high")) or trigger
+    setup = setup or {}
+    breakout = number(setup.get("range_high")) or trigger
+    box_low = number(setup.get("range_low"))
+    atr = number(setup.get("atr14")) or max(trigger * 0.03, 0.01)
     latest = item.get("latest_core") or []
     frozen_rows = item.get("frozen_core") or []
     inventory = sum(max(number(x.get("inventory_lots")), 0) for x in latest[:5])
@@ -390,23 +434,46 @@ def build_action_plan(item: dict, setup: dict | None) -> dict:
     weighted = [(number(x.get("estimated_cost")), max(number(x.get("inventory_lots")), 0)) for x in latest[:5]]
     core_cost = sum(cost * lots for cost, lots in weighted if cost > 0) / sum(lots for cost, lots in weighted if cost > 0) if sum(lots for cost, lots in weighted if cost > 0) else None
 
-    trial_low, trial_high = max(breakout, trigger * 0.97), trigger * 1.03
-    add_above, chase_limit = trigger * 1.03, trigger * 1.10
-    reduce_below = max(breakout * 0.98, trigger * 0.94)
-    exit_below = min(reduce_below * 0.97, trigger * 0.90)
+    anchors = [{"price": number(x.get("price")), "score": number(x.get("score")), "sources": list(x.get("sources") or [])} for x in setup.get("structure_levels", [])]
+    anchors.append({"price": breakout, "score": 90, "sources": ["突破線"]})
+    if core_cost:
+        anchors.append({"price": core_cost, "score": 95, "sources": ["核心主力成本"]})
+    tolerance = max(atr * 0.35, trigger * 0.005)
+    clusters: list[dict] = []
+    for anchor in sorted((x for x in anchors if x["price"] > 0), key=lambda x: x["price"]):
+        target = next((x for x in clusters if abs(x["price"] - anchor["price"]) <= tolerance), None)
+        if target:
+            total = target["score"] + anchor["score"]
+            target["price"] = (target["price"] * target["score"] + anchor["price"] * anchor["score"]) / total
+            target["score"] = min(100, total)
+            target["sources"] = list(dict.fromkeys(target["sources"] + anchor["sources"]))
+        else:
+            clusters.append(anchor.copy())
+    supports = [x for x in clusters if x["price"] <= trigger + atr * 0.5]
+    support = max(supports, key=lambda x: x["score"] - abs(trigger - x["price"]) / atr * 6, default={"price": breakout, "score": 50, "sources": ["突破線"]})
+    resistances = [x for x in clusters if x["price"] > max(trigger, support["price"] + tolerance)]
+    resistance = min(resistances, key=lambda x: x["price"], default={"price": max(trigger, breakout), "score": 50, "sources": ["事件高點"]})
+    lower_supports = [x for x in clusters if x["price"] < support["price"] - tolerance]
+    invalidation = max(lower_supports, key=lambda x: x["price"], default={"price": box_low or support["price"] - atr, "score": 40, "sources": ["箱型下緣" if box_low else "ATR失效帶"]})
+
+    trial_low, trial_high = support["price"] - atr * 0.20, support["price"] + atr * 0.20
+    add_above = max(breakout, resistance["price"]) + atr * 0.10
+    chase_limit = add_above + atr * 0.75
+    reduce_below = support["price"] - atr * 0.50
+    exit_below = min(invalidation["price"] - atr * 0.50, reduce_below - atr)
     eligible = bool(item.get("mandatory_strategy") or item.get("listing_signal"))
     chip_support = item.get("chip_status") == "CHIP_SUPPORT"
 
     if price and (price <= exit_below or (inventory_change_pct <= -20 and price < reduce_below)):
-        state, label, reason = "EXIT", "出清訊號", "跌破事件失效價，或核心庫存大幅下降且價格轉弱"
+        state, label, reason = "EXIT", "出清訊號", "主要結構失效，或核心庫存大幅下降且價格同步轉弱"
     elif price and (price < reduce_below or inventory_change_pct <= -10):
-        state, label, reason = "REDUCE", "減碼訊號", "跌破防守價，或核心庫存較首次捕捉減少至少一成"
+        state, label, reason = "REDUCE", "減碼訊號", "跌破最近支撐帶，或核心庫存較首次捕捉減少至少一成"
     elif eligible and chip_support and inventory_change > 0 and add_above <= price <= chase_limit:
-        state, label, reason = "ADD", "加碼訊號", "突破後續強，且核心庫存高於首次捕捉"
+        state, label, reason = "ADD", "加碼訊號", "突破下一個結構壓力，且核心庫存高於首次捕捉"
     elif eligible and chip_support and trial_low <= price <= trial_high:
-        state, label, reason = "TRIAL", "試單訊號", "價格位於該事件的突破承接區，且核心籌碼支持"
+        state, label, reason = "TRIAL", "試單訊號", "價格回到結構支撐帶，且核心籌碼仍支持"
     elif eligible and price > chase_limit:
-        state, label, reason = "WAIT", "等待拉回", "已高於首次捕捉價一成，暫不追價"
+        state, label, reason = "WAIT", "等待拉回", "價格離開結構加碼區超過四分之三個ATR，暫不追價"
     else:
         state, label, reason = "WATCH", "尚未進場", "量價或核心條件尚未同時成立"
     return {
@@ -417,6 +484,11 @@ def build_action_plan(item: dict, setup: dict | None) -> dict:
         "core_cost": round(core_cost, 2) if core_cost else None,
         "core_inventory_change_lots": round(inventory_change, 1),
         "core_inventory_change_pct": round(inventory_change_pct, 1),
+        "atr14": round(atr, 2), "method": "STRUCTURE_ATR_CORE_V1",
+        "trial_basis": support["sources"], "trial_strength": int(min(100, support["score"])),
+        "add_basis": resistance["sources"], "add_strength": int(min(100, resistance["score"])),
+        "reduce_basis": support["sources"],
+        "exit_basis": invalidation["sources"], "exit_strength": int(min(100, invalidation["score"])),
     }
 
 
