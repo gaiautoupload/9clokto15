@@ -6,3 +6,5 @@ nav button{padding:10px 2px;font-size:12px}
 .must{color:#fff;background:#d72e48}
 .new{color:#071018;background:#f6c85f}
 .route{padding:3px 7px;border:1px solid #31566c;border-radius:999px;color:#8edff0;font-size:11px}
+.playbook{margin:14px 0 0;padding:13px 14px;background:#0b1821;border:1px solid #294657;border-radius:12px}.playbook>summary{padding:0;color:#9be8f1;font-size:14px;font-weight:800}.playbook-grid{display:grid;gap:8px;margin-top:13px}.playbook article{padding:11px;background:#07131b;border-left:3px solid #4bd7e8;border-radius:7px}.playbook article b{font-size:14px}.playbook article p,.guide-note{margin:6px 0 0;color:#a9bac3;font-size:13px;line-height:1.65}.playbook article strong,.guide-note b{color:#f3d277}.guide-note{padding-top:11px;border-top:1px solid #203543}.broker span strong{display:block;color:#eaf2ff;font-size:13px}.broker span small{display:block;color:#75849b;font-size:11px}.capture-note{margin:8px 0 0;color:#77869d;font-size:11px;line-height:1.45}
+.next-action{margin:-3px 0 11px;padding:8px 10px;color:#dce8ed;background:#101f29;border-radius:7px;font-size:13px;line-height:1.5}
