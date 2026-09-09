@@ -6,6 +6,7 @@ import json
 import math
 import re
 import sqlite3
+import statistics
 import subprocess
 import sys
 import time
@@ -81,6 +82,39 @@ def load_market_history() -> dict[str, list[dict]]:
     return history
 
 
+def setup_metrics(rows: list[dict], index: int) -> dict | None:
+    consolidation = int(CONFIG["consolidation_sessions"])
+    volume_window = int(CONFIG["volume_baseline_sessions"])
+    quiet = int(CONFIG["first_leg_quiet_sessions"])
+    if index < max(consolidation, volume_window, quiet + 1):
+        return None
+    prior_range = rows[index - consolidation:index]
+    prior_volumes = [x["volume_lots"] for x in rows[index - volume_window:index] if x["volume_lots"] > 0]
+    range_low = min((x["low"] for x in prior_range if x["low"] > 0), default=0)
+    range_high = max((x["high"] for x in prior_range), default=0)
+    if not range_low or not prior_volumes:
+        return None
+    prior_jumps = []
+    for j in range(index - quiet, index):
+        base = rows[j - 1]["vwap"]
+        prior_jumps.append((rows[j]["high"] / base - 1) * 100 if base else 999)
+    return {
+        "range_high": range_high,
+        "range_low": range_low,
+        "range_pct": (range_high / range_low - 1) * 100,
+        "median_volume_lots": statistics.median(prior_volumes),
+        "prior_max_jump_pct": max(prior_jumps),
+    }
+
+
+def is_first_breakout(price: float, volume_lots: float, setup: dict | None) -> bool:
+    return bool(setup
+        and setup["range_pct"] <= float(CONFIG["consolidation_max_range_pct"])
+        and price > setup["range_high"]
+        and volume_lots >= setup["median_volume_lots"] * float(CONFIG["volume_multiple"])
+        and setup["prior_max_jump_pct"] < float(CONFIG["first_leg_prior_jump_pct"]))
+
+
 def build_core_cache() -> dict:
     files = sorted(report_dir("EMdss004").glob("EMdss004.*-C.csv"))[-int(CONFIG["core_lookback_sessions"]):]
     grouped = defaultdict(lambda: defaultdict(lambda: {"buy_lots": 0.0, "sell_lots": 0.0, "buy_amount": 0.0, "sell_amount": 0.0, "days": set(), "inventory": 0.0, "cost": 0.0, "peak": 0.0}))
@@ -143,19 +177,22 @@ def run_research() -> dict:
     suppressed_repeats = 0
     for stock_id, rows in history.items():
         rows.sort(key=lambda item: item["date"])
-        next_eligible_index = 1
+        next_eligible_index = max(int(CONFIG["volume_baseline_sessions"]), 1)
         for index in range(1, len(rows)):
             prior, today = rows[index - 1], rows[index]
             trigger_pct = (today["high"] / prior["vwap"] - 1) * 100 if prior["vwap"] else 0
             if trigger_pct <= float(CONFIG["trigger_pct"]):
                 continue
             raw_stock_days += 1
+            setup = setup_metrics(rows, index)
+            if not is_first_breakout(today["high"], today["volume_lots"], setup):
+                continue
             # 同一段行情只建立一個事件：首次突破後進入完整追蹤期，期間再突破只屬於同一事件。
             if index < next_eligible_index:
                 suppressed_repeats += 1
                 continue
             next_eligible_index = index + int(CONFIG["tracking_sessions"]) + 1
-            event = {"stock_id": stock_id, "name": today["name"], "event_date": today["date"], "trigger_pct_proxy": round(trigger_pct, 2), "event_vwap": today["vwap"], "event_volume_lots": today["volume_lots"], "mature_5d": index + 5 < len(rows)}
+            event = {"stock_id": stock_id, "name": today["name"], "event_date": today["date"], "trigger_pct_proxy": round(trigger_pct, 2), "event_vwap": today["vwap"], "event_volume_lots": today["volume_lots"], "volume_multiple": round(today["volume_lots"] / setup["median_volume_lots"], 2), "prior_range_pct": round(setup["range_pct"], 2), "mature_5d": index + 5 < len(rows)}
             future = rows[index + 1:index + 21]
             for horizon in (1, 3, 5, 10, 20):
                 key = f"return_{horizon}d_pct"
@@ -173,16 +210,23 @@ def run_research() -> dict:
         "market_end": max((rows[-1]["date"] for rows in history.values() if rows), default=None),
         "event_count": len(events), "raw_stock_day_count": raw_stock_days,
         "suppressed_repeat_count": suppressed_repeats,
+        "setup_definition": f"前{CONFIG['consolidation_sessions']}日振幅≤{CONFIG['consolidation_max_range_pct']}%、突破區間高點、成交量≥前{CONFIG['volume_baseline_sessions']}日中位量{CONFIG['volume_multiple']}倍、前{CONFIG['first_leg_quiet_sessions']}日無≥{CONFIG['first_leg_prior_jump_pct']}%先行漲幅",
         "event_unit": f"每檔每日最多一次；首次突破後 {CONFIG['tracking_sessions']} 個交易日內不重複開新事件",
         "mature_5d_count": len(mature),
         "five_day_positive_rate": round(len(wins) / len(mature) * 100, 1) if mature else None,
         "five_day_extension_rate": round(len(extension) / len(mature) * 100, 1) if mature else None,
-        "definition": "歷史事件以日內最高價曾高於前日加權均價15%辨識；同一檔進入20日追蹤期後不重複計次。未知首次突破時間，不當成可成交績效。",
+        "definition": "歷史事件要求盤整後帶量突破且只取波段第一根；同一檔進入20日追蹤期後不重複計次。日資料未知首次突破時間，不當成可成交績效。",
     }
     save_json(LOCAL / "research_events.json", events)
     save_json(PUBLIC / "research.json", {"summary": summary, "recent_events": sorted(events, key=lambda x: x["event_date"], reverse=True)[:100]})
     latest = {stock_id: rows[-1] for stock_id, rows in history.items() if rows}
     save_json(LOCAL / "daily_latest.json", latest)
+    setups = {}
+    for stock_id, rows in history.items():
+        metric = setup_metrics(rows, len(rows))
+        if metric:
+            setups[stock_id] = metric
+    save_json(LOCAL / "setup_cache.json", setups)
     save_json(LOCAL / "trading_dates.json", sorted({row["date"] for rows in history.values() for row in rows}))
     print(f"研究完成：{len(events)} 個15%事件，成熟五日 {len(mature)} 個")
     return summary
@@ -256,6 +300,7 @@ def classify(core: list[dict]) -> tuple[str, dict]:
 
 def scan_once() -> dict:
     latest = load_json(LOCAL / "daily_latest.json", {})
+    setups = load_json(LOCAL / "setup_cache.json", {})
     core_payload = load_json(LOCAL / "core_cache.json", {"stocks": {}})
     core_cache = core_payload["stocks"]
     intraday = fetch_intraday()
@@ -272,6 +317,9 @@ def scan_once() -> dict:
         db.execute("INSERT OR REPLACE INTO observations VALUES(?,?,?,?,?,?)", (now, item["stock_id"], item["name"], item["price"], item["volume_lots"], pct))
         if pct <= float(CONFIG["trigger_pct"]):
             continue
+        setup = setups.get(item["stock_id"])
+        if not is_first_breakout(item["price"], item["volume_lots"], setup):
+            continue
         event_id = f"{now[:10].replace('-', '')}-{item['stock_id']}"
         core = core_cache.get(item["stock_id"], {}).get("brokers", [])
         status, evidence = classify(core)
@@ -282,7 +330,7 @@ def scan_once() -> dict:
         else:
             trigger_ts, trigger_price, trigger_pct, frozen, max_pct = now, item["price"], pct, core, pct
         db.execute("INSERT OR REPLACE INTO events VALUES(?,?,?,?,?,?,?,?,?)", (event_id, item["stock_id"], item["name"], trigger_ts, trigger_price, trigger_pct, status, json.dumps(frozen, ensure_ascii=False), now, max_pct))
-        found.append({**item, "change_pct": round(pct, 2), "event_id": event_id, "trigger_ts": trigger_ts, "trigger_price": trigger_price, "max_pct": round(max_pct, 2), "chip_status": status, "evidence": evidence, "frozen_core": frozen, "latest_core": core})
+        found.append({**item, "change_pct": round(pct, 2), "event_id": event_id, "trigger_ts": trigger_ts, "trigger_price": trigger_price, "max_pct": round(max_pct, 2), "breakout_setup": setup, "chip_status": status, "evidence": evidence, "frozen_core": frozen, "latest_core": core})
     # 首次突破後保留二十個交易日；即使跌回門檻也不會從戰情室消失。
     dates = load_json(LOCAL / "trading_dates.json", [])
     today_key = now[:10].replace("-", "")
