@@ -7,6 +7,6 @@ if errorlevel 1 (
   pause
   exit /b 1
 )
-echo Weekday schedules installed: 08:50 intraday, 18:15 after-hours.
+echo Weekday schedules installed: 08:55 intraday, 18:15 after-hours.
 pause
 exit /b 0
