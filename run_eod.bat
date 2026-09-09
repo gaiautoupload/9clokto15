@@ -7,5 +7,7 @@ set "PYTHONIOENCODING=utf-8"
 if errorlevel 1 exit /b %errorlevel%
 "C:\Users\pokem\anaconda3\python.exe" broker_backtest.py
 if errorlevel 1 exit /b %errorlevel%
+"C:\Users\pokem\anaconda3\python.exe" tail_analysis.py
+if errorlevel 1 exit /b %errorlevel%
 "C:\Users\pokem\anaconda3\python.exe" radar.py publish
 exit /b %errorlevel%

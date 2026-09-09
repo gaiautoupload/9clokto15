@@ -1,0 +1,137 @@
+{
+  "generated_at": "2026-09-09T09:02:18+08:00",
+  "status": "exploratory_hypothesis_not_out_of_sample",
+  "definitions": {
+    "broad_ignition": "合格留存建倉分點>=40且最大分點資金占比<=20%",
+    "broad_ignition_with_volume": "廣泛點火且突破量>=前20日中位量5倍",
+    "concentrated_control": "合格分點<=5且最大分點資金占比>=60%"
+  },
+  "profiles": {
+    "all": {
+      "events": 1913,
+      "mean_pct": 6.62,
+      "median_pct": -0.76,
+      "win_rate_pct": 47.4,
+      "return_80_plus_rate_pct": 2.8,
+      "return_200_plus_count": 7
+    },
+    "broad_ignition": {
+      "events": 145,
+      "mean_pct": 18.14,
+      "median_pct": 3.15,
+      "win_rate_pct": 54.5,
+      "return_80_plus_rate_pct": 7.6,
+      "return_200_plus_count": 2
+    },
+    "broad_ignition_with_volume": {
+      "events": 85,
+      "mean_pct": 19.97,
+      "median_pct": 4.94,
+      "win_rate_pct": 57.6,
+      "return_80_plus_rate_pct": 8.2,
+      "return_200_plus_count": 1
+    },
+    "concentrated_control": {
+      "events": 527,
+      "mean_pct": 3.43,
+      "median_pct": -2.25,
+      "win_rate_pct": 41.7,
+      "return_80_plus_rate_pct": 2.1,
+      "return_200_plus_count": 3
+    }
+  },
+  "extreme_200_plus": [
+    {
+      "stock_id": "6990",
+      "name": "華鉬",
+      "event_date": "20260316",
+      "trigger_pct_proxy": 22.0,
+      "volume_multiple": 8.65,
+      "prior_range_pct": 9.54,
+      "return_5d_pct": 231.54,
+      "return_20d_pct": 359.25,
+      "qualified_brokers": 3,
+      "new_build_count": 0,
+      "largest_capital_share_pct": 95.3
+    },
+    {
+      "stock_id": "6434",
+      "name": "達輝光電",
+      "event_date": "20260320",
+      "trigger_pct_proxy": 20.99,
+      "volume_multiple": 5.22,
+      "prior_range_pct": 16.58,
+      "return_5d_pct": 5.35,
+      "return_20d_pct": 355.13,
+      "qualified_brokers": 59,
+      "new_build_count": 0,
+      "largest_capital_share_pct": 12.1
+    },
+    {
+      "stock_id": "4431",
+      "name": "敏成",
+      "event_date": "20200423",
+      "trigger_pct_proxy": 22.26,
+      "volume_multiple": 2.81,
+      "prior_range_pct": 15.05,
+      "return_5d_pct": 117.86,
+      "return_20d_pct": 324.51,
+      "qualified_brokers": 63,
+      "new_build_count": 0,
+      "largest_capital_share_pct": 8.6
+    },
+    {
+      "stock_id": "6699",
+      "name": "奇邑",
+      "event_date": "20231211",
+      "trigger_pct_proxy": 43.52,
+      "volume_multiple": 20.3,
+      "prior_range_pct": 14.12,
+      "return_5d_pct": 108.96,
+      "return_20d_pct": 253.84,
+      "qualified_brokers": 2,
+      "new_build_count": 0,
+      "largest_capital_share_pct": 96.9
+    },
+    {
+      "stock_id": "3117",
+      "name": "年程",
+      "event_date": "20260317",
+      "trigger_pct_proxy": 33.86,
+      "volume_multiple": 6.59,
+      "prior_range_pct": 14.63,
+      "return_5d_pct": -1.08,
+      "return_20d_pct": 225.91,
+      "qualified_brokers": 4,
+      "new_build_count": 0,
+      "largest_capital_share_pct": 64.2
+    },
+    {
+      "stock_id": "6272",
+      "name": "驊陞",
+      "event_date": "20210217",
+      "trigger_pct_proxy": 15.88,
+      "volume_multiple": 5.25,
+      "prior_range_pct": 4.39,
+      "return_5d_pct": 91.01,
+      "return_20d_pct": 220.0,
+      "qualified_brokers": 11,
+      "new_build_count": 1,
+      "largest_capital_share_pct": 43.9
+    },
+    {
+      "stock_id": "7781",
+      "name": "昕力資*",
+      "event_date": "20260121",
+      "trigger_pct_proxy": 40.33,
+      "volume_multiple": 20.42,
+      "prior_range_pct": 8.42,
+      "return_5d_pct": 213.23,
+      "return_20d_pct": 202.35,
+      "qualified_brokers": 63,
+      "new_build_count": 2,
+      "largest_capital_share_pct": 29.0
+    }
+  ],
+  "warning": "門檻由同一批極端案例探索而來，只能列為候選雷達；需按年份走勢外推與未來樣本驗證。"
+}
