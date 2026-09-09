@@ -54,6 +54,33 @@ def report_dir(code: str) -> Path:
     return max(candidates, key=lambda path: len(list(path.glob(f"{code}.*-C.csv"))))
 
 
+def load_broker_names() -> dict[str, str]:
+    """Load the newest official emerging-market broker/branch name table."""
+    mapping: dict[str, str] = {}
+    try:
+        files = sorted(report_dir("EMdss001").glob("EMdss001.*-C.csv"))
+        if files:
+            raw = files[-1].read_bytes()
+            try:
+                broker_text = raw.decode("big5hkscs")
+            except UnicodeDecodeError:
+                broker_text = raw.decode("utf-8-sig", errors="replace")
+            for row in csv.reader(broker_text.splitlines()):
+                if not row or row[0].strip().upper() != "BODY":
+                    continue
+                if len(row) >= 4 and row[2].strip():
+                    mapping[row[2].strip()] = row[3].strip()
+    except RuntimeError:
+        pass
+    fallback = ROOT.parent / "7932_strategy" / "broker_names.csv"
+    if fallback.exists():
+        with fallback.open(encoding="utf-8-sig", newline="") as handle:
+            for row in csv.DictReader(handle):
+                if row.get("broker_id"):
+                    mapping.setdefault(row["broker_id"].strip(), row.get("broker_name", "").strip())
+    return mapping
+
+
 def save_json(path: Path, payload) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -117,6 +144,7 @@ def is_first_breakout(price: float, volume_lots: float, setup: dict | None) -> b
 
 def build_core_cache() -> dict:
     files = sorted(report_dir("EMdss004").glob("EMdss004.*-C.csv"))[-int(CONFIG["core_lookback_sessions"]):]
+    broker_names = load_broker_names()
     grouped = defaultdict(lambda: defaultdict(lambda: {"buy_lots": 0.0, "sell_lots": 0.0, "buy_amount": 0.0, "sell_amount": 0.0, "days": set(), "inventory": 0.0, "cost": 0.0, "peak": 0.0}))
     names = {}
     for path in files:
@@ -154,7 +182,8 @@ def build_core_cache() -> dict:
             net_lots = value["buy_lots"] - value["sell_lots"]
             net_amount = value["buy_amount"] - value["sell_amount"]
             rows.append({
-                "broker_id": broker_id, "buy_lots": round(value["buy_lots"], 2),
+                "broker_id": broker_id, "broker_name": broker_names.get(broker_id, ""),
+                "buy_lots": round(value["buy_lots"], 2),
                 "sell_lots": round(value["sell_lots"], 2), "net_lots": round(net_lots, 2),
                 "net_amount": round(net_amount), "inventory_lots": round(value["inventory"], 2),
                 "estimated_cost": round(value["cost"], 2) if value["inventory"] else None,
