@@ -10,6 +10,7 @@ import statistics
 import subprocess
 import sys
 import time
+import urllib.request
 from collections import defaultdict
 from datetime import datetime, time as clock_time
 from pathlib import Path
@@ -21,6 +22,8 @@ SOURCE = Path(CONFIG["source_directory"])
 LOCAL = ROOT / "data" / "local"
 PUBLIC = ROOT / CONFIG["site_directory"] / "data"
 DB = LOCAL / "radar.db"
+DISCORD_WEBHOOK = LOCAL / "discord_webhook.txt"
+DISCORD_STATE = LOCAL / "discord_alert_state.json"
 
 
 def number(value) -> float:
@@ -88,6 +91,53 @@ def save_json(path: Path, payload) -> None:
 
 def load_json(path: Path, default):
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else default
+
+
+def discord_message(item: dict) -> str:
+    plan = item.get("action_plan") or {}
+    routes = "、".join(item.get("tail_routes") or []) or "—"
+    return (
+        f"📡 **{plan.get('label', '策略更新')}｜{item.get('stock_id')} {item.get('name')}**\n"
+        f"現價 `{item.get('price')}`｜漲幅 `{item.get('change_pct')}%`｜首次捕捉 `{item.get('trigger_price')}`\n"
+        f"原因：{plan.get('reason', '—')}\n"
+        f"試單 `{plan.get('trial_zone_low')}–{plan.get('trial_zone_high')}`｜加碼站上 `{plan.get('add_above')}`\n"
+        f"減碼跌破 `{plan.get('reduce_below')}`｜出清跌破 `{plan.get('exit_below')}`\n"
+        f"核心成本 `{plan.get('core_cost')}`｜核心庫存變化 `{plan.get('core_inventory_change_lots')}張`｜路徑 {routes}\n"
+        f"戰情室：https://gaiautoupload.github.io/9clokto15/"
+    )
+
+
+def post_discord(content: str) -> None:
+    if not DISCORD_WEBHOOK.exists():
+        return
+    url = DISCORD_WEBHOOK.read_text(encoding="utf-8").strip()
+    if not url.startswith(("https://discord.com/api/webhooks/", "https://discordapp.com/api/webhooks/")):
+        raise RuntimeError("Discord Webhook 設定格式不正確")
+    body = json.dumps({"content": content, "allowed_mentions": {"parse": []}}, ensure_ascii=False).encode("utf-8")
+    request = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json", "User-Agent": "intraday-15-radar/1.0"}, method="POST")
+    with urllib.request.urlopen(request, timeout=15) as response:
+        if response.status not in (200, 204):
+            raise RuntimeError(f"Discord Webhook 回傳 HTTP {response.status}")
+
+
+def notify_discord(stocks: list[dict]) -> int:
+    if not DISCORD_WEBHOOK.exists():
+        return 0
+    previous = load_json(DISCORD_STATE, {})
+    current = dict(previous)
+    sent = 0
+    for item in stocks:
+        plan = item.get("action_plan") or {}
+        state = plan.get("state", "WATCH")
+        event_id = item.get("event_id", item.get("stock_id", ""))
+        old_state = previous.get(event_id)
+        should_send = (state == "ENTRY" and old_state is None) or (state in {"ADD", "REDUCE", "EXIT"} and state != old_state)
+        if should_send:
+            post_discord(discord_message(item))
+            sent += 1
+        current[event_id] = state
+    save_json(DISCORD_STATE, current)
+    return sent
 
 
 def load_market_history() -> dict[str, list[dict]]:
@@ -581,6 +631,12 @@ def scan_once() -> dict:
         item["action_plan"] = build_action_plan(item, item.get("breakout_setup") or setups.get(item["stock_id"]))
     payload = {"schema_version": 3, "market_time": now, "broker_data_date": core_payload.get("stocks", {}).get(next(iter(core_payload.get("stocks", {})), ""), {}).get("end_date"), "trigger_pct": CONFIG["trigger_pct"], "new_listing_trigger_pct": CONFIG["new_listing_trigger_pct"], "mandatory_strategy": "EXTREME_RADAR", "stocks": sorted(found, key=lambda x: (x["mandatory_strategy"], x.get("listing_signal", False), x["change_pct"] or -999), reverse=True), "data_status": "live"}
     save_json(PUBLIC / "dashboard.json", payload)
+    try:
+        alerts = notify_discord(payload["stocks"])
+        if alerts:
+            print(f"Discord 已推播 {alerts} 則操作訊號")
+    except Exception as exc:
+        print(f"Discord 推播失敗，盯盤繼續執行：{exc}")
     print(f"{now}：符合 >15% 共 {len(found)} 檔")
     return payload
 
@@ -626,6 +682,7 @@ def main() -> int:
     sub.add_parser("research")
     sub.add_parser("prepare")
     sub.add_parser("publish")
+    sub.add_parser("discord-test")
     scan = sub.add_parser("scan"); scan.add_argument("--once", action="store_true"); scan.add_argument("--publish", action="store_true")
     eod = sub.add_parser("eod"); eod.add_argument("--publish", action="store_true")
     args = parser.parse_args()
@@ -637,6 +694,10 @@ def main() -> int:
     elif args.command == "eod":
         run_research(); build_core_cache(); publish() if args.publish else None
     elif args.command == "publish": publish()
+    elif args.command == "discord-test":
+        if not DISCORD_WEBHOOK.exists():
+            raise SystemExit(f"尚未建立 {DISCORD_WEBHOOK}")
+        post_discord("✅ **6666 推播通知已連線**\n極端飆股戰情室的本地 BAT 將在新訊號或操作狀態改變時推播到此頻道。")
     return 0
 
 
