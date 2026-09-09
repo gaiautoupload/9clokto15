@@ -10,7 +10,7 @@ import radar
 ROOT = Path(__file__).resolve().parent
 BUY_FEE = 0.001425
 SELL_FEE_AND_TAX = 0.001425 + 0.003
-SLIPPAGE_EACH_SIDE = 0.01
+SLIPPAGE_EACH_SIDE = float(radar.CONFIG["validation_slippage_each_side_pct"]) / 100
 
 
 def describe(values):

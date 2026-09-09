@@ -8,6 +8,7 @@
   "volume_multiple": 2.0,
   "first_leg_quiet_sessions": 5,
   "first_leg_prior_jump_pct": 10.0,
+  "validation_slippage_each_side_pct": 10.0,
   "scan_interval_seconds": 60,
   "publish_interval_minutes": 10,
   "tracking_sessions": 20,
