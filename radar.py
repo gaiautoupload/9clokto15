@@ -463,11 +463,14 @@ def build_action_plan(item: dict, setup: dict | None) -> dict:
     exit_below = min(invalidation["price"] - atr * 0.50, reduce_below - atr)
     eligible = bool(item.get("mandatory_strategy") or item.get("listing_signal"))
     chip_support = item.get("chip_status") == "CHIP_SUPPORT"
+    first_mandatory_session = bool(item.get("mandatory_strategy") and int(item.get("tracking_age") or 0) == 0)
 
     if price and (price <= exit_below or (inventory_change_pct <= -20 and price < reduce_below)):
         state, label, reason = "EXIT", "出清訊號", "主要結構失效，或核心庫存大幅下降且價格同步轉弱"
     elif price and (price < reduce_below or inventory_change_pct <= -10):
         state, label, reason = "REDUCE", "減碼訊號", "跌破最近支撐帶，或核心庫存較首次捕捉減少至少一成"
+    elif first_mandatory_session:
+        state, label, reason = "ENTRY", "必買首筆", "必買策略首次捕捉日先建立首筆；結構價位留給後續加碼與風險控制"
     elif eligible and chip_support and inventory_change > 0 and add_above <= price <= chase_limit:
         state, label, reason = "ADD", "加碼訊號", "突破下一個結構壓力，且核心庫存高於首次捕捉"
     elif eligible and chip_support and trial_low <= price <= trial_high:
@@ -485,6 +488,8 @@ def build_action_plan(item: dict, setup: dict | None) -> dict:
         "core_inventory_change_lots": round(inventory_change, 1),
         "core_inventory_change_pct": round(inventory_change_pct, 1),
         "atr14": round(atr, 2), "method": "STRUCTURE_ATR_CORE_V1",
+        "initial_entry_price": round(trigger, 2),
+        "backtest_slippage_price": round(trigger * 1.10, 2),
         "trial_basis": support["sources"], "trial_strength": int(min(100, support["score"])),
         "add_basis": resistance["sources"], "add_strength": int(min(100, resistance["score"])),
         "reduce_basis": support["sources"],

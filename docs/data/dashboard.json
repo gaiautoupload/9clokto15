@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "market_time": "2026-09-09T15:01:12+08:00",
+  "market_time": "2026-09-09T15:04:52+08:00",
   "broker_data_date": "20260908",
   "trigger_pct": 15.0,
   "new_listing_trigger_pct": 5.0,
@@ -689,9 +689,9 @@
       "tracking_age": 0,
       "above_threshold": true,
       "action_plan": {
-        "state": "WAIT",
-        "label": "等待拉回",
-        "reason": "價格離開結構加碼區超過四分之三個ATR，暫不追價",
+        "state": "ENTRY",
+        "label": "必買首筆",
+        "reason": "必買策略首次捕捉日先建立首筆；結構價位留給後續加碼與風險控制",
         "trial_zone_low": 80.53,
         "trial_zone_high": 81.63,
         "add_above": 111.27,
@@ -703,6 +703,8 @@
         "core_inventory_change_pct": 0.0,
         "atr14": 2.74,
         "method": "STRUCTURE_ATR_CORE_V1",
+        "initial_entry_price": 111.0,
+        "backtest_slippage_price": 122.1,
         "trial_basis": [
           "波段高點"
         ],
@@ -1423,9 +1425,9 @@
       "tracking_age": 0,
       "above_threshold": true,
       "action_plan": {
-        "state": "WATCH",
-        "label": "尚未進場",
-        "reason": "量價或核心條件尚未同時成立",
+        "state": "ENTRY",
+        "label": "必買首筆",
+        "reason": "必買策略首次捕捉日先建立首筆；結構價位留給後續加碼與風險控制",
         "trial_zone_low": 34.93,
         "trial_zone_high": 35.54,
         "add_above": 42.2,
@@ -1437,6 +1439,8 @@
         "core_inventory_change_pct": 0.0,
         "atr14": 1.52,
         "method": "STRUCTURE_ATR_CORE_V1",
+        "initial_entry_price": 40.45,
+        "backtest_slippage_price": 44.5,
         "trial_basis": [
           "突破線",
           "20日VWAP",
@@ -2052,6 +2056,8 @@
         "core_inventory_change_pct": 0.0,
         "atr14": 16.8,
         "method": "STRUCTURE_ATR_CORE_V1",
+        "initial_entry_price": 560.0,
+        "backtest_slippage_price": 616.0,
         "trial_basis": [
           "突破線"
         ],
@@ -2661,6 +2667,8 @@
         "core_inventory_change_pct": 0.0,
         "atr14": 6.31,
         "method": "STRUCTURE_ATR_CORE_V1",
+        "initial_entry_price": 210.5,
+        "backtest_slippage_price": 231.55,
         "trial_basis": [
           "突破線"
         ],
@@ -3270,6 +3278,8 @@
         "core_inventory_change_pct": 0.0,
         "atr14": 1.06,
         "method": "STRUCTURE_ATR_CORE_V1",
+        "initial_entry_price": 35.5,
+        "backtest_slippage_price": 39.05,
         "trial_basis": [
           "突破線"
         ],
@@ -3879,6 +3889,8 @@
         "core_inventory_change_pct": 0.0,
         "atr14": 1.14,
         "method": "STRUCTURE_ATR_CORE_V1",
+        "initial_entry_price": 38.0,
+        "backtest_slippage_price": 41.8,
         "trial_basis": [
           "突破線"
         ],
@@ -4488,6 +4500,8 @@
         "core_inventory_change_pct": 0.0,
         "atr14": 25.74,
         "method": "STRUCTURE_ATR_CORE_V1",
+        "initial_entry_price": 858.0,
+        "backtest_slippage_price": 943.8,
         "trial_basis": [
           "突破線"
         ],
@@ -5097,6 +5111,8 @@
         "core_inventory_change_pct": 0.0,
         "atr14": 0.78,
         "method": "STRUCTURE_ATR_CORE_V1",
+        "initial_entry_price": 25.9,
+        "backtest_slippage_price": 28.49,
         "trial_basis": [
           "突破線"
         ],
