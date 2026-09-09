@@ -408,6 +408,7 @@ def main() -> int:
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("research")
     sub.add_parser("prepare")
+    sub.add_parser("publish")
     scan = sub.add_parser("scan"); scan.add_argument("--once", action="store_true"); scan.add_argument("--publish", action="store_true")
     eod = sub.add_parser("eod"); eod.add_argument("--publish", action="store_true")
     args = parser.parse_args()
@@ -418,6 +419,7 @@ def main() -> int:
         else: scan_loop(args.publish)
     elif args.command == "eod":
         run_research(); build_core_cache(); publish() if args.publish else None
+    elif args.command == "publish": publish()
     return 0
 
 
