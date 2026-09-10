@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "market_time": "2026-09-10T11:18:59+08:00",
+  "market_time": "2026-09-10T11:29:37+08:00",
   "broker_data_date": "20260909",
   "trigger_pct": 15.0,
   "new_listing_trigger_pct": 5.0,
@@ -9,9 +9,9 @@
     {
       "stock_id": "7759",
       "name": "視航生醫",
-      "price": 38.35,
-      "volume_lots": 129.654,
-      "change_pct": 27.32,
+      "price": 37.5,
+      "volume_lots": 169.014,
+      "change_pct": 24.5,
       "event_id": "20260910-7759",
       "trigger_ts": "2026-09-10T11:11:55+08:00",
       "trigger_price": 35.0,
@@ -729,7 +729,7 @@
       "stock_id": "7729",
       "name": "仲恩生醫",
       "price": 121.0,
-      "volume_lots": 3125.524,
+      "volume_lots": 3166.21,
       "change_pct": 17.56,
       "event_id": "20260909-7729",
       "trigger_ts": "2026-09-09T10:37:49+08:00",
@@ -1335,21 +1335,121 @@
     {
       "stock_id": "6793",
       "name": "天力離岸",
-      "price": 6.05,
-      "volume_lots": 616.885,
-      "change_pct": 12.45,
+      "price": 6.29,
+      "volume_lots": 624.887,
+      "change_pct": 16.91,
       "event_id": "20260910-6793",
       "trigger_ts": "2026-09-10T09:08:32+08:00",
       "trigger_price": 6.31,
-      "trigger_pct": 17.286245353159856,
       "max_pct": 17.29,
-      "tracking_age": 0,
-      "above_threshold": false,
+      "breakout_setup": {
+        "range_high": 5.76,
+        "range_low": 4.9,
+        "range_pct": 17.551020408163254,
+        "median_volume_lots": 89.473,
+        "prior_max_jump_pct": 7.945736434108519,
+        "atr14": 0.395,
+        "structure_levels": [
+          {
+            "price": 5.75,
+            "weight": 6,
+            "sources": [
+              "波段高點",
+              "箱型上緣"
+            ],
+            "touches": 27,
+            "score": 100
+          },
+          {
+            "price": 5.54,
+            "weight": 6,
+            "sources": [
+              "波段低點",
+              "波段高點"
+            ],
+            "touches": 35,
+            "score": 100
+          },
+          {
+            "price": 5.35,
+            "weight": 8,
+            "sources": [
+              "20日VWAP",
+              "波段高點",
+              "5日VWAP"
+            ],
+            "touches": 44,
+            "score": 100
+          },
+          {
+            "price": 5.08,
+            "weight": 10,
+            "sources": [
+              "波段低點"
+            ],
+            "touches": 40,
+            "score": 100
+          },
+          {
+            "price": 4.86,
+            "weight": 12,
+            "sources": [
+              "波段低點",
+              "箱型下緣"
+            ],
+            "touches": 11,
+            "score": 100
+          },
+          {
+            "price": 6.22,
+            "weight": 4,
+            "sources": [
+              "波段高點"
+            ],
+            "touches": 15,
+            "score": 92
+          },
+          {
+            "price": 6.07,
+            "weight": 2,
+            "sources": [
+              "波段高點"
+            ],
+            "touches": 18,
+            "score": 76
+          },
+          {
+            "price": 6.52,
+            "weight": 2,
+            "sources": [
+              "波段高點"
+            ],
+            "touches": 5,
+            "score": 61
+          },
+          {
+            "price": 7.05,
+            "weight": 2,
+            "sources": [
+              "波段高點"
+            ],
+            "touches": 1,
+            "score": 41
+          }
+        ]
+      },
       "strategy_type": "EXTREME_RADAR",
       "mandatory_strategy": true,
       "new_listing": false,
       "listing_session": 1424,
+      "listing_signal": false,
+      "signal_level": "MANDATORY",
       "tail_routes": [],
+      "tail_features": {
+        "qualified_brokers": 37,
+        "largest_capital_share_pct": 24.86,
+        "recent_builder_count": 30
+      },
       "chip_status": "CHIP_SUPPORT",
       "evidence": {
         "positive_top5": 5,
@@ -1922,6 +2022,8 @@
           "active_sessions": 2
         }
       ],
+      "tracking_age": 0,
+      "above_threshold": true,
       "action_plan": {
         "state": "ENTRY",
         "label": "必買首筆",
@@ -1964,9 +2066,9 @@
     {
       "stock_id": "6682",
       "name": "華旭先進",
-      "price": 39.8,
-      "volume_lots": 584.522,
-      "change_pct": 0.58,
+      "price": 39.75,
+      "volume_lots": 586.522,
+      "change_pct": 0.45,
       "event_id": "20260909-6682",
       "trigger_ts": "2026-09-09T10:37:49+08:00",
       "trigger_price": 40.45,
@@ -2573,7 +2675,7 @@
       "stock_id": "7944",
       "name": "睿禾金碳",
       "price": 36.7,
-      "volume_lots": 27.658,
+      "volume_lots": 28.658,
       "change_pct": 3.58,
       "event_id": "NEW-20260909-7944",
       "trigger_ts": "2026-09-09T10:37:49+08:00",
@@ -3794,9 +3896,9 @@
     {
       "stock_id": "7686",
       "name": "捷立康",
-      "price": 863.0,
-      "volume_lots": 218.925,
-      "change_pct": -0.95,
+      "price": 870.0,
+      "volume_lots": 222.06,
+      "change_pct": -0.14,
       "event_id": "NEW-20260909-7686",
       "trigger_ts": "2026-09-09T10:37:49+08:00",
       "trigger_price": 858.0,
@@ -4405,9 +4507,9 @@
     {
       "stock_id": "6950",
       "name": "科科科技-KY",
-      "price": 25.6,
-      "volume_lots": 6.454,
-      "change_pct": -1.23,
+      "price": 25.65,
+      "volume_lots": 8.554,
+      "change_pct": -1.04,
       "event_id": "NEW-20260909-6950",
       "trigger_ts": "2026-09-09T10:37:49+08:00",
       "trigger_price": 25.9,
@@ -5016,9 +5118,9 @@
     {
       "stock_id": "7932",
       "name": "昱鐳應材",
-      "price": 527.0,
-      "volume_lots": 469.507,
-      "change_pct": -7.04,
+      "price": 511.0,
+      "volume_lots": 527.529,
+      "change_pct": -9.86,
       "event_id": "NEW-20260909-7932",
       "trigger_ts": "2026-09-09T10:37:49+08:00",
       "trigger_price": 560.0,
@@ -5627,12 +5729,12 @@
     {
       "stock_id": "7934",
       "name": "鋒霈環境科技",
-      "price": 393.5,
-      "volume_lots": 1081.847,
+      "price": 390.0,
+      "volume_lots": 1094.292,
       "change_pct": null,
       "event_id": "NEW-20260910-7934",
-      "trigger_ts": "2026-09-10T11:18:59+08:00",
-      "trigger_price": 393.5,
+      "trigger_ts": "2026-09-10T11:29:37+08:00",
+      "trigger_price": 390.0,
       "max_pct": null,
       "tracking_age": 0,
       "above_threshold": false,
@@ -5656,19 +5758,19 @@
         "state": "WATCH",
         "label": "尚未進場",
         "reason": "量價或核心條件尚未同時成立",
-        "trial_zone_low": 391.14,
-        "trial_zone_high": 395.86,
-        "add_above": 394.68,
-        "chase_limit": 403.53,
-        "reduce_below": 387.6,
-        "exit_below": 375.79,
+        "trial_zone_low": 387.66,
+        "trial_zone_high": 392.34,
+        "add_above": 391.17,
+        "chase_limit": 399.94,
+        "reduce_below": 384.15,
+        "exit_below": 372.45,
         "core_cost": null,
         "core_inventory_change_lots": 0,
         "core_inventory_change_pct": 0,
-        "atr14": 11.8,
+        "atr14": 11.7,
         "method": "STRUCTURE_ATR_CORE_V1",
-        "initial_entry_price": 393.5,
-        "backtest_slippage_price": 432.85,
+        "initial_entry_price": 390.0,
+        "backtest_slippage_price": 429.0,
         "trial_basis": [
           "突破線"
         ],
