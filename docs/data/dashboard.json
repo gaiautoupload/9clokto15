@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "market_time": "2026-09-10T10:25:48+08:00",
+  "market_time": "2026-09-10T10:36:25+08:00",
   "broker_data_date": "20260909",
   "trigger_pct": 15.0,
   "new_listing_trigger_pct": 5.0,
@@ -9,9 +9,9 @@
     {
       "stock_id": "7729",
       "name": "仲恩生醫",
-      "price": 123.0,
-      "volume_lots": 2969.022,
-      "change_pct": 19.5,
+      "price": 122.5,
+      "volume_lots": 3000.493,
+      "change_pct": 19.01,
       "event_id": "20260909-7729",
       "trigger_ts": "2026-09-09T10:37:49+08:00",
       "trigger_price": 111.0,
@@ -616,21 +616,121 @@
     {
       "stock_id": "6793",
       "name": "天力離岸",
-      "price": 6.15,
-      "volume_lots": 526.744,
-      "change_pct": 14.31,
+      "price": 6.19,
+      "volume_lots": 533.755,
+      "change_pct": 15.06,
       "event_id": "20260910-6793",
       "trigger_ts": "2026-09-10T09:08:32+08:00",
       "trigger_price": 6.31,
-      "trigger_pct": 17.286245353159856,
       "max_pct": 17.29,
-      "tracking_age": 0,
-      "above_threshold": false,
+      "breakout_setup": {
+        "range_high": 5.76,
+        "range_low": 4.9,
+        "range_pct": 17.551020408163254,
+        "median_volume_lots": 89.473,
+        "prior_max_jump_pct": 7.945736434108519,
+        "atr14": 0.395,
+        "structure_levels": [
+          {
+            "price": 5.75,
+            "weight": 6,
+            "sources": [
+              "波段高點",
+              "箱型上緣"
+            ],
+            "touches": 27,
+            "score": 100
+          },
+          {
+            "price": 5.54,
+            "weight": 6,
+            "sources": [
+              "波段低點",
+              "波段高點"
+            ],
+            "touches": 35,
+            "score": 100
+          },
+          {
+            "price": 5.35,
+            "weight": 8,
+            "sources": [
+              "20日VWAP",
+              "波段高點",
+              "5日VWAP"
+            ],
+            "touches": 44,
+            "score": 100
+          },
+          {
+            "price": 5.08,
+            "weight": 10,
+            "sources": [
+              "波段低點"
+            ],
+            "touches": 40,
+            "score": 100
+          },
+          {
+            "price": 4.86,
+            "weight": 12,
+            "sources": [
+              "波段低點",
+              "箱型下緣"
+            ],
+            "touches": 11,
+            "score": 100
+          },
+          {
+            "price": 6.22,
+            "weight": 4,
+            "sources": [
+              "波段高點"
+            ],
+            "touches": 15,
+            "score": 92
+          },
+          {
+            "price": 6.07,
+            "weight": 2,
+            "sources": [
+              "波段高點"
+            ],
+            "touches": 18,
+            "score": 76
+          },
+          {
+            "price": 6.52,
+            "weight": 2,
+            "sources": [
+              "波段高點"
+            ],
+            "touches": 5,
+            "score": 61
+          },
+          {
+            "price": 7.05,
+            "weight": 2,
+            "sources": [
+              "波段高點"
+            ],
+            "touches": 1,
+            "score": 41
+          }
+        ]
+      },
       "strategy_type": "EXTREME_RADAR",
       "mandatory_strategy": true,
       "new_listing": false,
       "listing_session": 1424,
+      "listing_signal": false,
+      "signal_level": "MANDATORY",
       "tail_routes": [],
+      "tail_features": {
+        "qualified_brokers": 37,
+        "largest_capital_share_pct": 24.86,
+        "recent_builder_count": 30
+      },
       "chip_status": "CHIP_SUPPORT",
       "evidence": {
         "positive_top5": 5,
@@ -1203,6 +1303,8 @@
           "active_sessions": 2
         }
       ],
+      "tracking_age": 0,
+      "above_threshold": true,
       "action_plan": {
         "state": "ENTRY",
         "label": "必買首筆",
@@ -1245,9 +1347,9 @@
     {
       "stock_id": "6682",
       "name": "華旭先進",
-      "price": 39.75,
-      "volume_lots": 556.419,
-      "change_pct": 0.45,
+      "price": 38.65,
+      "volume_lots": 561.419,
+      "change_pct": -2.32,
       "event_id": "20260909-6682",
       "trigger_ts": "2026-09-09T10:37:49+08:00",
       "trigger_price": 40.45,
@@ -3075,9 +3177,9 @@
     {
       "stock_id": "6950",
       "name": "科科科技-KY",
-      "price": 25.75,
-      "volume_lots": 3.304,
-      "change_pct": -0.66,
+      "price": 25.65,
+      "volume_lots": 3.454,
+      "change_pct": -1.04,
       "event_id": "NEW-20260909-6950",
       "trigger_ts": "2026-09-09T10:37:49+08:00",
       "trigger_price": 25.9,
@@ -3686,9 +3788,9 @@
     {
       "stock_id": "7686",
       "name": "捷立康",
-      "price": 858.0,
-      "volume_lots": 197.49,
-      "change_pct": -1.52,
+      "price": 860.0,
+      "volume_lots": 203.452,
+      "change_pct": -1.29,
       "event_id": "NEW-20260909-7686",
       "trigger_ts": "2026-09-09T10:37:49+08:00",
       "trigger_price": 858.0,
@@ -4297,9 +4399,9 @@
     {
       "stock_id": "7932",
       "name": "昱鐳應材",
-      "price": 549.0,
-      "volume_lots": 228.168,
-      "change_pct": -3.16,
+      "price": 551.0,
+      "volume_lots": 238.07,
+      "change_pct": -2.8,
       "event_id": "NEW-20260909-7932",
       "trigger_ts": "2026-09-09T10:37:49+08:00",
       "trigger_price": 560.0,
@@ -4908,12 +5010,12 @@
     {
       "stock_id": "7934",
       "name": "鋒霈環境科技",
-      "price": 390.0,
-      "volume_lots": 950.045,
+      "price": 391.5,
+      "volume_lots": 967.166,
       "change_pct": null,
       "event_id": "NEW-20260910-7934",
-      "trigger_ts": "2026-09-10T10:25:48+08:00",
-      "trigger_price": 390.0,
+      "trigger_ts": "2026-09-10T10:36:25+08:00",
+      "trigger_price": 391.5,
       "max_pct": null,
       "tracking_age": 0,
       "above_threshold": false,
@@ -4937,19 +5039,19 @@
         "state": "WATCH",
         "label": "尚未進場",
         "reason": "量價或核心條件尚未同時成立",
-        "trial_zone_low": 387.66,
-        "trial_zone_high": 392.34,
-        "add_above": 391.17,
-        "chase_limit": 399.94,
-        "reduce_below": 384.15,
-        "exit_below": 372.45,
+        "trial_zone_low": 389.15,
+        "trial_zone_high": 393.85,
+        "add_above": 392.67,
+        "chase_limit": 401.48,
+        "reduce_below": 385.63,
+        "exit_below": 373.88,
         "core_cost": null,
         "core_inventory_change_lots": 0,
         "core_inventory_change_pct": 0,
-        "atr14": 11.7,
+        "atr14": 11.74,
         "method": "STRUCTURE_ATR_CORE_V1",
-        "initial_entry_price": 390.0,
-        "backtest_slippage_price": 429.0,
+        "initial_entry_price": 391.5,
+        "backtest_slippage_price": 430.65,
         "trial_basis": [
           "突破線"
         ],
