@@ -1,5 +1,6 @@
 @echo off
 setlocal
+chcp 65001 >nul
 title 9clokto15 盤中盯盤（請勿關閉）
 cd /d "%~dp0"
 set "PYTHONUTF8=1"
