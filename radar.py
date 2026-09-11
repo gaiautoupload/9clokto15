@@ -24,6 +24,8 @@ PUBLIC = ROOT / CONFIG["site_directory"] / "data"
 DB = LOCAL / "radar.db"
 DISCORD_WEBHOOK = LOCAL / "discord_webhook.txt"
 DISCORD_STATE = LOCAL / "discord_alert_state.json"
+MONITOR_HEALTH = LOCAL / "monitor_health.json"
+MONITOR_LOG = LOCAL / "monitor.log"
 
 
 def number(value) -> float:
@@ -91,6 +93,40 @@ def save_json(path: Path, payload) -> None:
 
 def load_json(path: Path, default):
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else default
+
+
+def log_monitor(message: str) -> None:
+    LOCAL.mkdir(parents=True, exist_ok=True)
+    with MONITOR_LOG.open("a", encoding="utf-8") as handle:
+        handle.write(f"{datetime.now():%Y-%m-%d %H:%M:%S} {message}\n")
+
+
+def update_monitor_health(status: str, detail: str) -> None:
+    """Persist monitor health and notify only on meaningful daily transitions."""
+    now = datetime.now()
+    today = now.strftime("%Y-%m-%d")
+    previous = load_json(MONITOR_HEALTH, {})
+    prior_status = previous.get("status")
+    message = None
+    if status == "UP" and previous.get("online_notice_date") != today:
+        message = f"✅ **盤中盯盤已上線｜{today}**\n{detail}\n戰情室：https://gaiautoupload.github.io/9clokto15/"
+    elif status == "UP" and prior_status == "DOWN":
+        message = f"✅ **盤中盯盤已恢復｜{now:%H:%M:%S}**\n{detail}"
+    elif status == "DOWN" and prior_status != "DOWN":
+        message = f"⚠️ **盤中盯盤異常｜{now:%H:%M:%S}**\n{detail}\n系統會自動重試，不會因推播失敗而停止。"
+    current = {
+        "status": status,
+        "updated_at": now.isoformat(timespec="seconds"),
+        "detail": detail,
+        "online_notice_date": today if status == "UP" else previous.get("online_notice_date"),
+    }
+    save_json(MONITOR_HEALTH, current)
+    log_monitor(f"{status} {detail}")
+    if message:
+        try:
+            post_discord(message)
+        except Exception as exc:
+            log_monitor(f"DISCORD_ERROR {type(exc).__name__}: {exc}")
 
 
 def discord_message(item: dict) -> str:
@@ -402,8 +438,11 @@ def fetch_intraday() -> list[dict]:
     from selenium.webdriver.common.by import By
     from selenium.webdriver.support.ui import WebDriverWait
     from selenium.webdriver.support import expected_conditions as EC
+    from selenium.common.exceptions import TimeoutException
     options = webdriver.ChromeOptions()
     options.add_argument("--headless=new"); options.add_argument("--disable-gpu"); options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage"); options.add_argument("--no-first-run")
+    options.set_capability("pageLoadStrategy", "eager")
     chrome = Path(r"C:\Program Files\Google\Chrome\Application\chrome.exe")
     major = chrome.stat().st_size and chrome.resolve() and chrome_version_major(chrome)
     cached = sorted(Path.home().glob(f".wdm/drivers/chromedriver/win64/{major}.*/*/chromedriver.exe"), reverse=True)
@@ -413,8 +452,13 @@ def fetch_intraday() -> list[dict]:
         raise RuntimeError(f"找不到與 Chrome {major} 相容的本機 ChromeDriver；請先執行既有盤中爬蟲更新驅動。")
     driver = webdriver.Chrome(service=Service(str(cached[0])), options=options)
     try:
-        driver.get(CONFIG["intraday_url"])
-        WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'td[data-th="代號"]')))
+        driver.set_page_load_timeout(30)
+        driver.set_script_timeout(20)
+        try:
+            driver.get(CONFIG["intraday_url"])
+        except TimeoutException:
+            driver.execute_script("window.stop();")
+        WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'td[data-th="代號"]')))
         soup = BeautifulSoup(driver.page_source, "html.parser")
     finally:
         driver.quit()
@@ -429,6 +473,8 @@ def fetch_intraday() -> list[dict]:
         value = number(price.text)
         if value > 0:
             rows.append({"stock_id": code.text.strip(), "name": name.text.strip(), "price": value, "volume_lots": number(volume.text) / 1000})
+    if not rows:
+        raise RuntimeError("興櫃即時行情頁沒有可解析的股票資料")
     return rows
 
 
@@ -670,9 +716,19 @@ def scan_loop(do_publish: bool) -> None:
         if now.time() >= clock_time(15, 5):
             print("盤後時段，盤中程式結束。")
             break
-        scan_once()
-        if do_publish and time.time() >= next_publish:
-            publish(); next_publish = time.time() + int(CONFIG["publish_interval_minutes"]) * 60
+        try:
+            payload = scan_once()
+            update_monitor_health("UP", f"本輪掃描完成：門檻內 {len(payload.get('stocks', []))} 檔；下一輪持續監看。")
+            if do_publish and time.time() >= next_publish:
+                publish(); next_publish = time.time() + int(CONFIG["publish_interval_minutes"]) * 60
+        except KeyboardInterrupt:
+            raise
+        except Exception as exc:
+            detail = f"{type(exc).__name__}: {str(exc)[:240]}；60 秒後重試。"
+            print(detail)
+            update_monitor_health("DOWN", detail)
+            time.sleep(60)
+            continue
         time.sleep(int(CONFIG["scan_interval_seconds"]))
 
 
