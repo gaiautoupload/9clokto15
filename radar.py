@@ -451,6 +451,7 @@ def fetch_intraday() -> list[dict]:
     if not cached:
         raise RuntimeError(f"找不到與 Chrome {major} 相容的本機 ChromeDriver；請先執行既有盤中爬蟲更新驅動。")
     driver = webdriver.Chrome(service=Service(str(cached[0])), options=options)
+    driver_pid = driver.service.process.pid if driver.service.process else None
     try:
         driver.set_page_load_timeout(30)
         driver.set_script_timeout(20)
@@ -461,7 +462,22 @@ def fetch_intraday() -> list[dict]:
         WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'td[data-th="代號"]')))
         soup = BeautifulSoup(driver.page_source, "html.parser")
     finally:
-        driver.quit()
+        # driver.quit() can hang indefinitely when the TPEX page times out.
+        # Terminate only this scan's own ChromeDriver process tree so the loop
+        # can recover without touching any unrelated browser or Python process.
+        if driver_pid:
+            try:
+                subprocess.run(
+                    ["taskkill", "/PID", str(driver_pid), "/T", "/F"],
+                    capture_output=True,
+                    timeout=10,
+                    check=False,
+                )
+            except (OSError, subprocess.TimeoutExpired):
+                try:
+                    driver.service.process.kill()
+                except (AttributeError, OSError):
+                    pass
     rows = []
     for row in soup.select("tbody tr"):
         code = row.select_one('td[data-th="代號"] a')
@@ -724,7 +740,8 @@ def scan_loop(do_publish: bool) -> None:
         except KeyboardInterrupt:
             raise
         except Exception as exc:
-            detail = f"{type(exc).__name__}: {str(exc)[:240]}；60 秒後重試。"
+            first_line = next((line.strip() for line in str(exc).splitlines() if line.strip()), "行情頁尚未提供排行資料")
+            detail = f"{type(exc).__name__}: {first_line[:160]}；60 秒後重試。"
             print(detail)
             update_monitor_health("DOWN", detail)
             time.sleep(60)
