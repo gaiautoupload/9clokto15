@@ -740,7 +740,10 @@ def scan_loop(do_publish: bool) -> None:
         except KeyboardInterrupt:
             raise
         except Exception as exc:
-            first_line = next((line.strip() for line in str(exc).splitlines() if line.strip()), "行情頁尚未提供排行資料")
+            if type(exc).__name__ == "TimeoutException":
+                first_line = "行情頁尚未提供排行資料"
+            else:
+                first_line = next((line.strip() for line in str(exc).splitlines() if line.strip()), "行情資料暫時無法取得")
             detail = f"{type(exc).__name__}: {first_line[:160]}；60 秒後重試。"
             print(detail)
             update_monitor_health("DOWN", detail)
