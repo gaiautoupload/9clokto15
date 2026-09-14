@@ -102,31 +102,15 @@ def log_monitor(message: str) -> None:
 
 
 def update_monitor_health(status: str, detail: str) -> None:
-    """Persist monitor health and notify only on meaningful daily transitions."""
+    """Persist monitor health locally; Discord is reserved for new events only."""
     now = datetime.now()
-    today = now.strftime("%Y-%m-%d")
-    previous = load_json(MONITOR_HEALTH, {})
-    prior_status = previous.get("status")
-    message = None
-    if status == "UP" and previous.get("online_notice_date") != today:
-        message = f"✅ **盤中盯盤已上線｜{today}**\n{detail}\n戰情室：https://gaiautoupload.github.io/9clokto15/"
-    elif status == "UP" and prior_status == "DOWN":
-        message = f"✅ **盤中盯盤已恢復｜{now:%H:%M:%S}**\n{detail}"
-    elif status == "DOWN" and prior_status != "DOWN":
-        message = f"⚠️ **盤中盯盤異常｜{now:%H:%M:%S}**\n{detail}\n系統會自動重試，不會因推播失敗而停止。"
     current = {
         "status": status,
         "updated_at": now.isoformat(timespec="seconds"),
         "detail": detail,
-        "online_notice_date": today if status == "UP" else previous.get("online_notice_date"),
     }
     save_json(MONITOR_HEALTH, current)
     log_monitor(f"{status} {detail}")
-    if message:
-        try:
-            post_discord(message)
-        except Exception as exc:
-            log_monitor(f"DISCORD_ERROR {type(exc).__name__}: {exc}")
 
 
 def discord_message(item: dict) -> str:
@@ -167,7 +151,7 @@ def notify_discord(stocks: list[dict]) -> int:
         state = plan.get("state", "WATCH")
         event_id = item.get("event_id", item.get("stock_id", ""))
         old_state = previous.get(event_id)
-        should_send = (state == "ENTRY" and old_state is None) or (state in {"ADD", "REDUCE", "EXIT"} and state != old_state)
+        should_send = old_state is None
         if should_send:
             post_discord(discord_message(item))
             sent += 1
@@ -696,7 +680,7 @@ def scan_once() -> dict:
     try:
         alerts = notify_discord(payload["stocks"])
         if alerts:
-            print(f"Discord 已推播 {alerts} 則操作訊號")
+            print(f"Discord 已推播 {alerts} 則新增追蹤事件")
     except Exception as exc:
         print(f"Discord 推播失敗，盯盤繼續執行：{exc}")
     print(f"{now}：符合 >15% 共 {len(found)} 檔")
@@ -773,7 +757,7 @@ def main() -> int:
     elif args.command == "discord-test":
         if not DISCORD_WEBHOOK.exists():
             raise SystemExit(f"尚未建立 {DISCORD_WEBHOOK}")
-        post_discord("✅ **6666 推播通知已連線**\n極端飆股戰情室的本地 BAT 將在新訊號或操作狀態改變時推播到此頻道。")
+        post_discord("✅ **6666 推播通知已連線**\n極端飆股戰情室只會在新增追蹤事件第一次出現時推播到此頻道。")
     return 0
 
 
