@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T18:20:51+08:00",
+  "generated_at": "2026-09-15T18:20:29+08:00",
   "status": "exploratory_hypothesis_not_out_of_sample",
   "definitions": {
     "broad_ignition": "合格留存建倉分點>=40且最大分點資金占比<=30%",
@@ -10,9 +10,9 @@
   },
   "profiles": {
     "all": {
-      "events": 1923,
-      "mean_pct": 6.57,
-      "median_pct": -0.83,
+      "events": 1925,
+      "mean_pct": 6.56,
+      "median_pct": -0.84,
       "win_rate_pct": 47.3,
       "return_80_plus_rate_pct": 2.8,
       "return_200_plus_count": 7
@@ -34,10 +34,10 @@
       "return_200_plus_count": 2
     },
     "concentrated_control": {
-      "events": 529,
-      "mean_pct": 3.4,
+      "events": 530,
+      "mean_pct": 3.37,
       "median_pct": -2.31,
-      "win_rate_pct": 41.6,
+      "win_rate_pct": 41.5,
       "return_80_plus_rate_pct": 2.1,
       "return_200_plus_count": 3
     },
@@ -50,10 +50,10 @@
       "return_200_plus_count": 2
     },
     "extreme_radar_union": {
-      "events": 914,
-      "mean_pct": 7.24,
-      "median_pct": -0.72,
-      "win_rate_pct": 47.3,
+      "events": 915,
+      "mean_pct": 7.22,
+      "median_pct": -0.76,
+      "win_rate_pct": 47.2,
       "return_80_plus_rate_pct": 3.2,
       "return_200_plus_count": 7
     }
@@ -62,7 +62,7 @@
     "historical_200_plus_total": 7,
     "captured_by_union": 7,
     "recall_pct": 100.0,
-    "candidate_count": 948,
+    "candidate_count": 950,
     "precision_pct": 0.74
   },
   "extreme_200_plus": [
