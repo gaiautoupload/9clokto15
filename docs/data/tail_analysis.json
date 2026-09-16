@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15T18:20:29+08:00",
+  "generated_at": "2026-09-16T18:20:33+08:00",
   "status": "exploratory_hypothesis_not_out_of_sample",
   "definitions": {
     "broad_ignition": "合格留存建倉分點>=40且最大分點資金占比<=30%",
@@ -62,7 +62,7 @@
     "historical_200_plus_total": 7,
     "captured_by_union": 7,
     "recall_pct": 100.0,
-    "candidate_count": 950,
+    "candidate_count": 951,
     "precision_pct": 0.74
   },
   "extreme_200_plus": [

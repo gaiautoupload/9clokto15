@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15T18:20:28+08:00",
+  "generated_at": "2026-09-16T18:20:32+08:00",
   "point_in_time": true,
   "broker_data_cutoff": "事件日前一完整交易日",
   "definitions": {
@@ -9,30 +9,30 @@
   },
   "groups": {
     "all_first_breakouts": {
-      "count": 2004,
+      "count": 2005,
       "1d": {
-        "samples": 1998,
-        "mean_pct": 4.75,
+        "samples": 2001,
+        "mean_pct": 4.74,
         "median_pct": 2.98,
-        "win_rate_pct": 68.7
+        "win_rate_pct": 68.6
       },
       "3d": {
-        "samples": 1991,
+        "samples": 1994,
         "mean_pct": 3.66,
         "median_pct": 0.43,
         "win_rate_pct": 52.2
       },
       "5d": {
-        "samples": 1984,
+        "samples": 1986,
         "mean_pct": 3.47,
         "median_pct": -0.01,
         "win_rate_pct": 49.8
       },
       "10d": {
-        "samples": 1956,
-        "mean_pct": 4.06,
-        "median_pct": -0.79,
-        "win_rate_pct": 46.6
+        "samples": 1959,
+        "mean_pct": 4.09,
+        "median_pct": -0.77,
+        "win_rate_pct": 46.7
       },
       "20d": {
         "samples": 1925,
@@ -50,10 +50,10 @@
         "win_rate_pct": 69.0
       },
       "3d": {
-        "samples": 893,
-        "mean_pct": 3.71,
+        "samples": 895,
+        "mean_pct": 3.72,
         "median_pct": 0.42,
-        "win_rate_pct": 52.2
+        "win_rate_pct": 52.3
       },
       "5d": {
         "samples": 890,
@@ -62,8 +62,8 @@
         "win_rate_pct": 51.7
       },
       "10d": {
-        "samples": 873,
-        "mean_pct": 3.82,
+        "samples": 874,
+        "mean_pct": 3.83,
         "median_pct": -0.6,
         "win_rate_pct": 47.7
       },
@@ -108,30 +108,30 @@
       }
     },
     "high_accuracy_add": {
-      "count": 1174,
+      "count": 1175,
       "1d": {
-        "samples": 1170,
-        "mean_pct": 4.78,
+        "samples": 1171,
+        "mean_pct": 4.77,
         "median_pct": 3.23,
         "win_rate_pct": 69.7
       },
       "3d": {
-        "samples": 1165,
+        "samples": 1166,
         "mean_pct": 3.94,
-        "median_pct": 0.47,
-        "win_rate_pct": 53.0
+        "median_pct": 0.46,
+        "win_rate_pct": 52.9
       },
       "5d": {
-        "samples": 1159,
-        "mean_pct": 3.96,
+        "samples": 1161,
+        "mean_pct": 3.97,
         "median_pct": 0.08,
         "win_rate_pct": 50.2
       },
       "10d": {
-        "samples": 1137,
-        "mean_pct": 4.98,
-        "median_pct": -0.77,
-        "win_rate_pct": 47.0
+        "samples": 1140,
+        "mean_pct": 5.03,
+        "median_pct": -0.74,
+        "win_rate_pct": 47.1
       },
       "20d": {
         "samples": 1109,
@@ -175,31 +175,6 @@
     }
   },
   "events": [
-    {
-      "stock_id": "3097",
-      "name": "拍檔",
-      "event_date": "20260626",
-      "trigger_pct_proxy": 16.47,
-      "event_vwap": 27.68,
-      "event_volume_lots": 75.277,
-      "volume_multiple": 6.79,
-      "prior_range_pct": 9.88,
-      "mature_5d": true,
-      "return_1d_pct": -4.62,
-      "return_3d_pct": -6.25,
-      "return_5d_pct": -8.45,
-      "return_10d_pct": -4.8,
-      "return_20d_pct": -9.5,
-      "max_5d_pct": -1.37,
-      "min_5d_pct": -8.96,
-      "broker_signal": {
-        "qualified_brokers": 3,
-        "new_build_count": 1,
-        "multi_build": false,
-        "high_accuracy_add": true,
-        "largest_capital_share_pct": 99.5
-      }
-    },
     {
       "stock_id": "6618",
       "name": "永虹先進",
@@ -1888,7 +1863,7 @@
       "return_1d_pct": 27.44,
       "return_3d_pct": 28.22,
       "return_5d_pct": 42.28,
-      "return_10d_pct": null,
+      "return_10d_pct": 43.03,
       "return_20d_pct": null,
       "max_5d_pct": 61.0,
       "min_5d_pct": 7.33,
@@ -1913,7 +1888,7 @@
       "return_1d_pct": 12.27,
       "return_3d_pct": 8.13,
       "return_5d_pct": 7.41,
-      "return_10d_pct": null,
+      "return_10d_pct": 6.26,
       "return_20d_pct": null,
       "max_5d_pct": 19.55,
       "min_5d_pct": 1.8,
@@ -1938,7 +1913,7 @@
       "return_1d_pct": 10.94,
       "return_3d_pct": 11.03,
       "return_5d_pct": 17.63,
-      "return_10d_pct": null,
+      "return_10d_pct": 12.76,
       "return_20d_pct": null,
       "max_5d_pct": 21.95,
       "min_5d_pct": 3.64,
@@ -2384,14 +2359,14 @@
       "event_volume_lots": 2003.997,
       "volume_multiple": 5.14,
       "prior_range_pct": 6.67,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": -0.45,
       "return_3d_pct": -11.62,
-      "return_5d_pct": null,
+      "return_5d_pct": -12.31,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null,
+      "max_5d_pct": 6.52,
+      "min_5d_pct": -14.58,
       "broker_signal": {
         "qualified_brokers": 55,
         "new_build_count": 0,
@@ -2409,14 +2384,14 @@
       "event_volume_lots": 6822.208,
       "volume_multiple": 21.21,
       "prior_range_pct": 6.03,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": 21.41,
       "return_3d_pct": 10.41,
-      "return_5d_pct": null,
+      "return_5d_pct": 29.38,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null,
+      "max_5d_pct": 35.04,
+      "min_5d_pct": 3.95,
       "broker_signal": {
         "qualified_brokers": 48,
         "new_build_count": 0,
@@ -2511,7 +2486,7 @@
       "prior_range_pct": 13.36,
       "mature_5d": false,
       "return_1d_pct": 10.53,
-      "return_3d_pct": null,
+      "return_3d_pct": 9.38,
       "return_5d_pct": null,
       "return_10d_pct": null,
       "return_20d_pct": null,
@@ -2536,7 +2511,7 @@
       "prior_range_pct": 6.0,
       "mature_5d": false,
       "return_1d_pct": 5.47,
-      "return_3d_pct": null,
+      "return_3d_pct": 8.05,
       "return_5d_pct": null,
       "return_10d_pct": null,
       "return_20d_pct": null,
@@ -2561,7 +2536,7 @@
       "prior_range_pct": 12.96,
       "mature_5d": false,
       "return_1d_pct": 3.61,
-      "return_3d_pct": null,
+      "return_3d_pct": -1.57,
       "return_5d_pct": null,
       "return_10d_pct": null,
       "return_20d_pct": null,
@@ -2610,7 +2585,7 @@
       "volume_multiple": 13.32,
       "prior_range_pct": 4.83,
       "mature_5d": false,
-      "return_1d_pct": null,
+      "return_1d_pct": -7.1,
       "return_3d_pct": null,
       "return_5d_pct": null,
       "return_10d_pct": null,
@@ -2635,7 +2610,7 @@
       "volume_multiple": 15.1,
       "prior_range_pct": 8.33,
       "mature_5d": false,
-      "return_1d_pct": null,
+      "return_1d_pct": 4.24,
       "return_3d_pct": null,
       "return_5d_pct": null,
       "return_10d_pct": null,
@@ -2660,7 +2635,7 @@
       "volume_multiple": 7.28,
       "prior_range_pct": 16.45,
       "mature_5d": false,
-      "return_1d_pct": null,
+      "return_1d_pct": -4.45,
       "return_3d_pct": null,
       "return_5d_pct": null,
       "return_10d_pct": null,
@@ -2673,6 +2648,31 @@
         "multi_build": false,
         "high_accuracy_add": true,
         "largest_capital_share_pct": 34.0
+      }
+    },
+    {
+      "stock_id": "6748",
+      "name": "亞果生醫",
+      "event_date": "20260916",
+      "trigger_pct_proxy": 23.02,
+      "event_vwap": 210.55,
+      "event_volume_lots": 2803.094,
+      "volume_multiple": 6.55,
+      "prior_range_pct": 10.65,
+      "mature_5d": false,
+      "return_1d_pct": null,
+      "return_3d_pct": null,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "max_5d_pct": null,
+      "min_5d_pct": null,
+      "broker_signal": {
+        "qualified_brokers": 70,
+        "new_build_count": 0,
+        "multi_build": false,
+        "high_accuracy_add": true,
+        "largest_capital_share_pct": 16.7
       }
     }
   ]
