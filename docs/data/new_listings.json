@@ -1,16 +1,32 @@
 {
   "summary": {
-    "event_count": 345,
+    "event_count": 346,
     "mature_20d_count": 341,
     "twenty_day_mean_pct": 2.75,
     "twenty_day_median_pct": -1.49,
     "twenty_day_win_rate_pct": 44.9,
     "twenty_day_80_plus_count": 6,
-    "completed_emerging_count": 177,
+    "completed_emerging_count": 173,
     "to_last_emerging_200_plus_count": 19,
-    "max_before_transfer_200_plus_count": 41
+    "max_before_transfer_200_plus_count": 39
   },
   "recent_events": [
+    {
+      "stock_id": "6950",
+      "name": "科科科技-KY",
+      "listing_date": "20260831",
+      "event_date": "20260921",
+      "listing_session": 16,
+      "trigger_pct_proxy": 10.64,
+      "volume_multiple": 2.89,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "completed_emerging": false,
+      "last_emerging_date": null,
+      "return_to_last_emerging_pct": null,
+      "max_to_last_emerging_pct": null
+    },
     {
       "stock_id": "7686",
       "name": "捷立康",
@@ -422,10 +438,10 @@
       "return_5d_pct": -9.37,
       "return_10d_pct": -10.7,
       "return_20d_pct": -17.52,
-      "completed_emerging": false,
-      "last_emerging_date": null,
-      "return_to_last_emerging_pct": null,
-      "max_to_last_emerging_pct": null
+      "completed_emerging": true,
+      "last_emerging_date": "20260918",
+      "return_to_last_emerging_pct": -28.16,
+      "max_to_last_emerging_pct": 12.63
     },
     {
       "stock_id": "7892",
@@ -694,10 +710,10 @@
       "return_5d_pct": 13.97,
       "return_10d_pct": 12.82,
       "return_20d_pct": 11.85,
-      "completed_emerging": false,
-      "last_emerging_date": null,
-      "return_to_last_emerging_pct": null,
-      "max_to_last_emerging_pct": null
+      "completed_emerging": true,
+      "last_emerging_date": "20260918",
+      "return_to_last_emerging_pct": -11.13,
+      "max_to_last_emerging_pct": 29.11
     },
     {
       "stock_id": "7849",
@@ -838,10 +854,10 @@
       "return_5d_pct": 8.99,
       "return_10d_pct": 7.28,
       "return_20d_pct": 9.04,
-      "completed_emerging": true,
-      "last_emerging_date": "20260917",
-      "return_to_last_emerging_pct": -19.45,
-      "max_to_last_emerging_pct": 22.66
+      "completed_emerging": false,
+      "last_emerging_date": null,
+      "return_to_last_emerging_pct": null,
+      "max_to_last_emerging_pct": null
     },
     {
       "stock_id": "7834",
@@ -934,10 +950,10 @@
       "return_5d_pct": -3.59,
       "return_10d_pct": -6.55,
       "return_20d_pct": -15.2,
-      "completed_emerging": false,
-      "last_emerging_date": null,
-      "return_to_last_emerging_pct": null,
-      "max_to_last_emerging_pct": null
+      "completed_emerging": true,
+      "last_emerging_date": "20260918",
+      "return_to_last_emerging_pct": -46.78,
+      "max_to_last_emerging_pct": 8.09
     },
     {
       "stock_id": "7818",
@@ -1382,10 +1398,10 @@
       "return_5d_pct": 1.27,
       "return_10d_pct": 13.29,
       "return_20d_pct": 6.09,
-      "completed_emerging": true,
-      "last_emerging_date": "20260917",
-      "return_to_last_emerging_pct": -26.32,
-      "max_to_last_emerging_pct": 44.04
+      "completed_emerging": false,
+      "last_emerging_date": null,
+      "return_to_last_emerging_pct": null,
+      "max_to_last_emerging_pct": null
     },
     {
       "stock_id": "6883",
@@ -1594,22 +1610,6 @@
       "last_emerging_date": null,
       "return_to_last_emerging_pct": null,
       "max_to_last_emerging_pct": null
-    },
-    {
-      "stock_id": "7714",
-      "name": "創泓科技",
-      "listing_date": "20240104",
-      "event_date": "20240130",
-      "listing_session": 19,
-      "trigger_pct_proxy": 26.28,
-      "volume_multiple": 6.02,
-      "return_5d_pct": 1.65,
-      "return_10d_pct": -3.08,
-      "return_20d_pct": -4.75,
-      "completed_emerging": true,
-      "last_emerging_date": "20250114",
-      "return_to_last_emerging_pct": -29.6,
-      "max_to_last_emerging_pct": 21.54
     }
   ]
 }
