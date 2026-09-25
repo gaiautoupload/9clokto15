@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-24T18:20:50+08:00",
+  "generated_at": "2026-09-25T18:21:08+08:00",
   "status": "exploratory_hypothesis_not_out_of_sample",
   "definitions": {
     "broad_ignition": "合格留存建倉分點>=40且最大分點資金占比<=30%",
