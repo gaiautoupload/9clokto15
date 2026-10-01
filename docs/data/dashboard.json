@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "market_time": "2026-10-01T15:00:50+08:00",
+  "market_time": "2026-10-01T15:04:18+08:00",
   "broker_data_date": "20260930",
   "trigger_pct": 15.0,
   "new_listing_trigger_pct": 5.0,

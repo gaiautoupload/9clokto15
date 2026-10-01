@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T18:20:42+08:00",
+  "generated_at": "2026-10-01T18:20:58+08:00",
   "point_in_time": true,
   "broker_data_cutoff": "事件日前一完整交易日",
   "definitions": {
@@ -9,7 +9,7 @@
   },
   "groups": {
     "all_first_breakouts": {
-      "count": 2024,
+      "count": 2026,
       "1d": {
         "samples": 2021,
         "mean_pct": 4.72,
@@ -17,32 +17,32 @@
         "win_rate_pct": 68.6
       },
       "3d": {
-        "samples": 2012,
+        "samples": 2013,
         "mean_pct": 3.64,
         "median_pct": 0.43,
-        "win_rate_pct": 52.1
+        "win_rate_pct": 52.2
       },
       "5d": {
-        "samples": 2003,
-        "mean_pct": 3.47,
+        "samples": 2005,
+        "mean_pct": 3.46,
         "median_pct": 0.0,
         "win_rate_pct": 49.9
       },
       "10d": {
-        "samples": 1986,
-        "mean_pct": 4.1,
-        "median_pct": -0.74,
+        "samples": 1989,
+        "mean_pct": 4.08,
+        "median_pct": -0.77,
         "win_rate_pct": 46.8
       },
       "20d": {
-        "samples": 1935,
+        "samples": 1942,
         "mean_pct": 6.53,
-        "median_pct": -0.83,
+        "median_pct": -0.8,
         "win_rate_pct": 47.3
       }
     },
     "new_build": {
-      "count": 905,
+      "count": 906,
       "1d": {
         "samples": 903,
         "mean_pct": 4.78,
@@ -56,8 +56,8 @@
         "win_rate_pct": 52.2
       },
       "5d": {
-        "samples": 897,
-        "mean_pct": 3.35,
+        "samples": 899,
+        "mean_pct": 3.34,
         "median_pct": 0.18,
         "win_rate_pct": 51.8
       },
@@ -68,10 +68,10 @@
         "win_rate_pct": 47.9
       },
       "20d": {
-        "samples": 864,
-        "mean_pct": 6.19,
-        "median_pct": 0.34,
-        "win_rate_pct": 50.6
+        "samples": 866,
+        "mean_pct": 6.15,
+        "median_pct": 0.29,
+        "win_rate_pct": 50.5
       }
     },
     "multi_build": {
@@ -89,10 +89,10 @@
         "win_rate_pct": 48.2
       },
       "5d": {
-        "samples": 274,
-        "mean_pct": 4.11,
-        "median_pct": 0.46,
-        "win_rate_pct": 53.3
+        "samples": 275,
+        "mean_pct": 4.12,
+        "median_pct": 0.48,
+        "win_rate_pct": 53.5
       },
       "10d": {
         "samples": 271,
@@ -101,14 +101,14 @@
         "win_rate_pct": 46.9
       },
       "20d": {
-        "samples": 266,
-        "mean_pct": 6.56,
-        "median_pct": 0.27,
-        "win_rate_pct": 50.4
+        "samples": 267,
+        "mean_pct": 6.52,
+        "median_pct": 0.2,
+        "win_rate_pct": 50.2
       }
     },
     "high_accuracy_add": {
-      "count": 1187,
+      "count": 1189,
       "1d": {
         "samples": 1184,
         "mean_pct": 4.73,
@@ -116,27 +116,27 @@
         "win_rate_pct": 69.6
       },
       "3d": {
-        "samples": 1176,
+        "samples": 1177,
         "mean_pct": 3.91,
         "median_pct": 0.46,
         "win_rate_pct": 52.9
       },
       "5d": {
-        "samples": 1170,
+        "samples": 1171,
         "mean_pct": 3.96,
         "median_pct": 0.13,
-        "win_rate_pct": 50.3
+        "win_rate_pct": 50.4
       },
       "10d": {
-        "samples": 1160,
-        "mean_pct": 5.0,
+        "samples": 1161,
+        "mean_pct": 4.99,
         "median_pct": -0.74,
-        "win_rate_pct": 47.2
+        "win_rate_pct": 47.1
       },
       "20d": {
-        "samples": 1118,
+        "samples": 1125,
         "mean_pct": 7.21,
-        "median_pct": -0.69,
+        "median_pct": -0.68,
         "win_rate_pct": 47.8
       }
     },
@@ -155,10 +155,10 @@
         "win_rate_pct": 48.9
       },
       "5d": {
-        "samples": 174,
+        "samples": 175,
         "mean_pct": 5.54,
-        "median_pct": 0.66,
-        "win_rate_pct": 54.0
+        "median_pct": 0.68,
+        "win_rate_pct": 54.3
       },
       "10d": {
         "samples": 171,
@@ -167,64 +167,14 @@
         "win_rate_pct": 46.8
       },
       "20d": {
-        "samples": 167,
-        "mean_pct": 7.7,
-        "median_pct": 0.0,
-        "win_rate_pct": 49.7
+        "samples": 168,
+        "mean_pct": 7.63,
+        "median_pct": -0.1,
+        "win_rate_pct": 49.4
       }
     }
   },
   "events": [
-    {
-      "stock_id": "6819",
-      "name": "眾智",
-      "event_date": "20260715",
-      "trigger_pct_proxy": 25.87,
-      "event_vwap": 41.5,
-      "event_volume_lots": 213.051,
-      "volume_multiple": 3.68,
-      "prior_range_pct": 10.09,
-      "mature_5d": true,
-      "return_1d_pct": -3.52,
-      "return_3d_pct": -6.48,
-      "return_5d_pct": -6.82,
-      "return_10d_pct": -13.98,
-      "return_20d_pct": 3.45,
-      "max_5d_pct": 2.41,
-      "min_5d_pct": -9.4,
-      "broker_signal": {
-        "qualified_brokers": 10,
-        "new_build_count": 0,
-        "multi_build": false,
-        "high_accuracy_add": true,
-        "largest_capital_share_pct": 61.6
-      }
-    },
-    {
-      "stock_id": "4172",
-      "name": "因華",
-      "event_date": "20260716",
-      "trigger_pct_proxy": 21.18,
-      "event_vwap": 12.75,
-      "event_volume_lots": 1238.587,
-      "volume_multiple": 4.74,
-      "prior_range_pct": 16.2,
-      "mature_5d": true,
-      "return_1d_pct": -7.37,
-      "return_3d_pct": -9.73,
-      "return_5d_pct": -9.65,
-      "return_10d_pct": -11.84,
-      "return_20d_pct": -13.57,
-      "max_5d_pct": 3.53,
-      "min_5d_pct": -12.55,
-      "broker_signal": {
-        "qualified_brokers": 37,
-        "new_build_count": 1,
-        "multi_build": false,
-        "high_accuracy_add": true,
-        "largest_capital_share_pct": 28.8
-      }
-    },
     {
       "stock_id": "4170",
       "name": "鑫品生醫",
@@ -1189,7 +1139,7 @@
       "return_3d_pct": 2.81,
       "return_5d_pct": 3.54,
       "return_10d_pct": 4.07,
-      "return_20d_pct": null,
+      "return_20d_pct": 7.55,
       "max_5d_pct": 10.22,
       "min_5d_pct": -0.8,
       "broker_signal": {
@@ -1214,7 +1164,7 @@
       "return_3d_pct": 17.37,
       "return_5d_pct": 11.28,
       "return_10d_pct": -4.3,
-      "return_20d_pct": null,
+      "return_20d_pct": -4.19,
       "max_5d_pct": 30.7,
       "min_5d_pct": 1.21,
       "broker_signal": {
@@ -1239,7 +1189,7 @@
       "return_3d_pct": -0.2,
       "return_5d_pct": 10.2,
       "return_10d_pct": -1.59,
-      "return_20d_pct": null,
+      "return_20d_pct": 5.93,
       "max_5d_pct": 21.72,
       "min_5d_pct": -2.78,
       "broker_signal": {
@@ -1289,7 +1239,7 @@
       "return_3d_pct": 3.08,
       "return_5d_pct": 6.69,
       "return_10d_pct": 37.3,
-      "return_20d_pct": null,
+      "return_20d_pct": 27.76,
       "max_5d_pct": 10.99,
       "min_5d_pct": -2.23,
       "broker_signal": {
@@ -1314,7 +1264,7 @@
       "return_3d_pct": -4.2,
       "return_5d_pct": -3.15,
       "return_10d_pct": 6.37,
-      "return_20d_pct": null,
+      "return_20d_pct": 29.13,
       "max_5d_pct": 2.59,
       "min_5d_pct": -5.8,
       "broker_signal": {
@@ -1339,7 +1289,7 @@
       "return_3d_pct": -7.09,
       "return_5d_pct": -5.78,
       "return_10d_pct": -27.21,
-      "return_20d_pct": null,
+      "return_20d_pct": -22.27,
       "max_5d_pct": -2.18,
       "min_5d_pct": -10.06,
       "broker_signal": {
@@ -1364,7 +1314,7 @@
       "return_3d_pct": -2.87,
       "return_5d_pct": -4.25,
       "return_10d_pct": -13.46,
-      "return_20d_pct": null,
+      "return_20d_pct": -0.78,
       "max_5d_pct": 4.32,
       "min_5d_pct": -6.05,
       "broker_signal": {
@@ -2113,7 +2063,7 @@
       "return_1d_pct": -7.1,
       "return_3d_pct": 9.9,
       "return_5d_pct": 2.28,
-      "return_10d_pct": null,
+      "return_10d_pct": -1.27,
       "return_20d_pct": null,
       "max_5d_pct": 15.2,
       "min_5d_pct": -9.43,
@@ -2138,7 +2088,7 @@
       "return_1d_pct": 4.24,
       "return_3d_pct": -5.88,
       "return_5d_pct": -6.43,
-      "return_10d_pct": null,
+      "return_10d_pct": -8.11,
       "return_20d_pct": null,
       "max_5d_pct": 8.55,
       "min_5d_pct": -9.9,
@@ -2163,7 +2113,7 @@
       "return_1d_pct": -4.45,
       "return_3d_pct": -2.6,
       "return_5d_pct": -2.32,
-      "return_10d_pct": null,
+      "return_10d_pct": -9.15,
       "return_20d_pct": null,
       "max_5d_pct": 4.73,
       "min_5d_pct": -7.49,
@@ -2359,14 +2309,14 @@
       "event_volume_lots": 267.816,
       "volume_multiple": 19.14,
       "prior_range_pct": 6.55,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": -2.2,
       "return_3d_pct": -3.58,
-      "return_5d_pct": null,
+      "return_5d_pct": -1.99,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null,
+      "max_5d_pct": 3.51,
+      "min_5d_pct": -5.33,
       "broker_signal": {
         "qualified_brokers": 3,
         "new_build_count": 1,
@@ -2384,14 +2334,14 @@
       "event_volume_lots": 276.142,
       "volume_multiple": 13.56,
       "prior_range_pct": 11.77,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": 1.58,
       "return_3d_pct": 4.33,
-      "return_5d_pct": null,
+      "return_5d_pct": 5.84,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null,
+      "max_5d_pct": 7.64,
+      "min_5d_pct": 0.6,
       "broker_signal": {
         "qualified_brokers": 14,
         "new_build_count": 2,
@@ -2536,7 +2486,7 @@
       "prior_range_pct": 17.22,
       "mature_5d": false,
       "return_1d_pct": 5.56,
-      "return_3d_pct": null,
+      "return_3d_pct": 0.3,
       "return_5d_pct": null,
       "return_10d_pct": null,
       "return_20d_pct": null,
@@ -2673,6 +2623,56 @@
         "multi_build": false,
         "high_accuracy_add": true,
         "largest_capital_share_pct": 11.1
+      }
+    },
+    {
+      "stock_id": "4194",
+      "name": "禾生技",
+      "event_date": "20261001",
+      "trigger_pct_proxy": 17.49,
+      "event_vwap": 7.97,
+      "event_volume_lots": 391.557,
+      "volume_multiple": 5.38,
+      "prior_range_pct": 7.6,
+      "mature_5d": false,
+      "return_1d_pct": null,
+      "return_3d_pct": null,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "max_5d_pct": null,
+      "min_5d_pct": null,
+      "broker_signal": {
+        "qualified_brokers": 5,
+        "new_build_count": 0,
+        "multi_build": false,
+        "high_accuracy_add": true,
+        "largest_capital_share_pct": 47.0
+      }
+    },
+    {
+      "stock_id": "7776",
+      "name": "奧孟亞",
+      "event_date": "20261001",
+      "trigger_pct_proxy": 18.5,
+      "event_vwap": 35.08,
+      "event_volume_lots": 313.45,
+      "volume_multiple": 7.72,
+      "prior_range_pct": 7.26,
+      "mature_5d": false,
+      "return_1d_pct": null,
+      "return_3d_pct": null,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "max_5d_pct": null,
+      "min_5d_pct": null,
+      "broker_signal": {
+        "qualified_brokers": 9,
+        "new_build_count": 1,
+        "multi_build": false,
+        "high_accuracy_add": true,
+        "largest_capital_share_pct": 60.3
       }
     }
   ]

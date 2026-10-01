@@ -1,19 +1,55 @@
 {
   "summary": {
-    "generated_at": "2026-09-30T18:15:29+08:00",
+    "generated_at": "2026-10-01T18:15:31+08:00",
     "market_start": "20200102",
-    "market_end": "20260930",
-    "event_count": 2024,
-    "raw_stock_day_count": 8215,
-    "suppressed_repeat_count": 133,
+    "market_end": "20261001",
+    "event_count": 2026,
+    "raw_stock_day_count": 8224,
+    "suppressed_repeat_count": 134,
     "setup_definition": "前10日振幅≤20.0%、突破區間高點、成交量≥前20日中位量2.0倍、前5日無≥10.0%先行漲幅",
     "event_unit": "每檔每日最多一次；首次突破後 20 個交易日內不重複開新事件",
-    "mature_5d_count": 2003,
+    "mature_5d_count": 2005,
     "five_day_positive_rate": 49.9,
-    "five_day_extension_rate": 52.4,
+    "five_day_extension_rate": 52.3,
     "definition": "歷史事件要求盤整後帶量突破且只取波段第一根；同一檔進入20日追蹤期後不重複計次。日資料未知首次突破時間，不當成可成交績效。"
   },
   "recent_events": [
+    {
+      "stock_id": "4194",
+      "name": "禾生技",
+      "event_date": "20261001",
+      "trigger_pct_proxy": 17.49,
+      "event_vwap": 7.97,
+      "event_volume_lots": 391.557,
+      "volume_multiple": 5.38,
+      "prior_range_pct": 7.6,
+      "mature_5d": false,
+      "return_1d_pct": null,
+      "return_3d_pct": null,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "max_5d_pct": null,
+      "min_5d_pct": null
+    },
+    {
+      "stock_id": "7776",
+      "name": "奧孟亞",
+      "event_date": "20261001",
+      "trigger_pct_proxy": 18.5,
+      "event_vwap": 35.08,
+      "event_volume_lots": 313.45,
+      "volume_multiple": 7.72,
+      "prior_range_pct": 7.26,
+      "mature_5d": false,
+      "return_1d_pct": null,
+      "return_3d_pct": null,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "max_5d_pct": null,
+      "min_5d_pct": null
+    },
     {
       "stock_id": "6559",
       "name": "研晶",
@@ -115,7 +151,7 @@
       "prior_range_pct": 17.22,
       "mature_5d": false,
       "return_1d_pct": 5.56,
-      "return_3d_pct": null,
+      "return_3d_pct": 0.3,
       "return_5d_pct": null,
       "return_10d_pct": null,
       "return_20d_pct": null,
@@ -221,14 +257,14 @@
       "event_volume_lots": 267.816,
       "volume_multiple": 19.14,
       "prior_range_pct": 6.55,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": -2.2,
       "return_3d_pct": -3.58,
-      "return_5d_pct": null,
+      "return_5d_pct": -1.99,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null
+      "max_5d_pct": 3.51,
+      "min_5d_pct": -5.33
     },
     {
       "stock_id": "7848",
@@ -239,14 +275,14 @@
       "event_volume_lots": 276.142,
       "volume_multiple": 13.56,
       "prior_range_pct": 11.77,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": 1.58,
       "return_3d_pct": 4.33,
-      "return_5d_pct": null,
+      "return_5d_pct": 5.84,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null
+      "max_5d_pct": 7.64,
+      "min_5d_pct": 0.6
     },
     {
       "stock_id": "5271",
@@ -387,7 +423,7 @@
       "return_1d_pct": -7.1,
       "return_3d_pct": 9.9,
       "return_5d_pct": 2.28,
-      "return_10d_pct": null,
+      "return_10d_pct": -1.27,
       "return_20d_pct": null,
       "max_5d_pct": 15.2,
       "min_5d_pct": -9.43
@@ -405,7 +441,7 @@
       "return_1d_pct": 4.24,
       "return_3d_pct": -5.88,
       "return_5d_pct": -6.43,
-      "return_10d_pct": null,
+      "return_10d_pct": -8.11,
       "return_20d_pct": null,
       "max_5d_pct": 8.55,
       "min_5d_pct": -9.9
@@ -423,7 +459,7 @@
       "return_1d_pct": -4.45,
       "return_3d_pct": -2.6,
       "return_5d_pct": -2.32,
-      "return_10d_pct": null,
+      "return_10d_pct": -9.15,
       "return_20d_pct": null,
       "max_5d_pct": 4.73,
       "min_5d_pct": -7.49
@@ -964,7 +1000,7 @@
       "return_3d_pct": 2.81,
       "return_5d_pct": 3.54,
       "return_10d_pct": 4.07,
-      "return_20d_pct": null,
+      "return_20d_pct": 7.55,
       "max_5d_pct": 10.22,
       "min_5d_pct": -0.8
     },
@@ -982,7 +1018,7 @@
       "return_3d_pct": 17.37,
       "return_5d_pct": 11.28,
       "return_10d_pct": -4.3,
-      "return_20d_pct": null,
+      "return_20d_pct": -4.19,
       "max_5d_pct": 30.7,
       "min_5d_pct": 1.21
     },
@@ -1000,7 +1036,7 @@
       "return_3d_pct": -0.2,
       "return_5d_pct": 10.2,
       "return_10d_pct": -1.59,
-      "return_20d_pct": null,
+      "return_20d_pct": 5.93,
       "max_5d_pct": 21.72,
       "min_5d_pct": -2.78
     },
@@ -1036,7 +1072,7 @@
       "return_3d_pct": 3.08,
       "return_5d_pct": 6.69,
       "return_10d_pct": 37.3,
-      "return_20d_pct": null,
+      "return_20d_pct": 27.76,
       "max_5d_pct": 10.99,
       "min_5d_pct": -2.23
     },
@@ -1054,7 +1090,7 @@
       "return_3d_pct": -4.2,
       "return_5d_pct": -3.15,
       "return_10d_pct": 6.37,
-      "return_20d_pct": null,
+      "return_20d_pct": 29.13,
       "max_5d_pct": 2.59,
       "min_5d_pct": -5.8
     },
@@ -1072,7 +1108,7 @@
       "return_3d_pct": -7.09,
       "return_5d_pct": -5.78,
       "return_10d_pct": -27.21,
-      "return_20d_pct": null,
+      "return_20d_pct": -22.27,
       "max_5d_pct": -2.18,
       "min_5d_pct": -10.06
     },
@@ -1090,7 +1126,7 @@
       "return_3d_pct": -2.87,
       "return_5d_pct": -4.25,
       "return_10d_pct": -13.46,
-      "return_20d_pct": null,
+      "return_20d_pct": -0.78,
       "max_5d_pct": 4.32,
       "min_5d_pct": -6.05
     },
@@ -1777,42 +1813,6 @@
       "return_20d_pct": -21.19,
       "max_5d_pct": 0.39,
       "min_5d_pct": -20.6
-    },
-    {
-      "stock_id": "4172",
-      "name": "因華",
-      "event_date": "20260716",
-      "trigger_pct_proxy": 21.18,
-      "event_vwap": 12.75,
-      "event_volume_lots": 1238.587,
-      "volume_multiple": 4.74,
-      "prior_range_pct": 16.2,
-      "mature_5d": true,
-      "return_1d_pct": -7.37,
-      "return_3d_pct": -9.73,
-      "return_5d_pct": -9.65,
-      "return_10d_pct": -11.84,
-      "return_20d_pct": -13.57,
-      "max_5d_pct": 3.53,
-      "min_5d_pct": -12.55
-    },
-    {
-      "stock_id": "6819",
-      "name": "眾智",
-      "event_date": "20260715",
-      "trigger_pct_proxy": 25.87,
-      "event_vwap": 41.5,
-      "event_volume_lots": 213.051,
-      "volume_multiple": 3.68,
-      "prior_range_pct": 10.09,
-      "mature_5d": true,
-      "return_1d_pct": -3.52,
-      "return_3d_pct": -6.48,
-      "return_5d_pct": -6.82,
-      "return_10d_pct": -13.98,
-      "return_20d_pct": 3.45,
-      "max_5d_pct": 2.41,
-      "min_5d_pct": -9.4
     }
   ]
 }
