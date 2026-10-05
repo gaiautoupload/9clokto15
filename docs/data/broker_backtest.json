@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-02T18:21:55+08:00",
+  "generated_at": "2026-10-05T18:20:41+08:00",
   "point_in_time": true,
   "broker_data_cutoff": "事件日前一完整交易日",
   "definitions": {
@@ -9,12 +9,12 @@
   },
   "groups": {
     "all_first_breakouts": {
-      "count": 2027,
+      "count": 2032,
       "1d": {
-        "samples": 2023,
-        "mean_pct": 4.72,
+        "samples": 2024,
+        "mean_pct": 4.71,
         "median_pct": 2.96,
-        "win_rate_pct": 68.6
+        "win_rate_pct": 68.5
       },
       "3d": {
         "samples": 2018,
@@ -23,20 +23,20 @@
         "win_rate_pct": 52.1
       },
       "5d": {
-        "samples": 2010,
+        "samples": 2011,
         "mean_pct": 3.47,
         "median_pct": 0.0,
         "win_rate_pct": 50.0
       },
       "10d": {
-        "samples": 1990,
+        "samples": 1992,
         "mean_pct": 4.08,
         "median_pct": -0.78,
         "win_rate_pct": 46.7
       },
       "20d": {
-        "samples": 1945,
-        "mean_pct": 6.58,
+        "samples": 1947,
+        "mean_pct": 6.59,
         "median_pct": -0.76,
         "win_rate_pct": 47.4
       }
@@ -44,10 +44,10 @@
     "new_build": {
       "count": 907,
       "1d": {
-        "samples": 904,
-        "mean_pct": 4.77,
-        "median_pct": 3.16,
-        "win_rate_pct": 68.9
+        "samples": 905,
+        "mean_pct": 4.76,
+        "median_pct": 3.15,
+        "win_rate_pct": 68.8
       },
       "3d": {
         "samples": 902,
@@ -62,15 +62,15 @@
         "win_rate_pct": 51.9
       },
       "10d": {
-        "samples": 891,
-        "mean_pct": 3.83,
-        "median_pct": -0.59,
-        "win_rate_pct": 47.9
+        "samples": 892,
+        "mean_pct": 3.84,
+        "median_pct": -0.57,
+        "win_rate_pct": 48.0
       },
       "20d": {
-        "samples": 867,
-        "mean_pct": 6.18,
-        "median_pct": 0.33,
+        "samples": 868,
+        "mean_pct": 6.16,
+        "median_pct": 0.29,
         "win_rate_pct": 50.5
       }
     },
@@ -108,12 +108,12 @@
       }
     },
     "high_accuracy_add": {
-      "count": 1190,
+      "count": 1194,
       "1d": {
-        "samples": 1186,
+        "samples": 1187,
         "mean_pct": 4.73,
-        "median_pct": 3.2,
-        "win_rate_pct": 69.6
+        "median_pct": 3.19,
+        "win_rate_pct": 69.5
       },
       "3d": {
         "samples": 1181,
@@ -122,10 +122,10 @@
         "win_rate_pct": 52.8
       },
       "5d": {
-        "samples": 1174,
+        "samples": 1175,
         "mean_pct": 3.97,
         "median_pct": 0.14,
-        "win_rate_pct": 50.4
+        "win_rate_pct": 50.5
       },
       "10d": {
         "samples": 1162,
@@ -134,9 +134,9 @@
         "win_rate_pct": 47.1
       },
       "20d": {
-        "samples": 1128,
-        "mean_pct": 7.29,
-        "median_pct": -0.67,
+        "samples": 1129,
+        "mean_pct": 7.32,
+        "median_pct": -0.66,
         "win_rate_pct": 48.0
       }
     },
@@ -175,131 +175,6 @@
     }
   },
   "events": [
-    {
-      "stock_id": "6867",
-      "name": "坦德科技",
-      "event_date": "20260720",
-      "trigger_pct_proxy": 39.36,
-      "event_vwap": 27.16,
-      "event_volume_lots": 38.907,
-      "volume_multiple": 3.09,
-      "prior_range_pct": 15.56,
-      "mature_5d": true,
-      "return_1d_pct": -3.68,
-      "return_3d_pct": -5.82,
-      "return_5d_pct": -7.66,
-      "return_10d_pct": -12.19,
-      "return_20d_pct": -13.7,
-      "max_5d_pct": -1.33,
-      "min_5d_pct": -8.14,
-      "broker_signal": {
-        "qualified_brokers": 0,
-        "new_build_count": 0,
-        "multi_build": false,
-        "high_accuracy_add": false,
-        "largest_capital_share_pct": 100
-      }
-    },
-    {
-      "stock_id": "7745",
-      "name": "紅陽",
-      "event_date": "20260721",
-      "trigger_pct_proxy": 62.72,
-      "event_vwap": 18.44,
-      "event_volume_lots": 227.673,
-      "volume_multiple": 20.84,
-      "prior_range_pct": 7.06,
-      "mature_5d": true,
-      "return_1d_pct": -2.17,
-      "return_3d_pct": -1.63,
-      "return_5d_pct": -9.27,
-      "return_10d_pct": -21.1,
-      "return_20d_pct": -18.93,
-      "max_5d_pct": 12.8,
-      "min_5d_pct": -24.08,
-      "broker_signal": {
-        "qualified_brokers": 3,
-        "new_build_count": 1,
-        "multi_build": false,
-        "high_accuracy_add": true,
-        "largest_capital_share_pct": 90.5
-      }
-    },
-    {
-      "stock_id": "6580",
-      "name": "台睿",
-      "event_date": "20260722",
-      "trigger_pct_proxy": 25.61,
-      "event_vwap": 14.47,
-      "event_volume_lots": 669.592,
-      "volume_multiple": 8.16,
-      "prior_range_pct": 12.97,
-      "mature_5d": true,
-      "return_1d_pct": -4.35,
-      "return_3d_pct": -5.53,
-      "return_5d_pct": -9.05,
-      "return_10d_pct": -7.95,
-      "return_20d_pct": -11.06,
-      "max_5d_pct": 7.12,
-      "min_5d_pct": -10.85,
-      "broker_signal": {
-        "qualified_brokers": 10,
-        "new_build_count": 0,
-        "multi_build": false,
-        "high_accuracy_add": true,
-        "largest_capital_share_pct": 23.8
-      }
-    },
-    {
-      "stock_id": "7812",
-      "name": "稜研科技*",
-      "event_date": "20260722",
-      "trigger_pct_proxy": 15.9,
-      "event_vwap": 85.22,
-      "event_volume_lots": 319.096,
-      "volume_multiple": 3.38,
-      "prior_range_pct": 12.52,
-      "mature_5d": true,
-      "return_1d_pct": -4.42,
-      "return_3d_pct": -8.21,
-      "return_5d_pct": -13.88,
-      "return_10d_pct": -15.56,
-      "return_20d_pct": -16.33,
-      "max_5d_pct": -2.02,
-      "min_5d_pct": -16.69,
-      "broker_signal": {
-        "qualified_brokers": 20,
-        "new_build_count": 1,
-        "multi_build": false,
-        "high_accuracy_add": true,
-        "largest_capital_share_pct": 33.5
-      }
-    },
-    {
-      "stock_id": "8458",
-      "name": "影一",
-      "event_date": "20260724",
-      "trigger_pct_proxy": 20.08,
-      "event_vwap": 14.18,
-      "event_volume_lots": 61.485,
-      "volume_multiple": 4.5,
-      "prior_range_pct": 19.01,
-      "mature_5d": true,
-      "return_1d_pct": 7.19,
-      "return_3d_pct": 1.76,
-      "return_5d_pct": 4.94,
-      "return_10d_pct": 1.69,
-      "return_20d_pct": 1.55,
-      "max_5d_pct": 7.9,
-      "min_5d_pct": -2.68,
-      "broker_signal": {
-        "qualified_brokers": 2,
-        "new_build_count": 1,
-        "multi_build": false,
-        "high_accuracy_add": true,
-        "largest_capital_share_pct": 100
-      }
-    },
     {
       "stock_id": "7797",
       "name": "Q Burger",
@@ -1389,7 +1264,7 @@
       "return_3d_pct": -3.79,
       "return_5d_pct": -9.25,
       "return_10d_pct": -13.56,
-      "return_20d_pct": null,
+      "return_20d_pct": 38.72,
       "max_5d_pct": 11.26,
       "min_5d_pct": -9.83,
       "broker_signal": {
@@ -1414,7 +1289,7 @@
       "return_3d_pct": -5.03,
       "return_5d_pct": -13.09,
       "return_10d_pct": -14.39,
-      "return_20d_pct": null,
+      "return_20d_pct": -4.42,
       "max_5d_pct": 3.46,
       "min_5d_pct": -18.32,
       "broker_signal": {
@@ -2138,7 +2013,7 @@
       "return_1d_pct": 5.7,
       "return_3d_pct": -2.11,
       "return_5d_pct": -0.69,
-      "return_10d_pct": null,
+      "return_10d_pct": -2.38,
       "return_20d_pct": null,
       "max_5d_pct": 16.16,
       "min_5d_pct": -4.96,
@@ -2163,7 +2038,7 @@
       "return_1d_pct": 12.28,
       "return_3d_pct": -1.4,
       "return_5d_pct": -4.2,
-      "return_10d_pct": null,
+      "return_10d_pct": 9.7,
       "return_20d_pct": null,
       "max_5d_pct": 18.53,
       "min_5d_pct": -5.71,
@@ -2459,14 +2334,14 @@
       "event_volume_lots": 115.819,
       "volume_multiple": 3.11,
       "prior_range_pct": 17.22,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": 5.56,
       "return_3d_pct": 0.3,
-      "return_5d_pct": null,
+      "return_5d_pct": 0.48,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null,
+      "max_5d_pct": 8.91,
+      "min_5d_pct": -8.36,
       "broker_signal": {
         "qualified_brokers": 13,
         "new_build_count": 0,
@@ -2660,7 +2535,7 @@
       "volume_multiple": 3.33,
       "prior_range_pct": 11.61,
       "mature_5d": false,
-      "return_1d_pct": null,
+      "return_1d_pct": -5.08,
       "return_3d_pct": null,
       "return_5d_pct": null,
       "return_10d_pct": null,
@@ -2673,6 +2548,131 @@
         "multi_build": false,
         "high_accuracy_add": true,
         "largest_capital_share_pct": 36.7
+      }
+    },
+    {
+      "stock_id": "4553",
+      "name": "盛復",
+      "event_date": "20261005",
+      "trigger_pct_proxy": 21.28,
+      "event_vwap": 17.31,
+      "event_volume_lots": 120.486,
+      "volume_multiple": 15.59,
+      "prior_range_pct": 7.48,
+      "mature_5d": false,
+      "return_1d_pct": null,
+      "return_3d_pct": null,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "max_5d_pct": null,
+      "min_5d_pct": null,
+      "broker_signal": {
+        "qualified_brokers": 1,
+        "new_build_count": 0,
+        "multi_build": false,
+        "high_accuracy_add": false,
+        "largest_capital_share_pct": 100.0
+      }
+    },
+    {
+      "stock_id": "6434",
+      "name": "達輝光電",
+      "event_date": "20261005",
+      "trigger_pct_proxy": 22.03,
+      "event_vwap": 17.09,
+      "event_volume_lots": 4230.25,
+      "volume_multiple": 14.32,
+      "prior_range_pct": 8.63,
+      "mature_5d": false,
+      "return_1d_pct": null,
+      "return_3d_pct": null,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "max_5d_pct": null,
+      "min_5d_pct": null,
+      "broker_signal": {
+        "qualified_brokers": 33,
+        "new_build_count": 0,
+        "multi_build": false,
+        "high_accuracy_add": true,
+        "largest_capital_share_pct": 27.5
+      }
+    },
+    {
+      "stock_id": "6786",
+      "name": "芯測",
+      "event_date": "20261005",
+      "trigger_pct_proxy": 21.84,
+      "event_vwap": 61.04,
+      "event_volume_lots": 513.714,
+      "volume_multiple": 5.86,
+      "prior_range_pct": 14.23,
+      "mature_5d": false,
+      "return_1d_pct": null,
+      "return_3d_pct": null,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "max_5d_pct": null,
+      "min_5d_pct": null,
+      "broker_signal": {
+        "qualified_brokers": 32,
+        "new_build_count": 0,
+        "multi_build": false,
+        "high_accuracy_add": true,
+        "largest_capital_share_pct": 24.6
+      }
+    },
+    {
+      "stock_id": "6932",
+      "name": "水星生醫*",
+      "event_date": "20261005",
+      "trigger_pct_proxy": 21.12,
+      "event_vwap": 6.61,
+      "event_volume_lots": 1436.254,
+      "volume_multiple": 4.26,
+      "prior_range_pct": 13.94,
+      "mature_5d": false,
+      "return_1d_pct": null,
+      "return_3d_pct": null,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "max_5d_pct": null,
+      "min_5d_pct": null,
+      "broker_signal": {
+        "qualified_brokers": 23,
+        "new_build_count": 0,
+        "multi_build": false,
+        "high_accuracy_add": true,
+        "largest_capital_share_pct": 35.1
+      }
+    },
+    {
+      "stock_id": "7731",
+      "name": "火星生技*",
+      "event_date": "20261005",
+      "trigger_pct_proxy": 15.11,
+      "event_vwap": 4.29,
+      "event_volume_lots": 3444.109,
+      "volume_multiple": 6.93,
+      "prior_range_pct": 7.52,
+      "mature_5d": false,
+      "return_1d_pct": null,
+      "return_3d_pct": null,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "max_5d_pct": null,
+      "min_5d_pct": null,
+      "broker_signal": {
+        "qualified_brokers": 42,
+        "new_build_count": 0,
+        "multi_build": false,
+        "high_accuracy_add": true,
+        "largest_capital_share_pct": 15.7
       }
     }
   ]
