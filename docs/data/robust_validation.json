@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-12T18:20:56+08:00",
+  "generated_at": "2026-10-13T18:21:03+08:00",
   "rule": "合格留存分點>=40、最大分點占比<=20%、突破量>=20日中位量5倍",
   "cost_model": {
     "buy_fee_pct": 0.14250000000000002,
@@ -34,24 +34,24 @@
     },
     "validation_2024_2026": {
       "threshold_fill_net_pct": {
-        "samples": 52,
-        "mean_pct": 3.32,
-        "median_pct": -15.32,
-        "win_rate_pct": 36.5,
+        "samples": 53,
+        "mean_pct": 2.7,
+        "median_pct": -15.91,
+        "win_rate_pct": 35.8,
         "return_80_plus_rate_pct": 3.8
       },
       "event_high_fill_net_pct": {
-        "samples": 52,
-        "mean_pct": -5.72,
-        "median_pct": -19.48,
-        "win_rate_pct": 30.8,
+        "samples": 53,
+        "mean_pct": -6.22,
+        "median_pct": -20.4,
+        "win_rate_pct": 30.2,
         "return_80_plus_rate_pct": 1.9
       },
       "next_session_vwap_net_pct": {
-        "samples": 52,
-        "mean_pct": -4.3,
-        "median_pct": -19.39,
-        "win_rate_pct": 26.9,
+        "samples": 53,
+        "mean_pct": -4.78,
+        "median_pct": -19.65,
+        "win_rate_pct": 26.4,
         "return_80_plus_rate_pct": 3.8
       }
     }
