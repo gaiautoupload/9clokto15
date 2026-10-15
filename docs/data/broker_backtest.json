@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-14T18:20:35+08:00",
+  "generated_at": "2026-10-15T18:20:37+08:00",
   "point_in_time": true,
   "broker_data_cutoff": "事件日前一完整交易日",
   "definitions": {
@@ -9,16 +9,16 @@
   },
   "groups": {
     "all_first_breakouts": {
-      "count": 2040,
+      "count": 2042,
       "1d": {
-        "samples": 2036,
-        "mean_pct": 4.72,
-        "median_pct": 2.94,
+        "samples": 2037,
+        "mean_pct": 4.71,
+        "median_pct": 2.93,
         "win_rate_pct": 68.4
       },
       "3d": {
-        "samples": 2031,
-        "mean_pct": 3.59,
+        "samples": 2032,
+        "mean_pct": 3.58,
         "median_pct": 0.42,
         "win_rate_pct": 52.0
       },
@@ -35,25 +35,25 @@
         "win_rate_pct": 46.7
       },
       "20d": {
-        "samples": 1970,
-        "mean_pct": 6.68,
+        "samples": 1971,
+        "mean_pct": 6.67,
         "median_pct": -0.68,
-        "win_rate_pct": 47.6
+        "win_rate_pct": 47.5
       }
     },
     "new_build": {
-      "count": 914,
+      "count": 915,
       "1d": {
-        "samples": 911,
-        "mean_pct": 4.76,
-        "median_pct": 3.15,
-        "win_rate_pct": 68.7
+        "samples": 912,
+        "mean_pct": 4.75,
+        "median_pct": 3.14,
+        "win_rate_pct": 68.6
       },
       "3d": {
-        "samples": 908,
+        "samples": 909,
         "mean_pct": 3.65,
-        "median_pct": 0.39,
-        "win_rate_pct": 52.0
+        "median_pct": 0.37,
+        "win_rate_pct": 51.9
       },
       "5d": {
         "samples": 905,
@@ -68,10 +68,10 @@
         "win_rate_pct": 48.2
       },
       "20d": {
-        "samples": 882,
-        "mean_pct": 6.23,
-        "median_pct": 0.22,
-        "win_rate_pct": 50.5
+        "samples": 883,
+        "mean_pct": 6.21,
+        "median_pct": 0.2,
+        "win_rate_pct": 50.4
       }
     },
     "multi_build": {
@@ -101,14 +101,14 @@
         "win_rate_pct": 47.3
       },
       "20d": {
-        "samples": 269,
-        "mean_pct": 6.5,
-        "median_pct": 0.2,
-        "win_rate_pct": 50.2
+        "samples": 270,
+        "mean_pct": 6.44,
+        "median_pct": 0.1,
+        "win_rate_pct": 50.0
       }
     },
     "high_accuracy_add": {
-      "count": 1201,
+      "count": 1203,
       "1d": {
         "samples": 1198,
         "mean_pct": 4.72,
@@ -116,7 +116,7 @@
         "win_rate_pct": 69.3
       },
       "3d": {
-        "samples": 1193,
+        "samples": 1194,
         "mean_pct": 3.82,
         "median_pct": 0.43,
         "win_rate_pct": 52.6
@@ -134,9 +134,9 @@
         "win_rate_pct": 47.1
       },
       "20d": {
-        "samples": 1147,
-        "mean_pct": 7.42,
-        "median_pct": -0.63,
+        "samples": 1148,
+        "mean_pct": 7.41,
+        "median_pct": -0.64,
         "win_rate_pct": 48.2
       }
     },
@@ -167,64 +167,14 @@
         "win_rate_pct": 47.4
       },
       "20d": {
-        "samples": 170,
-        "mean_pct": 7.58,
-        "median_pct": -0.1,
-        "win_rate_pct": 49.4
+        "samples": 171,
+        "mean_pct": 7.48,
+        "median_pct": -0.19,
+        "win_rate_pct": 49.1
       }
     }
   },
   "events": [
-    {
-      "stock_id": "5240",
-      "name": "建騰",
-      "event_date": "20260811",
-      "trigger_pct_proxy": 17.3,
-      "event_vwap": 18.43,
-      "event_volume_lots": 99.074,
-      "volume_multiple": 6.81,
-      "prior_range_pct": 17.87,
-      "mature_5d": true,
-      "return_1d_pct": 3.31,
-      "return_3d_pct": 1.52,
-      "return_5d_pct": 2.55,
-      "return_10d_pct": -5.32,
-      "return_20d_pct": -9.12,
-      "max_5d_pct": 11.23,
-      "min_5d_pct": -2.06,
-      "broker_signal": {
-        "qualified_brokers": 2,
-        "new_build_count": 0,
-        "multi_build": false,
-        "high_accuracy_add": false,
-        "largest_capital_share_pct": 99.9
-      }
-    },
-    {
-      "stock_id": "7871",
-      "name": "安立璽榮-KY",
-      "event_date": "20260811",
-      "trigger_pct_proxy": 15.91,
-      "event_vwap": 90.58,
-      "event_volume_lots": 2818.076,
-      "volume_multiple": 4.44,
-      "prior_range_pct": 13.9,
-      "mature_5d": true,
-      "return_1d_pct": 4.81,
-      "return_3d_pct": 22.08,
-      "return_5d_pct": 29.96,
-      "return_10d_pct": 51.68,
-      "return_20d_pct": 57.57,
-      "max_5d_pct": 44.07,
-      "min_5d_pct": -3.51,
-      "broker_signal": {
-        "qualified_brokers": 103,
-        "new_build_count": 0,
-        "multi_build": false,
-        "high_accuracy_add": true,
-        "largest_capital_share_pct": 21.3
-      }
-    },
     {
       "stock_id": "6565",
       "name": "物聯",
@@ -1689,7 +1639,7 @@
       "return_3d_pct": -6.43,
       "return_5d_pct": 1.94,
       "return_10d_pct": 2.54,
-      "return_20d_pct": null,
+      "return_20d_pct": -10.04,
       "max_5d_pct": 9.44,
       "min_5d_pct": -7.63,
       "broker_signal": {
@@ -2611,7 +2561,7 @@
       "prior_range_pct": 6.77,
       "mature_5d": false,
       "return_1d_pct": -0.8,
-      "return_3d_pct": null,
+      "return_3d_pct": -0.74,
       "return_5d_pct": null,
       "return_10d_pct": null,
       "return_20d_pct": null,
@@ -2660,7 +2610,7 @@
       "volume_multiple": 6.03,
       "prior_range_pct": 16.49,
       "mature_5d": false,
-      "return_1d_pct": null,
+      "return_1d_pct": -1.98,
       "return_3d_pct": null,
       "return_5d_pct": null,
       "return_10d_pct": null,
@@ -2673,6 +2623,56 @@
         "multi_build": false,
         "high_accuracy_add": false,
         "largest_capital_share_pct": 93.8
+      }
+    },
+    {
+      "stock_id": "6939",
+      "name": "啟弘生技",
+      "event_date": "20261015",
+      "trigger_pct_proxy": 19.62,
+      "event_vwap": 20.38,
+      "event_volume_lots": 344.385,
+      "volume_multiple": 22.18,
+      "prior_range_pct": 7.94,
+      "mature_5d": false,
+      "return_1d_pct": null,
+      "return_3d_pct": null,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "max_5d_pct": null,
+      "min_5d_pct": null,
+      "broker_signal": {
+        "qualified_brokers": 4,
+        "new_build_count": 1,
+        "multi_build": false,
+        "high_accuracy_add": true,
+        "largest_capital_share_pct": 31.6
+      }
+    },
+    {
+      "stock_id": "7797",
+      "name": "Q Burger",
+      "event_date": "20261015",
+      "trigger_pct_proxy": 15.21,
+      "event_vwap": 56.2,
+      "event_volume_lots": 40.395,
+      "volume_multiple": 18.77,
+      "prior_range_pct": 15.29,
+      "mature_5d": false,
+      "return_1d_pct": null,
+      "return_3d_pct": null,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "max_5d_pct": null,
+      "min_5d_pct": null,
+      "broker_signal": {
+        "qualified_brokers": 6,
+        "new_build_count": 0,
+        "multi_build": false,
+        "high_accuracy_add": true,
+        "largest_capital_share_pct": 83.7
       }
     }
   ]
