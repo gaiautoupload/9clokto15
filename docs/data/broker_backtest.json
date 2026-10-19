@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T18:20:49+08:00",
+  "generated_at": "2026-10-19T18:21:14+08:00",
   "point_in_time": true,
   "broker_data_cutoff": "事件日前一完整交易日",
   "definitions": {
@@ -11,32 +11,32 @@
     "all_first_breakouts": {
       "count": 2043,
       "1d": {
-        "samples": 2039,
+        "samples": 2040,
         "mean_pct": 4.7,
         "median_pct": 2.92,
         "win_rate_pct": 68.3
       },
       "3d": {
-        "samples": 2033,
+        "samples": 2034,
         "mean_pct": 3.58,
         "median_pct": 0.42,
         "win_rate_pct": 51.9
       },
       "5d": {
-        "samples": 2029,
-        "mean_pct": 3.4,
-        "median_pct": -0.05,
+        "samples": 2030,
+        "mean_pct": 3.39,
+        "median_pct": -0.06,
         "win_rate_pct": 49.7
       },
       "10d": {
-        "samples": 2011,
-        "mean_pct": 4.03,
-        "median_pct": -0.78,
+        "samples": 2012,
+        "mean_pct": 4.02,
+        "median_pct": -0.79,
         "win_rate_pct": 46.6
       },
       "20d": {
-        "samples": 1974,
-        "mean_pct": 6.65,
+        "samples": 1975,
+        "mean_pct": 6.64,
         "median_pct": -0.69,
         "win_rate_pct": 47.5
       }
@@ -44,27 +44,27 @@
     "new_build": {
       "count": 916,
       "1d": {
-        "samples": 913,
-        "mean_pct": 4.74,
-        "median_pct": 3.13,
-        "win_rate_pct": 68.6
+        "samples": 914,
+        "mean_pct": 4.73,
+        "median_pct": 3.12,
+        "win_rate_pct": 68.5
       },
       "3d": {
-        "samples": 910,
-        "mean_pct": 3.64,
-        "median_pct": 0.36,
-        "win_rate_pct": 51.9
+        "samples": 911,
+        "mean_pct": 3.63,
+        "median_pct": 0.35,
+        "win_rate_pct": 51.8
       },
       "5d": {
-        "samples": 907,
-        "mean_pct": 3.32,
-        "median_pct": 0.18,
+        "samples": 908,
+        "mean_pct": 3.31,
+        "median_pct": 0.17,
         "win_rate_pct": 51.7
       },
       "10d": {
-        "samples": 898,
-        "mean_pct": 3.86,
-        "median_pct": -0.54,
+        "samples": 899,
+        "mean_pct": 3.84,
+        "median_pct": -0.55,
         "win_rate_pct": 48.1
       },
       "20d": {
@@ -122,21 +122,21 @@
         "win_rate_pct": 52.6
       },
       "5d": {
-        "samples": 1191,
-        "mean_pct": 3.84,
+        "samples": 1192,
+        "mean_pct": 3.83,
         "median_pct": 0.0,
-        "win_rate_pct": 50.0
+        "win_rate_pct": 49.9
       },
       "10d": {
-        "samples": 1176,
-        "mean_pct": 4.93,
+        "samples": 1177,
+        "mean_pct": 4.91,
         "median_pct": -0.74,
         "win_rate_pct": 47.0
       },
       "20d": {
-        "samples": 1149,
-        "mean_pct": 7.39,
-        "median_pct": -0.65,
+        "samples": 1150,
+        "mean_pct": 7.37,
+        "median_pct": -0.66,
         "win_rate_pct": 48.1
       }
     },
@@ -1714,7 +1714,7 @@
       "return_3d_pct": 2.05,
       "return_5d_pct": 12.52,
       "return_10d_pct": -1.05,
-      "return_20d_pct": null,
+      "return_20d_pct": -11.27,
       "max_5d_pct": 15.65,
       "min_5d_pct": -8.34,
       "broker_signal": {
@@ -2263,7 +2263,7 @@
       "return_1d_pct": -5.08,
       "return_3d_pct": -7.84,
       "return_5d_pct": -10.53,
-      "return_10d_pct": null,
+      "return_10d_pct": -12.86,
       "return_20d_pct": null,
       "max_5d_pct": -0.57,
       "min_5d_pct": -12.14,
@@ -2534,14 +2534,14 @@
       "event_volume_lots": 2514.42,
       "volume_multiple": 9.49,
       "prior_range_pct": 6.77,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": -0.8,
       "return_3d_pct": -0.74,
-      "return_5d_pct": null,
+      "return_5d_pct": -3.95,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null,
+      "max_5d_pct": 4.08,
+      "min_5d_pct": -6.29,
       "broker_signal": {
         "qualified_brokers": 37,
         "new_build_count": 1,
@@ -2586,7 +2586,7 @@
       "prior_range_pct": 16.49,
       "mature_5d": false,
       "return_1d_pct": -1.98,
-      "return_3d_pct": null,
+      "return_3d_pct": -5.83,
       "return_5d_pct": null,
       "return_10d_pct": null,
       "return_20d_pct": null,
@@ -2660,7 +2660,7 @@
       "volume_multiple": 21.26,
       "prior_range_pct": 7.41,
       "mature_5d": false,
-      "return_1d_pct": null,
+      "return_1d_pct": -7.81,
       "return_3d_pct": null,
       "return_5d_pct": null,
       "return_10d_pct": null,

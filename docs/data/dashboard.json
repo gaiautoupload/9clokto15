@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "market_time": "2026-10-19T15:03:37+08:00",
+  "market_time": "2026-10-19T15:04:48+08:00",
   "broker_data_date": "20261016",
   "trigger_pct": 15.0,
   "new_listing_trigger_pct": 5.0,
@@ -27731,7 +27731,7 @@
       "volume_lots": 199.604,
       "change_pct": null,
       "event_id": "NEW-20261019-7954",
-      "trigger_ts": "2026-10-19T15:03:37+08:00",
+      "trigger_ts": "2026-10-19T15:04:48+08:00",
       "trigger_price": 220.0,
       "max_pct": null,
       "tracking_age": 0,
