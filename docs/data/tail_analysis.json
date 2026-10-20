@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19T18:21:15+08:00",
+  "generated_at": "2026-10-20T18:20:39+08:00",
   "status": "exploratory_hypothesis_not_out_of_sample",
   "definitions": {
     "broad_ignition": "合格留存建倉分點>=40且最大分點資金占比<=30%",
@@ -10,10 +10,10 @@
   },
   "profiles": {
     "all": {
-      "events": 1975,
-      "mean_pct": 6.64,
-      "median_pct": -0.69,
-      "win_rate_pct": 47.5,
+      "events": 1977,
+      "mean_pct": 6.63,
+      "median_pct": -0.76,
+      "win_rate_pct": 47.4,
       "return_80_plus_rate_pct": 2.8,
       "return_200_plus_count": 7
     },
@@ -34,11 +34,11 @@
       "return_200_plus_count": 2
     },
     "concentrated_control": {
-      "events": 536,
-      "mean_pct": 3.27,
-      "median_pct": -2.4,
+      "events": 537,
+      "mean_pct": 3.25,
+      "median_pct": -2.44,
       "win_rate_pct": 41.2,
-      "return_80_plus_rate_pct": 2.1,
+      "return_80_plus_rate_pct": 2.0,
       "return_200_plus_count": 3
     },
     "early_seed": {
@@ -50,8 +50,8 @@
       "return_200_plus_count": 2
     },
     "extreme_radar_union": {
-      "events": 936,
-      "mean_pct": 7.41,
+      "events": 937,
+      "mean_pct": 7.4,
       "median_pct": -0.68,
       "win_rate_pct": 47.5,
       "return_80_plus_rate_pct": 3.1,
