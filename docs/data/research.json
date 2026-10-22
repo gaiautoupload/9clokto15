@@ -1,19 +1,37 @@
 {
   "summary": {
-    "generated_at": "2026-10-21T18:15:31+08:00",
+    "generated_at": "2026-10-22T18:15:31+08:00",
     "market_start": "20200102",
-    "market_end": "20261021",
-    "event_count": 2045,
-    "raw_stock_day_count": 8304,
+    "market_end": "20261022",
+    "event_count": 2046,
+    "raw_stock_day_count": 8307,
     "suppressed_repeat_count": 134,
     "setup_definition": "前10日振幅≤20.0%、突破區間高點、成交量≥前20日中位量2.0倍、前5日無≥10.0%先行漲幅",
     "event_unit": "每檔每日最多一次；首次突破後 20 個交易日內不重複開新事件",
-    "mature_5d_count": 2032,
+    "mature_5d_count": 2034,
     "five_day_positive_rate": 49.6,
     "five_day_extension_rate": 52.2,
     "definition": "歷史事件要求盤整後帶量突破且只取波段第一根；同一檔進入20日追蹤期後不重複計次。日資料未知首次突破時間，不當成可成交績效。"
   },
   "recent_events": [
+    {
+      "stock_id": "6734",
+      "name": "安盛生",
+      "event_date": "20261022",
+      "trigger_pct_proxy": 17.53,
+      "event_vwap": 5.81,
+      "event_volume_lots": 269.501,
+      "volume_multiple": 5.48,
+      "prior_range_pct": 16.77,
+      "mature_5d": false,
+      "return_1d_pct": null,
+      "return_3d_pct": null,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "max_5d_pct": null,
+      "min_5d_pct": null
+    },
     {
       "stock_id": "6639",
       "name": "源大環能",
@@ -24,7 +42,7 @@
       "volume_multiple": 2.02,
       "prior_range_pct": 18.52,
       "mature_5d": false,
-      "return_1d_pct": null,
+      "return_1d_pct": -3.38,
       "return_3d_pct": null,
       "return_5d_pct": null,
       "return_10d_pct": null,
@@ -42,7 +60,7 @@
       "volume_multiple": 3.9,
       "prior_range_pct": 10.76,
       "mature_5d": false,
-      "return_1d_pct": null,
+      "return_1d_pct": 4.43,
       "return_3d_pct": null,
       "return_5d_pct": null,
       "return_10d_pct": null,
@@ -77,14 +95,14 @@
       "event_volume_lots": 344.385,
       "volume_multiple": 22.18,
       "prior_range_pct": 7.94,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": -5.5,
       "return_3d_pct": -8.68,
-      "return_5d_pct": null,
+      "return_5d_pct": -8.15,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null
+      "max_5d_pct": 1.08,
+      "min_5d_pct": -11.92
     },
     {
       "stock_id": "7797",
@@ -95,14 +113,14 @@
       "event_volume_lots": 40.395,
       "volume_multiple": 18.77,
       "prior_range_pct": 15.29,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": -1.94,
       "return_3d_pct": -5.18,
-      "return_5d_pct": null,
+      "return_5d_pct": -8.22,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null
+      "max_5d_pct": 1.78,
+      "min_5d_pct": -9.43
     },
     {
       "stock_id": "7875",
@@ -640,7 +658,7 @@
       "return_3d_pct": 6.59,
       "return_5d_pct": -1.93,
       "return_10d_pct": -11.58,
-      "return_20d_pct": null,
+      "return_20d_pct": -11.33,
       "max_5d_pct": 20.98,
       "min_5d_pct": -7.15
     },
@@ -658,7 +676,7 @@
       "return_3d_pct": -3.76,
       "return_5d_pct": 0.22,
       "return_10d_pct": -10.55,
-      "return_20d_pct": null,
+      "return_20d_pct": -3.08,
       "max_5d_pct": 4.66,
       "min_5d_pct": -10.55
     },
@@ -676,7 +694,7 @@
       "return_3d_pct": 0.0,
       "return_5d_pct": 3.35,
       "return_10d_pct": 3.26,
-      "return_20d_pct": null,
+      "return_20d_pct": -11.79,
       "max_5d_pct": 6.86,
       "min_5d_pct": -2.76
     },
@@ -694,7 +712,7 @@
       "return_3d_pct": 1.09,
       "return_5d_pct": 11.68,
       "return_10d_pct": 18.37,
-      "return_20d_pct": null,
+      "return_20d_pct": 10.69,
       "max_5d_pct": 15.95,
       "min_5d_pct": -0.66
     },
@@ -1795,24 +1813,6 @@
       "return_20d_pct": -9.26,
       "max_5d_pct": -0.06,
       "min_5d_pct": -9.58
-    },
-    {
-      "stock_id": "7858",
-      "name": "芝普",
-      "event_date": "20260814",
-      "trigger_pct_proxy": 18.9,
-      "event_vwap": 154.47,
-      "event_volume_lots": 198.101,
-      "volume_multiple": 3.31,
-      "prior_range_pct": 18.0,
-      "mature_5d": true,
-      "return_1d_pct": -8.6,
-      "return_3d_pct": -14.69,
-      "return_5d_pct": -10.25,
-      "return_10d_pct": -11.36,
-      "return_20d_pct": -6.36,
-      "max_5d_pct": -0.3,
-      "min_5d_pct": -15.84
     }
   ]
 }
