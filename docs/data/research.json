@@ -1,19 +1,37 @@
 {
   "summary": {
-    "generated_at": "2026-10-26T18:15:32+08:00",
+    "generated_at": "2026-10-27T18:15:31+08:00",
     "market_start": "20200102",
-    "market_end": "20261022",
-    "event_count": 2046,
-    "raw_stock_day_count": 8307,
+    "market_end": "20261027",
+    "event_count": 2047,
+    "raw_stock_day_count": 8309,
     "suppressed_repeat_count": 134,
     "setup_definition": "前10日振幅≤20.0%、突破區間高點、成交量≥前20日中位量2.0倍、前5日無≥10.0%先行漲幅",
     "event_unit": "每檔每日最多一次；首次突破後 20 個交易日內不重複開新事件",
-    "mature_5d_count": 2034,
-    "five_day_positive_rate": 49.6,
-    "five_day_extension_rate": 52.2,
+    "mature_5d_count": 2035,
+    "five_day_positive_rate": 49.5,
+    "five_day_extension_rate": 52.1,
     "definition": "歷史事件要求盤整後帶量突破且只取波段第一根；同一檔進入20日追蹤期後不重複計次。日資料未知首次突破時間，不當成可成交績效。"
   },
   "recent_events": [
+    {
+      "stock_id": "4589",
+      "name": "碩陽電機",
+      "event_date": "20261027",
+      "trigger_pct_proxy": 20.79,
+      "event_vwap": 33.71,
+      "event_volume_lots": 280.804,
+      "volume_multiple": 17.89,
+      "prior_range_pct": 7.24,
+      "mature_5d": false,
+      "return_1d_pct": null,
+      "return_3d_pct": null,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "max_5d_pct": null,
+      "min_5d_pct": null
+    },
     {
       "stock_id": "6734",
       "name": "安盛生",
@@ -24,7 +42,7 @@
       "volume_multiple": 5.48,
       "prior_range_pct": 16.77,
       "mature_5d": false,
-      "return_1d_pct": null,
+      "return_1d_pct": -3.79,
       "return_3d_pct": null,
       "return_5d_pct": null,
       "return_10d_pct": null,
@@ -77,14 +95,14 @@
       "event_volume_lots": 246.199,
       "volume_multiple": 21.26,
       "prior_range_pct": 7.41,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": -7.81,
       "return_3d_pct": -10.56,
-      "return_5d_pct": null,
+      "return_5d_pct": -14.4,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null
+      "max_5d_pct": -0.83,
+      "min_5d_pct": -14.91
     },
     {
       "stock_id": "6939",
@@ -189,7 +207,7 @@
       "return_1d_pct": 25.23,
       "return_3d_pct": 9.17,
       "return_5d_pct": 7.3,
-      "return_10d_pct": null,
+      "return_10d_pct": 6.82,
       "return_20d_pct": null,
       "max_5d_pct": 35.18,
       "min_5d_pct": 6.22
@@ -207,7 +225,7 @@
       "return_1d_pct": -1.66,
       "return_3d_pct": -1.75,
       "return_5d_pct": -2.62,
-      "return_10d_pct": null,
+      "return_10d_pct": -7.07,
       "return_20d_pct": null,
       "max_5d_pct": 4.8,
       "min_5d_pct": -5.68
@@ -225,7 +243,7 @@
       "return_1d_pct": 8.91,
       "return_3d_pct": 8.09,
       "return_5d_pct": -5.2,
-      "return_10d_pct": null,
+      "return_10d_pct": -15.73,
       "return_20d_pct": null,
       "max_5d_pct": 21.1,
       "min_5d_pct": -8.51
@@ -622,7 +640,7 @@
       "return_3d_pct": -3.58,
       "return_5d_pct": -1.99,
       "return_10d_pct": -5.55,
-      "return_20d_pct": null,
+      "return_20d_pct": -8.63,
       "max_5d_pct": 3.51,
       "min_5d_pct": -5.33
     },
@@ -640,7 +658,7 @@
       "return_3d_pct": 4.33,
       "return_5d_pct": 5.84,
       "return_10d_pct": 13.08,
-      "return_20d_pct": null,
+      "return_20d_pct": -7.45,
       "max_5d_pct": 7.64,
       "min_5d_pct": 0.6
     },
@@ -1795,24 +1813,6 @@
       "return_20d_pct": -5.64,
       "max_5d_pct": 10.49,
       "min_5d_pct": -6.32
-    },
-    {
-      "stock_id": "7848",
-      "name": "騏億鑫",
-      "event_date": "20260814",
-      "trigger_pct_proxy": 18.13,
-      "event_vwap": 378.24,
-      "event_volume_lots": 159.339,
-      "volume_multiple": 9.18,
-      "prior_range_pct": 11.6,
-      "mature_5d": true,
-      "return_1d_pct": -2.12,
-      "return_3d_pct": -8.3,
-      "return_5d_pct": -7.72,
-      "return_10d_pct": -8.73,
-      "return_20d_pct": -9.26,
-      "max_5d_pct": -0.06,
-      "min_5d_pct": -9.58
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T18:21:32+08:00",
+  "generated_at": "2026-10-27T18:21:45+08:00",
   "point_in_time": true,
   "broker_data_cutoff": "事件日前一完整交易日",
   "definitions": {
@@ -9,12 +9,12 @@
   },
   "groups": {
     "all_first_breakouts": {
-      "count": 2046,
+      "count": 2047,
       "1d": {
-        "samples": 2042,
+        "samples": 2043,
         "mean_pct": 4.69,
-        "median_pct": 2.92,
-        "win_rate_pct": 68.3
+        "median_pct": 2.91,
+        "win_rate_pct": 68.2
       },
       "3d": {
         "samples": 2037,
@@ -23,26 +23,26 @@
         "win_rate_pct": 51.8
       },
       "5d": {
-        "samples": 2034,
-        "mean_pct": 3.37,
-        "median_pct": -0.08,
-        "win_rate_pct": 49.6
+        "samples": 2035,
+        "mean_pct": 3.36,
+        "median_pct": -0.11,
+        "win_rate_pct": 49.5
       },
       "10d": {
-        "samples": 2019,
-        "mean_pct": 3.97,
-        "median_pct": -0.8,
-        "win_rate_pct": 46.5
+        "samples": 2022,
+        "mean_pct": 3.96,
+        "median_pct": -0.81,
+        "win_rate_pct": 46.4
       },
       "20d": {
-        "samples": 1981,
-        "mean_pct": 6.61,
-        "median_pct": -0.78,
+        "samples": 1983,
+        "mean_pct": 6.6,
+        "median_pct": -0.81,
         "win_rate_pct": 47.4
       }
     },
     "new_build": {
-      "count": 917,
+      "count": 918,
       "1d": {
         "samples": 915,
         "mean_pct": 4.73,
@@ -56,26 +56,26 @@
         "win_rate_pct": 51.7
       },
       "5d": {
-        "samples": 911,
-        "mean_pct": 3.28,
-        "median_pct": 0.17,
-        "win_rate_pct": 51.5
+        "samples": 912,
+        "mean_pct": 3.26,
+        "median_pct": 0.16,
+        "win_rate_pct": 51.4
       },
       "10d": {
-        "samples": 901,
-        "mean_pct": 3.8,
+        "samples": 903,
+        "mean_pct": 3.79,
         "median_pct": -0.59,
-        "win_rate_pct": 47.9
+        "win_rate_pct": 48.0
       },
       "20d": {
-        "samples": 885,
-        "mean_pct": 6.18,
+        "samples": 887,
+        "mean_pct": 6.15,
         "median_pct": 0.11,
-        "win_rate_pct": 50.3
+        "win_rate_pct": 50.2
       }
     },
     "multi_build": {
-      "count": 278,
+      "count": 279,
       "1d": {
         "samples": 278,
         "mean_pct": 4.89,
@@ -101,18 +101,18 @@
         "win_rate_pct": 47.3
       },
       "20d": {
-        "samples": 271,
-        "mean_pct": 6.37,
-        "median_pct": 0.0,
-        "win_rate_pct": 49.8
+        "samples": 272,
+        "mean_pct": 6.32,
+        "median_pct": -0.1,
+        "win_rate_pct": 49.6
       }
     },
     "high_accuracy_add": {
-      "count": 1206,
+      "count": 1207,
       "1d": {
-        "samples": 1202,
+        "samples": 1203,
         "mean_pct": 4.69,
-        "median_pct": 3.17,
+        "median_pct": 3.16,
         "win_rate_pct": 69.1
       },
       "3d": {
@@ -128,20 +128,20 @@
         "win_rate_pct": 49.8
       },
       "10d": {
-        "samples": 1183,
-        "mean_pct": 4.84,
+        "samples": 1186,
+        "mean_pct": 4.81,
         "median_pct": -0.8,
         "win_rate_pct": 46.7
       },
       "20d": {
-        "samples": 1153,
-        "mean_pct": 7.35,
-        "median_pct": -0.66,
+        "samples": 1154,
+        "mean_pct": 7.34,
+        "median_pct": -0.67,
         "win_rate_pct": 48.0
       }
     },
     "strict_combination": {
-      "count": 178,
+      "count": 179,
       "1d": {
         "samples": 178,
         "mean_pct": 5.14,
@@ -167,39 +167,14 @@
         "win_rate_pct": 47.4
       },
       "20d": {
-        "samples": 172,
-        "mean_pct": 7.37,
-        "median_pct": -0.24,
-        "win_rate_pct": 48.8
+        "samples": 173,
+        "mean_pct": 7.28,
+        "median_pct": -0.29,
+        "win_rate_pct": 48.6
       }
     }
   },
   "events": [
-    {
-      "stock_id": "7719",
-      "name": "碳基",
-      "event_date": "20260814",
-      "trigger_pct_proxy": 19.17,
-      "event_vwap": 51.77,
-      "event_volume_lots": 1326.019,
-      "volume_multiple": 4.03,
-      "prior_range_pct": 13.72,
-      "mature_5d": true,
-      "return_1d_pct": 1.58,
-      "return_3d_pct": -4.15,
-      "return_5d_pct": -4.11,
-      "return_10d_pct": 3.03,
-      "return_20d_pct": -5.64,
-      "max_5d_pct": 10.49,
-      "min_5d_pct": -6.32,
-      "broker_signal": {
-        "qualified_brokers": 40,
-        "new_build_count": 0,
-        "multi_build": false,
-        "high_accuracy_add": true,
-        "largest_capital_share_pct": 20.2
-      }
-    },
     {
       "stock_id": "7848",
       "name": "騏億鑫",
@@ -1814,7 +1789,7 @@
       "return_3d_pct": -3.58,
       "return_5d_pct": -1.99,
       "return_10d_pct": -5.55,
-      "return_20d_pct": null,
+      "return_20d_pct": -8.63,
       "max_5d_pct": 3.51,
       "min_5d_pct": -5.33,
       "broker_signal": {
@@ -1839,7 +1814,7 @@
       "return_3d_pct": 4.33,
       "return_5d_pct": 5.84,
       "return_10d_pct": 13.08,
-      "return_20d_pct": null,
+      "return_20d_pct": -7.45,
       "max_5d_pct": 7.64,
       "min_5d_pct": 0.6,
       "broker_signal": {
@@ -2388,7 +2363,7 @@
       "return_1d_pct": 25.23,
       "return_3d_pct": 9.17,
       "return_5d_pct": 7.3,
-      "return_10d_pct": null,
+      "return_10d_pct": 6.82,
       "return_20d_pct": null,
       "max_5d_pct": 35.18,
       "min_5d_pct": 6.22,
@@ -2413,7 +2388,7 @@
       "return_1d_pct": -1.66,
       "return_3d_pct": -1.75,
       "return_5d_pct": -2.62,
-      "return_10d_pct": null,
+      "return_10d_pct": -7.07,
       "return_20d_pct": null,
       "max_5d_pct": 4.8,
       "min_5d_pct": -5.68,
@@ -2438,7 +2413,7 @@
       "return_1d_pct": 8.91,
       "return_3d_pct": 8.09,
       "return_5d_pct": -5.2,
-      "return_10d_pct": null,
+      "return_10d_pct": -15.73,
       "return_20d_pct": null,
       "max_5d_pct": 21.1,
       "min_5d_pct": -8.51,
@@ -2584,14 +2559,14 @@
       "event_volume_lots": 246.199,
       "volume_multiple": 21.26,
       "prior_range_pct": 7.41,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": -7.81,
       "return_3d_pct": -10.56,
-      "return_5d_pct": null,
+      "return_5d_pct": -14.4,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null,
+      "max_5d_pct": -0.83,
+      "min_5d_pct": -14.91,
       "broker_signal": {
         "qualified_brokers": 2,
         "new_build_count": 1,
@@ -2660,7 +2635,7 @@
       "volume_multiple": 5.48,
       "prior_range_pct": 16.77,
       "mature_5d": false,
-      "return_1d_pct": null,
+      "return_1d_pct": -3.79,
       "return_3d_pct": null,
       "return_5d_pct": null,
       "return_10d_pct": null,
@@ -2673,6 +2648,31 @@
         "multi_build": false,
         "high_accuracy_add": true,
         "largest_capital_share_pct": 26.8
+      }
+    },
+    {
+      "stock_id": "4589",
+      "name": "碩陽電機",
+      "event_date": "20261027",
+      "trigger_pct_proxy": 20.79,
+      "event_vwap": 33.71,
+      "event_volume_lots": 280.804,
+      "volume_multiple": 17.89,
+      "prior_range_pct": 7.24,
+      "mature_5d": false,
+      "return_1d_pct": null,
+      "return_3d_pct": null,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "max_5d_pct": null,
+      "min_5d_pct": null,
+      "broker_signal": {
+        "qualified_brokers": 10,
+        "new_build_count": 2,
+        "multi_build": true,
+        "high_accuracy_add": true,
+        "largest_capital_share_pct": 40.0
       }
     }
   ]
