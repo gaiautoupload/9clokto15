@@ -1,14 +1,14 @@
 {
   "summary": {
-    "generated_at": "2026-10-30T05:46:59+08:00",
+    "generated_at": "2026-10-30T18:15:31+08:00",
     "market_start": "20200102",
-    "market_end": "20261029",
+    "market_end": "20261030",
     "event_count": 2048,
-    "raw_stock_day_count": 8314,
+    "raw_stock_day_count": 8315,
     "suppressed_repeat_count": 134,
     "setup_definition": "前10日振幅≤20.0%、突破區間高點、成交量≥前20日中位量2.0倍、前5日無≥10.0%先行漲幅",
     "event_unit": "每檔每日最多一次；首次突破後 20 個交易日內不重複開新事件",
-    "mature_5d_count": 2035,
+    "mature_5d_count": 2037,
     "five_day_positive_rate": 49.5,
     "five_day_extension_rate": 52.1,
     "definition": "歷史事件要求盤整後帶量突破且只取波段第一根；同一檔進入20日追蹤期後不重複計次。日資料未知首次突破時間，不當成可成交績效。"
@@ -43,7 +43,7 @@
       "prior_range_pct": 7.24,
       "mature_5d": false,
       "return_1d_pct": 12.46,
-      "return_3d_pct": null,
+      "return_3d_pct": 21.54,
       "return_5d_pct": null,
       "return_10d_pct": null,
       "return_20d_pct": null,
@@ -77,14 +77,14 @@
       "event_volume_lots": 417.796,
       "volume_multiple": 2.02,
       "prior_range_pct": 18.52,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": -3.38,
       "return_3d_pct": -15.7,
-      "return_5d_pct": null,
+      "return_5d_pct": -21.26,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null
+      "max_5d_pct": 6.52,
+      "min_5d_pct": -23.19
     },
     {
       "stock_id": "6483",
@@ -95,14 +95,14 @@
       "event_volume_lots": 504.171,
       "volume_multiple": 3.9,
       "prior_range_pct": 10.76,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": 4.43,
       "return_3d_pct": 5.55,
-      "return_5d_pct": null,
+      "return_5d_pct": 9.0,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null
+      "max_5d_pct": 15.9,
+      "min_5d_pct": -0.6
     },
     {
       "stock_id": "6027",
@@ -171,7 +171,7 @@
       "return_1d_pct": -1.98,
       "return_3d_pct": -5.83,
       "return_5d_pct": -8.45,
-      "return_10d_pct": null,
+      "return_10d_pct": -11.5,
       "return_20d_pct": null,
       "max_5d_pct": 3.81,
       "min_5d_pct": -8.45
@@ -460,7 +460,7 @@
       "return_3d_pct": -16.31,
       "return_5d_pct": -9.75,
       "return_10d_pct": -10.85,
-      "return_20d_pct": null,
+      "return_20d_pct": -19.51,
       "max_5d_pct": 4.88,
       "min_5d_pct": -25.01
     },
@@ -478,7 +478,7 @@
       "return_3d_pct": -6.56,
       "return_5d_pct": -5.84,
       "return_10d_pct": -13.38,
-      "return_20d_pct": null,
+      "return_20d_pct": -19.4,
       "max_5d_pct": 2.32,
       "min_5d_pct": -10.17
     },
@@ -514,7 +514,7 @@
       "return_3d_pct": 0.16,
       "return_5d_pct": -6.13,
       "return_10d_pct": -17.2,
-      "return_20d_pct": null,
+      "return_20d_pct": -29.15,
       "max_5d_pct": 8.88,
       "min_5d_pct": -7.12
     },
@@ -532,7 +532,7 @@
       "return_3d_pct": -5.39,
       "return_5d_pct": -4.41,
       "return_10d_pct": -10.96,
-      "return_20d_pct": null,
+      "return_20d_pct": -20.92,
       "max_5d_pct": 5.31,
       "min_5d_pct": -7.65
     },
@@ -910,7 +910,7 @@
       "return_3d_pct": 8.05,
       "return_5d_pct": 21.46,
       "return_10d_pct": 25.22,
-      "return_20d_pct": null,
+      "return_20d_pct": 15.4,
       "max_5d_pct": 25.51,
       "min_5d_pct": 2.29
     },
