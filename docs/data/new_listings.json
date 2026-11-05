@@ -6,9 +6,9 @@
     "twenty_day_median_pct": -1.47,
     "twenty_day_win_rate_pct": 45.1,
     "twenty_day_80_plus_count": 6,
-    "completed_emerging_count": 181,
+    "completed_emerging_count": 183,
     "to_last_emerging_200_plus_count": 21,
-    "max_before_transfer_200_plus_count": 42
+    "max_before_transfer_200_plus_count": 41
   },
   "recent_events": [
     {
@@ -310,10 +310,10 @@
       "return_5d_pct": 13.11,
       "return_10d_pct": -3.13,
       "return_20d_pct": -11.49,
-      "completed_emerging": true,
-      "last_emerging_date": "20261103",
-      "return_to_last_emerging_pct": -30.97,
-      "max_to_last_emerging_pct": 24.21
+      "completed_emerging": false,
+      "last_emerging_date": null,
+      "return_to_last_emerging_pct": null,
+      "max_to_last_emerging_pct": null
     },
     {
       "stock_id": "7899",
@@ -454,10 +454,10 @@
       "return_5d_pct": -9.37,
       "return_10d_pct": -10.7,
       "return_20d_pct": -17.52,
-      "completed_emerging": true,
-      "last_emerging_date": "20261103",
-      "return_to_last_emerging_pct": -26.04,
-      "max_to_last_emerging_pct": 12.63
+      "completed_emerging": false,
+      "last_emerging_date": null,
+      "return_to_last_emerging_pct": null,
+      "max_to_last_emerging_pct": null
     },
     {
       "stock_id": "7892",
@@ -870,10 +870,10 @@
       "return_5d_pct": 8.99,
       "return_10d_pct": 7.28,
       "return_20d_pct": 9.04,
-      "completed_emerging": false,
-      "last_emerging_date": null,
-      "return_to_last_emerging_pct": null,
-      "max_to_last_emerging_pct": null
+      "completed_emerging": true,
+      "last_emerging_date": "20261104",
+      "return_to_last_emerging_pct": -25.44,
+      "max_to_last_emerging_pct": 22.66
     },
     {
       "stock_id": "7834",
@@ -1382,10 +1382,10 @@
       "return_5d_pct": 2.7,
       "return_10d_pct": -2.2,
       "return_20d_pct": -15.25,
-      "completed_emerging": false,
-      "last_emerging_date": null,
-      "return_to_last_emerging_pct": null,
-      "max_to_last_emerging_pct": null
+      "completed_emerging": true,
+      "last_emerging_date": "20261104",
+      "return_to_last_emerging_pct": -76.38,
+      "max_to_last_emerging_pct": 14.95
     },
     {
       "stock_id": "7762",
@@ -1574,10 +1574,10 @@
       "return_5d_pct": 2.78,
       "return_10d_pct": 5.19,
       "return_20d_pct": 5.04,
-      "completed_emerging": false,
-      "last_emerging_date": null,
-      "return_to_last_emerging_pct": null,
-      "max_to_last_emerging_pct": null
+      "completed_emerging": true,
+      "last_emerging_date": "20261104",
+      "return_to_last_emerging_pct": -73.15,
+      "max_to_last_emerging_pct": 89.57
     },
     {
       "stock_id": "7731",

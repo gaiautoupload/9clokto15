@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-04T18:21:00+08:00",
+  "generated_at": "2026-11-05T18:21:03+08:00",
   "status": "exploratory_hypothesis_not_out_of_sample",
   "definitions": {
     "broad_ignition": "合格留存建倉分點>=40且最大分點資金占比<=30%",
@@ -10,32 +10,32 @@
   },
   "profiles": {
     "all": {
-      "events": 1997,
-      "mean_pct": 6.46,
-      "median_pct": -0.86,
-      "win_rate_pct": 47.2,
-      "return_80_plus_rate_pct": 2.8,
+      "events": 2002,
+      "mean_pct": 6.4,
+      "median_pct": -0.88,
+      "win_rate_pct": 47.1,
+      "return_80_plus_rate_pct": 2.7,
       "return_200_plus_count": 7
     },
     "broad_ignition": {
-      "events": 183,
-      "mean_pct": 17.58,
-      "median_pct": 3.26,
-      "win_rate_pct": 55.2,
-      "return_80_plus_rate_pct": 6.6,
+      "events": 184,
+      "mean_pct": 17.46,
+      "median_pct": 3.21,
+      "win_rate_pct": 54.9,
+      "return_80_plus_rate_pct": 6.5,
       "return_200_plus_count": 3
     },
     "broad_ignition_with_volume": {
-      "events": 107,
-      "mean_pct": 20.29,
-      "median_pct": 4.08,
-      "win_rate_pct": 56.1,
-      "return_80_plus_rate_pct": 7.5,
+      "events": 108,
+      "mean_pct": 20.07,
+      "median_pct": 4.03,
+      "win_rate_pct": 55.6,
+      "return_80_plus_rate_pct": 7.4,
       "return_200_plus_count": 2
     },
     "concentrated_control": {
-      "events": 541,
-      "mean_pct": 3.18,
+      "events": 542,
+      "mean_pct": 3.15,
       "median_pct": -2.46,
       "win_rate_pct": 41.0,
       "return_80_plus_rate_pct": 2.0,
@@ -50,10 +50,10 @@
       "return_200_plus_count": 2
     },
     "extreme_radar_union": {
-      "events": 948,
-      "mean_pct": 7.19,
-      "median_pct": -0.8,
-      "win_rate_pct": 47.3,
+      "events": 950,
+      "mean_pct": 7.15,
+      "median_pct": -0.85,
+      "win_rate_pct": 47.2,
       "return_80_plus_rate_pct": 3.1,
       "return_200_plus_count": 7
     }
