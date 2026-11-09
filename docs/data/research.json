@@ -1,14 +1,14 @@
 {
   "summary": {
-    "generated_at": "2026-11-06T18:15:27+08:00",
+    "generated_at": "2026-11-09T18:15:29+08:00",
     "market_start": "20200102",
-    "market_end": "20261106",
+    "market_end": "20261109",
     "event_count": 2051,
-    "raw_stock_day_count": 8337,
+    "raw_stock_day_count": 8372,
     "suppressed_repeat_count": 134,
     "setup_definition": "前10日振幅≤20.0%、突破區間高點、成交量≥前20日中位量2.0倍、前5日無≥10.0%先行漲幅",
     "event_unit": "每檔每日最多一次；首次突破後 20 個交易日內不重複開新事件",
-    "mature_5d_count": 2040,
+    "mature_5d_count": 2042,
     "five_day_positive_rate": 49.5,
     "five_day_extension_rate": 52.1,
     "definition": "歷史事件要求盤整後帶量突破且只取波段第一根；同一檔進入20日追蹤期後不重複計次。日資料未知首次突破時間，不當成可成交績效。"
@@ -25,7 +25,7 @@
       "prior_range_pct": 15.07,
       "mature_5d": false,
       "return_1d_pct": 8.44,
-      "return_3d_pct": null,
+      "return_3d_pct": -0.5,
       "return_5d_pct": null,
       "return_10d_pct": null,
       "return_20d_pct": null,
@@ -41,14 +41,14 @@
       "event_volume_lots": 559.881,
       "volume_multiple": 6.86,
       "prior_range_pct": 13.07,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": -2.42,
       "return_3d_pct": -3.87,
-      "return_5d_pct": null,
+      "return_5d_pct": -6.74,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null
+      "max_5d_pct": 4.58,
+      "min_5d_pct": -10.17
     },
     {
       "stock_id": "7950",
@@ -59,14 +59,14 @@
       "event_volume_lots": 102.025,
       "volume_multiple": 2.21,
       "prior_range_pct": 14.41,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": 4.72,
       "return_3d_pct": -4.06,
-      "return_5d_pct": null,
+      "return_5d_pct": -5.34,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null
+      "max_5d_pct": 9.31,
+      "min_5d_pct": -8.87
     },
     {
       "stock_id": "6648",
@@ -117,7 +117,7 @@
       "return_1d_pct": -3.79,
       "return_3d_pct": -8.26,
       "return_5d_pct": -10.33,
-      "return_10d_pct": null,
+      "return_10d_pct": -10.5,
       "return_20d_pct": null,
       "max_5d_pct": 1.38,
       "min_5d_pct": -17.73
