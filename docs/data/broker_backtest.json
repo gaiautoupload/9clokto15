@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-09T18:20:57+08:00",
+  "generated_at": "2026-11-10T18:21:39+08:00",
   "point_in_time": true,
   "broker_data_cutoff": "事件日前一完整交易日",
   "definitions": {
@@ -9,7 +9,7 @@
   },
   "groups": {
     "all_first_breakouts": {
-      "count": 2051,
+      "count": 2052,
       "1d": {
         "samples": 2048,
         "mean_pct": 4.69,
@@ -29,20 +29,20 @@
         "win_rate_pct": 49.5
       },
       "10d": {
-        "samples": 2031,
-        "mean_pct": 3.89,
+        "samples": 2032,
+        "mean_pct": 3.9,
         "median_pct": -0.87,
         "win_rate_pct": 46.3
       },
       "20d": {
-        "samples": 2004,
-        "mean_pct": 6.36,
+        "samples": 2007,
+        "mean_pct": 6.33,
         "median_pct": -0.9,
         "win_rate_pct": 47.0
       }
     },
     "new_build": {
-      "count": 921,
+      "count": 922,
       "1d": {
         "samples": 919,
         "mean_pct": 4.73,
@@ -62,14 +62,14 @@
         "win_rate_pct": 51.4
       },
       "10d": {
-        "samples": 909,
-        "mean_pct": 3.71,
+        "samples": 910,
+        "mean_pct": 3.74,
         "median_pct": -0.6,
-        "win_rate_pct": 47.7
+        "win_rate_pct": 47.8
       },
       "20d": {
-        "samples": 894,
-        "mean_pct": 6.03,
+        "samples": 896,
+        "mean_pct": 6.01,
         "median_pct": 0.07,
         "win_rate_pct": 50.1
       }
@@ -95,10 +95,10 @@
         "win_rate_pct": 53.4
       },
       "10d": {
-        "samples": 275,
-        "mean_pct": 4.98,
-        "median_pct": -0.74,
-        "win_rate_pct": 47.3
+        "samples": 276,
+        "mean_pct": 5.05,
+        "median_pct": -0.67,
+        "win_rate_pct": 47.5
       },
       "20d": {
         "samples": 272,
@@ -108,7 +108,7 @@
       }
     },
     "high_accuracy_add": {
-      "count": 1208,
+      "count": 1209,
       "1d": {
         "samples": 1205,
         "mean_pct": 4.69,
@@ -128,15 +128,15 @@
         "win_rate_pct": 49.8
       },
       "10d": {
-        "samples": 1193,
-        "mean_pct": 4.73,
-        "median_pct": -0.87,
-        "win_rate_pct": 46.5
+        "samples": 1194,
+        "mean_pct": 4.74,
+        "median_pct": -0.84,
+        "win_rate_pct": 46.6
       },
       "20d": {
-        "samples": 1171,
-        "mean_pct": 6.94,
-        "median_pct": -0.84,
+        "samples": 1174,
+        "mean_pct": 6.89,
+        "median_pct": -0.85,
         "win_rate_pct": 47.4
       }
     },
@@ -161,10 +161,10 @@
         "win_rate_pct": 54.5
       },
       "10d": {
-        "samples": 175,
-        "mean_pct": 5.91,
-        "median_pct": -0.59,
-        "win_rate_pct": 47.4
+        "samples": 176,
+        "mean_pct": 6.02,
+        "median_pct": -0.57,
+        "win_rate_pct": 47.7
       },
       "20d": {
         "samples": 173,
@@ -175,31 +175,6 @@
     }
   },
   "events": [
-    {
-      "stock_id": "7762",
-      "name": "吉晟生",
-      "event_date": "20260817",
-      "trigger_pct_proxy": 19.28,
-      "event_vwap": 57.62,
-      "event_volume_lots": 460.682,
-      "volume_multiple": 17.78,
-      "prior_range_pct": 13.73,
-      "mature_5d": true,
-      "return_1d_pct": 1.68,
-      "return_3d_pct": -1.72,
-      "return_5d_pct": -0.42,
-      "return_10d_pct": 2.08,
-      "return_20d_pct": -4.72,
-      "max_5d_pct": 5.52,
-      "min_5d_pct": -3.51,
-      "broker_signal": {
-        "qualified_brokers": 4,
-        "new_build_count": 0,
-        "multi_build": false,
-        "high_accuracy_add": false,
-        "largest_capital_share_pct": 73.6
-      }
-    },
     {
       "stock_id": "8119",
       "name": "公信",
@@ -2264,7 +2239,7 @@
       "return_3d_pct": 9.17,
       "return_5d_pct": 7.3,
       "return_10d_pct": 6.82,
-      "return_20d_pct": null,
+      "return_20d_pct": 13.28,
       "max_5d_pct": 35.18,
       "min_5d_pct": 6.22,
       "broker_signal": {
@@ -2289,7 +2264,7 @@
       "return_3d_pct": -1.75,
       "return_5d_pct": -2.62,
       "return_10d_pct": -7.07,
-      "return_20d_pct": null,
+      "return_20d_pct": -16.51,
       "max_5d_pct": 4.8,
       "min_5d_pct": -5.68,
       "broker_signal": {
@@ -2314,7 +2289,7 @@
       "return_3d_pct": 8.09,
       "return_5d_pct": -5.2,
       "return_10d_pct": -15.73,
-      "return_20d_pct": null,
+      "return_20d_pct": -30.28,
       "max_5d_pct": 21.1,
       "min_5d_pct": -8.51,
       "broker_signal": {
@@ -2563,7 +2538,7 @@
       "return_1d_pct": 12.46,
       "return_3d_pct": 21.54,
       "return_5d_pct": 30.53,
-      "return_10d_pct": null,
+      "return_10d_pct": 25.93,
       "return_20d_pct": null,
       "max_5d_pct": 47.88,
       "min_5d_pct": 0.56,
@@ -2673,6 +2648,31 @@
         "multi_build": false,
         "high_accuracy_add": false,
         "largest_capital_share_pct": 59.0
+      }
+    },
+    {
+      "stock_id": "7731",
+      "name": "火星生技*",
+      "event_date": "20261110",
+      "trigger_pct_proxy": 15.16,
+      "event_vwap": 4.37,
+      "event_volume_lots": 4189.955,
+      "volume_multiple": 5.04,
+      "prior_range_pct": 14.14,
+      "mature_5d": false,
+      "return_1d_pct": null,
+      "return_3d_pct": null,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "max_5d_pct": null,
+      "min_5d_pct": null,
+      "broker_signal": {
+        "qualified_brokers": 50,
+        "new_build_count": 1,
+        "multi_build": false,
+        "high_accuracy_add": true,
+        "largest_capital_share_pct": 42.8
       }
     }
   ]
