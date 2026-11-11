@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T18:21:39+08:00",
+  "generated_at": "2026-11-11T18:21:29+08:00",
   "point_in_time": true,
   "broker_data_cutoff": "事件日前一完整交易日",
   "definitions": {
@@ -9,12 +9,12 @@
   },
   "groups": {
     "all_first_breakouts": {
-      "count": 2052,
+      "count": 2055,
       "1d": {
-        "samples": 2048,
+        "samples": 2049,
         "mean_pct": 4.69,
-        "median_pct": 2.92,
-        "win_rate_pct": 68.3
+        "median_pct": 2.91,
+        "win_rate_pct": 68.2
       },
       "3d": {
         "samples": 2045,
@@ -23,31 +23,31 @@
         "win_rate_pct": 51.8
       },
       "5d": {
-        "samples": 2042,
+        "samples": 2043,
         "mean_pct": 3.35,
         "median_pct": -0.12,
         "win_rate_pct": 49.5
       },
       "10d": {
-        "samples": 2032,
+        "samples": 2033,
         "mean_pct": 3.9,
         "median_pct": -0.87,
         "win_rate_pct": 46.3
       },
       "20d": {
-        "samples": 2007,
+        "samples": 2008,
         "mean_pct": 6.33,
-        "median_pct": -0.9,
+        "median_pct": -0.92,
         "win_rate_pct": 47.0
       }
     },
     "new_build": {
-      "count": 922,
+      "count": 923,
       "1d": {
-        "samples": 919,
-        "mean_pct": 4.73,
-        "median_pct": 3.13,
-        "win_rate_pct": 68.6
+        "samples": 920,
+        "mean_pct": 4.72,
+        "median_pct": 3.12,
+        "win_rate_pct": 68.5
       },
       "3d": {
         "samples": 918,
@@ -56,21 +56,21 @@
         "win_rate_pct": 51.7
       },
       "5d": {
-        "samples": 916,
+        "samples": 917,
         "mean_pct": 3.28,
-        "median_pct": 0.16,
-        "win_rate_pct": 51.4
+        "median_pct": 0.17,
+        "win_rate_pct": 51.5
       },
       "10d": {
-        "samples": 910,
-        "mean_pct": 3.74,
+        "samples": 911,
+        "mean_pct": 3.72,
         "median_pct": -0.6,
-        "win_rate_pct": 47.8
+        "win_rate_pct": 47.7
       },
       "20d": {
-        "samples": 896,
-        "mean_pct": 6.01,
-        "median_pct": 0.07,
+        "samples": 897,
+        "mean_pct": 5.99,
+        "median_pct": 0.03,
         "win_rate_pct": 50.1
       }
     },
@@ -108,9 +108,9 @@
       }
     },
     "high_accuracy_add": {
-      "count": 1209,
+      "count": 1210,
       "1d": {
-        "samples": 1205,
+        "samples": 1206,
         "mean_pct": 4.69,
         "median_pct": 3.16,
         "win_rate_pct": 69.1
@@ -128,16 +128,16 @@
         "win_rate_pct": 49.8
       },
       "10d": {
-        "samples": 1194,
+        "samples": 1195,
         "mean_pct": 4.74,
-        "median_pct": -0.84,
-        "win_rate_pct": 46.6
+        "median_pct": -0.87,
+        "win_rate_pct": 46.5
       },
       "20d": {
-        "samples": 1174,
-        "mean_pct": 6.89,
-        "median_pct": -0.85,
-        "win_rate_pct": 47.4
+        "samples": 1175,
+        "mean_pct": 6.87,
+        "median_pct": -0.86,
+        "win_rate_pct": 47.3
       }
     },
     "strict_combination": {
@@ -175,81 +175,6 @@
     }
   },
   "events": [
-    {
-      "stock_id": "8119",
-      "name": "公信",
-      "event_date": "20260818",
-      "trigger_pct_proxy": 17.92,
-      "event_vwap": 10.58,
-      "event_volume_lots": 225.487,
-      "volume_multiple": 4.72,
-      "prior_range_pct": 14.06,
-      "mature_5d": true,
-      "return_1d_pct": -7.28,
-      "return_3d_pct": -6.43,
-      "return_5d_pct": -6.52,
-      "return_10d_pct": -8.13,
-      "return_20d_pct": -7.84,
-      "max_5d_pct": -1.7,
-      "min_5d_pct": -9.74,
-      "broker_signal": {
-        "qualified_brokers": 14,
-        "new_build_count": 4,
-        "multi_build": true,
-        "high_accuracy_add": true,
-        "largest_capital_share_pct": 20.0
-      }
-    },
-    {
-      "stock_id": "7888",
-      "name": "麗寶新藥",
-      "event_date": "20260818",
-      "trigger_pct_proxy": 17.46,
-      "event_vwap": 33.24,
-      "event_volume_lots": 157.966,
-      "volume_multiple": 8.31,
-      "prior_range_pct": 12.36,
-      "mature_5d": true,
-      "return_1d_pct": -4.72,
-      "return_3d_pct": -7.85,
-      "return_5d_pct": -10.2,
-      "return_10d_pct": -12.73,
-      "return_20d_pct": -10.44,
-      "max_5d_pct": 4.39,
-      "min_5d_pct": -13.06,
-      "broker_signal": {
-        "qualified_brokers": 5,
-        "new_build_count": 0,
-        "multi_build": false,
-        "high_accuracy_add": false,
-        "largest_capital_share_pct": 61.7
-      }
-    },
-    {
-      "stock_id": "6709",
-      "name": "昱厚生技",
-      "event_date": "20260820",
-      "trigger_pct_proxy": 15.02,
-      "event_vwap": 24.13,
-      "event_volume_lots": 1575.254,
-      "volume_multiple": 39.71,
-      "prior_range_pct": 11.09,
-      "mature_5d": true,
-      "return_1d_pct": 4.19,
-      "return_3d_pct": 5.3,
-      "return_5d_pct": 3.56,
-      "return_10d_pct": 1.95,
-      "return_20d_pct": -0.46,
-      "max_5d_pct": 7.75,
-      "min_5d_pct": 0.5,
-      "broker_signal": {
-        "qualified_brokers": 11,
-        "new_build_count": 0,
-        "multi_build": false,
-        "high_accuracy_add": false,
-        "largest_capital_share_pct": 25.5
-      }
-    },
     {
       "stock_id": "6912",
       "name": "益鈞環科*",
@@ -2314,7 +2239,7 @@
       "return_3d_pct": -0.74,
       "return_5d_pct": -3.95,
       "return_10d_pct": -6.02,
-      "return_20d_pct": null,
+      "return_20d_pct": -12.18,
       "max_5d_pct": 4.08,
       "min_5d_pct": -6.29,
       "broker_signal": {
@@ -2563,7 +2488,7 @@
       "return_1d_pct": 2.74,
       "return_3d_pct": 4.74,
       "return_5d_pct": -0.43,
-      "return_10d_pct": null,
+      "return_10d_pct": -6.99,
       "return_20d_pct": null,
       "max_5d_pct": 8.51,
       "min_5d_pct": -3.65,
@@ -2634,14 +2559,14 @@
       "event_volume_lots": 453.237,
       "volume_multiple": 30.18,
       "prior_range_pct": 15.07,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": 8.44,
       "return_3d_pct": -0.5,
-      "return_5d_pct": null,
+      "return_5d_pct": 4.41,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null,
+      "max_5d_pct": 13.98,
+      "min_5d_pct": -6.68,
       "broker_signal": {
         "qualified_brokers": 3,
         "new_build_count": 1,
@@ -2660,7 +2585,7 @@
       "volume_multiple": 5.04,
       "prior_range_pct": 14.14,
       "mature_5d": false,
-      "return_1d_pct": null,
+      "return_1d_pct": -2.97,
       "return_3d_pct": null,
       "return_5d_pct": null,
       "return_10d_pct": null,
@@ -2673,6 +2598,81 @@
         "multi_build": false,
         "high_accuracy_add": true,
         "largest_capital_share_pct": 42.8
+      }
+    },
+    {
+      "stock_id": "7578",
+      "name": "利百景",
+      "event_date": "20261111",
+      "trigger_pct_proxy": 15.6,
+      "event_vwap": 23.1,
+      "event_volume_lots": 129.64,
+      "volume_multiple": 2.93,
+      "prior_range_pct": 11.43,
+      "mature_5d": false,
+      "return_1d_pct": null,
+      "return_3d_pct": null,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "max_5d_pct": null,
+      "min_5d_pct": null,
+      "broker_signal": {
+        "qualified_brokers": 12,
+        "new_build_count": 1,
+        "multi_build": false,
+        "high_accuracy_add": false,
+        "largest_capital_share_pct": 35.3
+      }
+    },
+    {
+      "stock_id": "7754",
+      "name": "安基生技",
+      "event_date": "20261111",
+      "trigger_pct_proxy": 21.27,
+      "event_vwap": 66.47,
+      "event_volume_lots": 987.495,
+      "volume_multiple": 3.63,
+      "prior_range_pct": 19.3,
+      "mature_5d": false,
+      "return_1d_pct": null,
+      "return_3d_pct": null,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "max_5d_pct": null,
+      "min_5d_pct": null,
+      "broker_signal": {
+        "qualified_brokers": 39,
+        "new_build_count": 0,
+        "multi_build": false,
+        "high_accuracy_add": true,
+        "largest_capital_share_pct": 11.5
+      }
+    },
+    {
+      "stock_id": "3473",
+      "name": "智通聯網",
+      "event_date": "20261111",
+      "trigger_pct_proxy": 27.75,
+      "event_vwap": 83.96,
+      "event_volume_lots": 95.486,
+      "volume_multiple": 7.24,
+      "prior_range_pct": 10.87,
+      "mature_5d": false,
+      "return_1d_pct": null,
+      "return_3d_pct": null,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "max_5d_pct": null,
+      "min_5d_pct": null,
+      "broker_signal": {
+        "qualified_brokers": 5,
+        "new_build_count": 0,
+        "multi_build": false,
+        "high_accuracy_add": false,
+        "largest_capital_share_pct": 99.6
       }
     }
   ]
