@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T18:21:06+08:00",
+  "generated_at": "2026-11-17T18:20:50+08:00",
   "point_in_time": true,
   "broker_data_cutoff": "事件日前一完整交易日",
   "definitions": {
@@ -17,14 +17,14 @@
         "win_rate_pct": 68.2
       },
       "3d": {
-        "samples": 2049,
-        "mean_pct": 3.53,
+        "samples": 2051,
+        "mean_pct": 3.52,
         "median_pct": 0.37,
         "win_rate_pct": 51.7
       },
       "5d": {
-        "samples": 2043,
-        "mean_pct": 3.35,
+        "samples": 2044,
+        "mean_pct": 3.34,
         "median_pct": -0.12,
         "win_rate_pct": 49.5
       },
@@ -35,10 +35,10 @@
         "win_rate_pct": 46.2
       },
       "20d": {
-        "samples": 2012,
-        "mean_pct": 6.29,
-        "median_pct": -0.96,
-        "win_rate_pct": 46.9
+        "samples": 2013,
+        "mean_pct": 6.28,
+        "median_pct": -0.98,
+        "win_rate_pct": 46.8
       }
     },
     "new_build": {
@@ -56,10 +56,10 @@
         "win_rate_pct": 51.6
       },
       "5d": {
-        "samples": 917,
-        "mean_pct": 3.28,
-        "median_pct": 0.17,
-        "win_rate_pct": 51.5
+        "samples": 918,
+        "mean_pct": 3.27,
+        "median_pct": 0.16,
+        "win_rate_pct": 51.4
       },
       "10d": {
         "samples": 912,
@@ -68,10 +68,10 @@
         "win_rate_pct": 47.7
       },
       "20d": {
-        "samples": 900,
-        "mean_pct": 5.93,
-        "median_pct": -0.07,
-        "win_rate_pct": 49.9
+        "samples": 901,
+        "mean_pct": 5.91,
+        "median_pct": -0.13,
+        "win_rate_pct": 49.8
       }
     },
     "multi_build": {
@@ -116,16 +116,16 @@
         "win_rate_pct": 69.1
       },
       "3d": {
-        "samples": 1204,
-        "mean_pct": 3.77,
+        "samples": 1206,
+        "mean_pct": 3.75,
         "median_pct": 0.43,
         "win_rate_pct": 52.4
       },
       "5d": {
-        "samples": 1200,
-        "mean_pct": 3.8,
+        "samples": 1201,
+        "mean_pct": 3.79,
         "median_pct": -0.03,
-        "win_rate_pct": 49.8
+        "win_rate_pct": 49.7
       },
       "10d": {
         "samples": 1195,
@@ -2314,7 +2314,7 @@
       "return_3d_pct": -10.56,
       "return_5d_pct": -14.4,
       "return_10d_pct": -22.2,
-      "return_20d_pct": null,
+      "return_20d_pct": -14.01,
       "max_5d_pct": -0.83,
       "min_5d_pct": -14.91,
       "broker_signal": {
@@ -2534,14 +2534,14 @@
       "event_volume_lots": 4189.955,
       "volume_multiple": 5.04,
       "prior_range_pct": 14.14,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": -2.97,
       "return_3d_pct": -4.81,
-      "return_5d_pct": null,
+      "return_5d_pct": -8.7,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null,
+      "max_5d_pct": 2.97,
+      "min_5d_pct": -10.76,
       "broker_signal": {
         "qualified_brokers": 50,
         "new_build_count": 1,
@@ -2636,7 +2636,7 @@
       "prior_range_pct": 11.97,
       "mature_5d": false,
       "return_1d_pct": 5.01,
-      "return_3d_pct": null,
+      "return_3d_pct": 0.88,
       "return_5d_pct": null,
       "return_10d_pct": null,
       "return_20d_pct": null,
@@ -2661,7 +2661,7 @@
       "prior_range_pct": 13.59,
       "mature_5d": false,
       "return_1d_pct": -12.58,
-      "return_3d_pct": null,
+      "return_3d_pct": -15.7,
       "return_5d_pct": null,
       "return_10d_pct": null,
       "return_20d_pct": null,
