@@ -1,16 +1,16 @@
 {
   "summary": {
-    "generated_at": "2026-11-17T18:15:31+08:00",
+    "generated_at": "2026-11-18T18:15:30+08:00",
     "market_start": "20200102",
-    "market_end": "20261117",
+    "market_end": "20261118",
     "event_count": 2057,
-    "raw_stock_day_count": 8418,
+    "raw_stock_day_count": 8420,
     "suppressed_repeat_count": 135,
     "setup_definition": "前10日振幅≤20.0%、突破區間高點、成交量≥前20日中位量2.0倍、前5日無≥10.0%先行漲幅",
     "event_unit": "每檔每日最多一次；首次突破後 20 個交易日內不重複開新事件",
-    "mature_5d_count": 2044,
-    "five_day_positive_rate": 49.5,
-    "five_day_extension_rate": 52.1,
+    "mature_5d_count": 2047,
+    "five_day_positive_rate": 49.4,
+    "five_day_extension_rate": 52.0,
     "definition": "歷史事件要求盤整後帶量突破且只取波段第一根；同一檔進入20日追蹤期後不重複計次。日資料未知首次突破時間，不當成可成交績效。"
   },
   "recent_events": [
@@ -59,14 +59,14 @@
       "event_volume_lots": 129.64,
       "volume_multiple": 2.93,
       "prior_range_pct": 11.43,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": -1.9,
       "return_3d_pct": -7.27,
-      "return_5d_pct": null,
+      "return_5d_pct": -5.67,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null
+      "max_5d_pct": 2.6,
+      "min_5d_pct": -9.09
     },
     {
       "stock_id": "7754",
@@ -77,14 +77,14 @@
       "event_volume_lots": 987.495,
       "volume_multiple": 3.63,
       "prior_range_pct": 19.3,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": 0.08,
       "return_3d_pct": -1.31,
-      "return_5d_pct": null,
+      "return_5d_pct": 3.81,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null
+      "max_5d_pct": 9.52,
+      "min_5d_pct": -3.42
     },
     {
       "stock_id": "3473",
@@ -95,14 +95,14 @@
       "event_volume_lots": 95.486,
       "volume_multiple": 7.24,
       "prior_range_pct": 10.87,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": -5.74,
       "return_3d_pct": -9.16,
-      "return_5d_pct": null,
+      "return_5d_pct": -12.55,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null
+      "max_5d_pct": 1.24,
+      "min_5d_pct": -13.65
     },
     {
       "stock_id": "7731",
@@ -135,7 +135,7 @@
       "return_1d_pct": 8.44,
       "return_3d_pct": -0.5,
       "return_5d_pct": 4.41,
-      "return_10d_pct": null,
+      "return_10d_pct": 11.84,
       "return_20d_pct": null,
       "max_5d_pct": 13.98,
       "min_5d_pct": -6.68
