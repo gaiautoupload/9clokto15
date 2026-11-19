@@ -1,14 +1,14 @@
 {
   "summary": {
-    "generated_at": "2026-11-18T18:15:30+08:00",
+    "generated_at": "2026-11-19T18:15:32+08:00",
     "market_start": "20200102",
-    "market_end": "20261118",
+    "market_end": "20261119",
     "event_count": 2057,
-    "raw_stock_day_count": 8420,
+    "raw_stock_day_count": 8423,
     "suppressed_repeat_count": 135,
     "setup_definition": "前10日振幅≤20.0%、突破區間高點、成交量≥前20日中位量2.0倍、前5日無≥10.0%先行漲幅",
     "event_unit": "每檔每日最多一次；首次突破後 20 個交易日內不重複開新事件",
-    "mature_5d_count": 2047,
+    "mature_5d_count": 2048,
     "five_day_positive_rate": 49.4,
     "five_day_extension_rate": 52.0,
     "definition": "歷史事件要求盤整後帶量突破且只取波段第一根；同一檔進入20日追蹤期後不重複計次。日資料未知首次突破時間，不當成可成交績效。"
@@ -41,14 +41,14 @@
       "event_volume_lots": 107.91,
       "volume_multiple": 4.15,
       "prior_range_pct": 13.59,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": -12.58,
       "return_3d_pct": -15.7,
-      "return_5d_pct": null,
+      "return_5d_pct": -18.82,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null
+      "max_5d_pct": -2.08,
+      "min_5d_pct": -19.86
     },
     {
       "stock_id": "7578",

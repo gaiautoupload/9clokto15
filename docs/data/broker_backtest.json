@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T18:20:30+08:00",
+  "generated_at": "2026-11-19T18:21:04+08:00",
   "point_in_time": true,
   "broker_data_cutoff": "事件日前一完整交易日",
   "definitions": {
@@ -23,8 +23,8 @@
         "win_rate_pct": 51.7
       },
       "5d": {
-        "samples": 2047,
-        "mean_pct": 3.33,
+        "samples": 2048,
+        "mean_pct": 3.32,
         "median_pct": -0.13,
         "win_rate_pct": 49.4
       },
@@ -122,10 +122,10 @@
         "win_rate_pct": 52.4
       },
       "5d": {
-        "samples": 1202,
-        "mean_pct": 3.79,
+        "samples": 1203,
+        "mean_pct": 3.77,
         "median_pct": -0.03,
-        "win_rate_pct": 49.8
+        "win_rate_pct": 49.7
       },
       "10d": {
         "samples": 1195,
@@ -2659,14 +2659,14 @@
       "event_volume_lots": 107.91,
       "volume_multiple": 4.15,
       "prior_range_pct": 13.59,
-      "mature_5d": false,
+      "mature_5d": true,
       "return_1d_pct": -12.58,
       "return_3d_pct": -15.7,
-      "return_5d_pct": null,
+      "return_5d_pct": -18.82,
       "return_10d_pct": null,
       "return_20d_pct": null,
-      "max_5d_pct": null,
-      "min_5d_pct": null,
+      "max_5d_pct": -2.08,
+      "min_5d_pct": -19.86,
       "broker_signal": {
         "qualified_brokers": 3,
         "new_build_count": 0,
