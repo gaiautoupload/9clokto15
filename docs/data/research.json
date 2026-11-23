@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-11-21T20:51:00+08:00",
+    "generated_at": "2026-11-23T18:15:34+08:00",
     "market_start": "20200102",
-    "market_end": "20261120",
+    "market_end": "20261123",
     "event_count": 2057,
-    "raw_stock_day_count": 8424,
+    "raw_stock_day_count": 8437,
     "suppressed_repeat_count": 135,
     "setup_definition": "前10日振幅≤20.0%、突破區間高點、成交量≥前20日中位量2.0倍、前5日無≥10.0%先行漲幅",
     "event_unit": "每檔每日最多一次；首次突破後 20 個交易日內不重複開新事件",
@@ -226,7 +226,7 @@
       "return_3d_pct": -8.26,
       "return_5d_pct": -10.33,
       "return_10d_pct": -10.5,
-      "return_20d_pct": null,
+      "return_20d_pct": -20.31,
       "max_5d_pct": 1.38,
       "min_5d_pct": -17.73
     },

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-21T20:55:29+08:00",
+  "generated_at": "2026-11-23T18:21:03+08:00",
   "point_in_time": true,
   "broker_data_cutoff": "事件日前一完整交易日",
   "definitions": {
@@ -35,8 +35,8 @@
         "win_rate_pct": 46.3
       },
       "20d": {
-        "samples": 2015,
-        "mean_pct": 6.24,
+        "samples": 2016,
+        "mean_pct": 6.23,
         "median_pct": -0.98,
         "win_rate_pct": 46.8
       }
@@ -134,9 +134,9 @@
         "win_rate_pct": 46.5
       },
       "20d": {
-        "samples": 1180,
-        "mean_pct": 6.76,
-        "median_pct": -0.94,
+        "samples": 1181,
+        "mean_pct": 6.74,
+        "median_pct": -0.98,
         "win_rate_pct": 47.1
       }
     },
@@ -2389,7 +2389,7 @@
       "return_3d_pct": -8.26,
       "return_5d_pct": -10.33,
       "return_10d_pct": -10.5,
-      "return_20d_pct": null,
+      "return_20d_pct": -20.31,
       "max_5d_pct": 1.38,
       "min_5d_pct": -17.73,
       "broker_signal": {
