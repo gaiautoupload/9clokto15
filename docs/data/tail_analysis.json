@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T18:21:28+08:00",
+  "generated_at": "2026-11-25T18:21:14+08:00",
   "status": "exploratory_hypothesis_not_out_of_sample",
   "definitions": {
     "broad_ignition": "合格留存建倉分點>=40且最大分點資金占比<=30%",
@@ -10,8 +10,8 @@
   },
   "profiles": {
     "all": {
-      "events": 2017,
-      "mean_pct": 6.22,
+      "events": 2018,
+      "mean_pct": 6.21,
       "median_pct": -0.98,
       "win_rate_pct": 46.8,
       "return_80_plus_rate_pct": 2.7,
