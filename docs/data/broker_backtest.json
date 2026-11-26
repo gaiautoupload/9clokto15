@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T18:21:13+08:00",
+  "generated_at": "2026-11-26T18:21:12+08:00",
   "point_in_time": true,
   "broker_data_cutoff": "事件日前一完整交易日",
   "definitions": {
@@ -9,7 +9,7 @@
   },
   "groups": {
     "all_first_breakouts": {
-      "count": 2060,
+      "count": 2061,
       "1d": {
         "samples": 2057,
         "mean_pct": 4.66,
@@ -29,8 +29,8 @@
         "win_rate_pct": 49.4
       },
       "10d": {
-        "samples": 2040,
-        "mean_pct": 3.86,
+        "samples": 2041,
+        "mean_pct": 3.85,
         "median_pct": -0.93,
         "win_rate_pct": 46.2
       },
@@ -42,7 +42,7 @@
       }
     },
     "new_build": {
-      "count": 925,
+      "count": 926,
       "1d": {
         "samples": 923,
         "mean_pct": 4.7,
@@ -108,7 +108,7 @@
       }
     },
     "high_accuracy_add": {
-      "count": 1212,
+      "count": 1213,
       "1d": {
         "samples": 1209,
         "mean_pct": 4.67,
@@ -128,9 +128,9 @@
         "win_rate_pct": 49.7
       },
       "10d": {
-        "samples": 1197,
-        "mean_pct": 4.71,
-        "median_pct": -0.93,
+        "samples": 1198,
+        "mean_pct": 4.69,
+        "median_pct": -0.95,
         "win_rate_pct": 46.4
       },
       "20d": {
@@ -175,31 +175,6 @@
     }
   },
   "events": [
-    {
-      "stock_id": "7926",
-      "name": "中華立鼎",
-      "event_date": "20260827",
-      "trigger_pct_proxy": 28.62,
-      "event_vwap": 557.33,
-      "event_volume_lots": 266.74,
-      "volume_multiple": 10.66,
-      "prior_range_pct": 8.51,
-      "mature_5d": true,
-      "return_1d_pct": 22.85,
-      "return_3d_pct": 21.38,
-      "return_5d_pct": 16.07,
-      "return_10d_pct": 5.4,
-      "return_20d_pct": 4.34,
-      "max_5d_pct": 39.41,
-      "min_5d_pct": 6.22,
-      "broker_signal": {
-        "qualified_brokers": 29,
-        "new_build_count": 0,
-        "multi_build": false,
-        "high_accuracy_add": true,
-        "largest_capital_share_pct": 26.0
-      }
-    },
     {
       "stock_id": "6812",
       "name": "梭特",
@@ -2588,7 +2563,7 @@
       "return_1d_pct": -12.58,
       "return_3d_pct": -15.7,
       "return_5d_pct": -18.82,
-      "return_10d_pct": null,
+      "return_10d_pct": -26.04,
       "return_20d_pct": null,
       "max_5d_pct": -2.08,
       "min_5d_pct": -19.86,
@@ -2673,6 +2648,31 @@
         "multi_build": false,
         "high_accuracy_add": false,
         "largest_capital_share_pct": 43.1
+      }
+    },
+    {
+      "stock_id": "6987",
+      "name": "寶晶能源*",
+      "event_date": "20261126",
+      "trigger_pct_proxy": 18.32,
+      "event_vwap": 18.59,
+      "event_volume_lots": 125.179,
+      "volume_multiple": 4.04,
+      "prior_range_pct": 17.96,
+      "mature_5d": false,
+      "return_1d_pct": null,
+      "return_3d_pct": null,
+      "return_5d_pct": null,
+      "return_10d_pct": null,
+      "return_20d_pct": null,
+      "max_5d_pct": null,
+      "min_5d_pct": null,
+      "broker_signal": {
+        "qualified_brokers": 5,
+        "new_build_count": 1,
+        "multi_build": false,
+        "high_accuracy_add": true,
+        "largest_capital_share_pct": 48.0
       }
     }
   ]
